@@ -1,0 +1,39 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+
+{% block meta %}
+    <title>회원가입/로그인 | 콩튜브</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class='sign-in'>
+        <div class=''></div>
+        <div class='background__dim-div'></div>
+        <div class='container'>
+            <img
+                src={% static 'assets/logo-vertical@3x.png' %}
+                alt='로고'
+                class='sign-in__center-logo'
+            />
+        </div>
+        <div class='login-buttons'>
+            <a href='{% provider_login_url "kakao" %}'>
+                <img
+                    src={% static 'assets/login-kakao@3x.png' %}
+                    alt='카카오 로그인'
+                />
+            </a>
+            <a href='{% provider_login_url "naver" %}'>
+                <img
+                    src={% static 'assets/login-naver@3x.png' %}
+                    alt='네이버 로그인'
+                />
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

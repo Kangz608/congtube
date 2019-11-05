@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class='mypage'>
+    {% include '_partials/_header_simple_black.html' %}
+    <nav class='nav-hidden'></nav>
+
+    <div class='container'>
+        <div class='user-summary'>
+            <div class='user-summary__user-info'>
+                <img src='{% if user.socialaccount_set.all.first.get_avatar_url %}{{ user.socialaccount_set.all.first.get_avatar_url }}{% else %}{{ "https://via.placeholder.com/100x100" }}{% endif %}'
+                     alt='user-profile-img'
+                     class='user-summary__user-info-image'
+                     />
+                <div>
+                    <div class='user-summary__user-info-username'> {{user.get_username}} </div>
+                    <div class='user-summary__user-info-nickname'> {{user.get_username}} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='grey-divider'></div>
+
+    <div class='container'>
+        <div class='section-title'>주문내역</div>
+
+        <div class='order-list'>
+            {% for order in orders %}
+                {% include '_partials/_order_item.html' with order=order %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

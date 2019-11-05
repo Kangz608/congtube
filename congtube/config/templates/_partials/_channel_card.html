@@ -1,0 +1,21 @@
+{% load static %}
+<a href='{% url 'channels:detail' channel.slug %}'>
+    <div class='channel-card' class="{% for tag in channel.tags.all %} {{tag.name}} {% endfor %}">
+        <img
+            src='{{ channel.image.url }}'
+            alt='채널 사진'
+            class='channel-card__background-image'
+            data-object-fit
+            />
+        {% if channel.is_hot %}
+        <img
+            src='{% static 'assets/channel-card-feature-hot@3x.png' %}'
+            alt='hot'
+            class='channel-card__feature-hot'
+            data-object-fit='contain'
+        />
+        {% endif %}
+        <div class='channel-card__background-dim'></div>
+        <div class='channel-card__channel-name'>{{ channel.name }}</div>
+    </div>
+</a>

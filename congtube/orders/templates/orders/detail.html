@@ -1,0 +1,269 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% load review_tags %}
+
+{% block content %}
+
+<div class='review-create'>
+    {% include '_partials/_header_simple_white.html' %}
+
+    <div class='review-product-thumbnail'>
+        {% if order.video %}
+            <video
+                playsinline
+                autoplay
+                loop
+                muted
+                src={{ order.video.url }}
+                class='review-product__thumbnail-image'
+                id='order_detail_video'
+            ></video>
+            <div class='review-product__thumbnail-dim'></div>
+            <div class='review-product__thumbnail-buttons'>
+                <a href='#'>
+                    <img
+                        src={% static 'assets/volume-on-outlined.png' %}
+                        class='order_detail_video__volume-button'
+                        id='order-detail__volume-on'
+                        onclick='flipVolumeOrderDetail(true)'
+                    />
+                </a>
+                <a href='#'>
+                    <img
+                        src={% static 'assets/volume-off-outlined.png' %}
+                        class='order_detail_video__volume-button'
+                        id='order-detail__volume-off'
+                        onclick='flipVolumeOrderDetail(false)'
+                    />
+                </a>
+                {% comment %} <a href='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4' download> {% endcomment %}
+                <a href='{{ order.video.url }}' download>
+                    <img
+                        src={% static 'assets/icon-save@3x.png' %}
+                        alt='저장'
+                        class='review-product__thumbnail-button-icon'
+                        />
+                </a>
+                {% comment %} <a href='#' onclick="copyToClipboard('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4')"> {% endcomment %}
+                <a href='#' onclick="copyToClipboard('{{ order.video.url }}')">
+                    <img
+                        src={% static 'assets/icon-share@3x.png' %}
+                        alt='저장'
+                        class='review-product__thumbnail-button-icon'
+                        />
+                </a>
+            </div>
+        {% else %}
+            <img
+                src={% static 'assets/video-preparing@3x.png' %}
+                alt='order-channel-img'
+                class='review-product__thumbnail-image'
+                data-object-fit
+            />
+        {% endif %}
+    </div>
+
+    <div class='container'>
+        <div class='review-product-info'>
+            <div class='review-product-info__text'>
+                <div class='review-product-info__text-channel-title'>{{ order.channel }}</div>
+                <div class='review-product-info__text-channel-description'>
+                    {{ order.product.name }}
+                </div>
+            </div>
+            <div class='review-product-info__price'>
+                <img
+                    src={% static 'assets/cong-small@3x.png' %}
+                    alt='cong-logo'
+                    class='review-product-info__price-logo'
+                    />
+                <span
+                    class='review-product-info__price-text'
+                    id='review-product-info__price-cong'
+                >
+                    {{ order.product.price }} 원
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class='grey-divider'></div>
+
+    <div class='container'>
+        <div class='review-order-info'>
+            <div class='review-order-info__label'>받는 분</div>
+            <div class='review-order-info__content'>{{ order.reciever_name }}</div>
+        </div>
+        <div class='review-order-info'>
+            <div class='review-order-info__label'>전화번호</div>
+            <div class='review-order-info__content'>{{ order.phonenumber }}</div>
+        </div>
+        <div class='review-order-info'>
+            <div class='review-order-info__label'>이메일</div>
+            <div class='review-order-info__content'>{{ order.email }}</div>
+        </div>
+        <div class='review-order-info'>
+            <div class='review-order-info__label'>요청사항</div>
+            <div class='review-order-info__content'>
+                {{ order.message }}
+            </div>
+        </div>
+        <div class='review-order-info'>
+            <div class='review-order-info__label'>결제내역</div>
+            <div class='review-order-info__payment-row'>
+                <div class='review-order-info__payment-key'>결제방법</div>
+                <div class='review-order-info__payment-value'>
+                {{ pay_info.pg_provider }}
+                </div>
+            </div>
+            <div class='review-order-info__payment-row'>
+                <div class='review-order-info__payment-key'>결제금액</div>
+                <div class='review-order-info__payment-value'>{{ pay_info.amount }}</div>
+            </div>
+            <div class='review-order-info__payment-row'>
+                <div class='review-order-info__payment-key'>주문일</div>
+                <div class='review-order-info__payment-value'>{{ order.created_at|date:"Y-m-d" }}</div>
+            </div>
+        </div>
+
+        {% if order.status == order.SUCCESS %}
+            {% if order.review_set.all %}
+            <div class='section-title-container'>
+                <div class='section-title'>리뷰</div>
+                <div class='section-title-rating'>
+                    <span
+                        class='section-title-rating-number'
+                        id='review-create-rating-star-number'
+                    >
+                        {{ order.review_set.rating }}
+                    </span>
+                    <div class='section-title-rating-stars' id='review-star-0'>
+                        {% for i in order.review_set.first.rating|greens %}
+                        <div>
+                            <img
+                                src={% static 'assets/star-green@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--on'
+                                id='order-detail__review-star-1--on'
+                            />
+                        </div>
+                        {% endfor %}
+                        {% for i in order.review_set.first.rating|greys %}
+                        <div>
+                            <img
+                                src={% static 'assets/star-green@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--on'
+                                id='order-detail__review-star-5--on'
+                            />
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class='review-content__written-container'
+            >
+                {{ order.review_set.first.message }}
+            </div>
+            {% else %}
+            <div class='section-title-container'>
+                <div class='section-title'>리뷰</div>
+                <div class='section-title-rating'>
+                    <span
+                        class='section-title-rating-number'
+                        id='review-create-rating-star-number'
+                    >
+                        5
+                    </span>
+                    <div class='section-title-rating-stars' id='review-star-0'>
+                        <div onclick='rateStars(1)'>
+                            <img
+                                src={% static 'assets/star-grey@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--off'
+                                id='order-detail__review-star-1--off'
+                            />
+                            <img
+                                src={% static 'assets/star-green@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--on'
+                                id='order-detail__review-star-1--on'
+                            />
+                        </div>
+                        <div onclick='rateStars(2)'>
+                            <img
+                                src={% static 'assets/star-grey@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--off'
+                                id='order-detail__review-star-2--off'
+                            />
+                            <img
+                                src={% static 'assets/star-green@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--on'
+                                id='order-detail__review-star-2--on'
+                            />
+                        </div>
+                        <div onclick='rateStars(3)'>
+                            <img
+                                src={% static 'assets/star-grey@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--off'
+                                id='order-detail__review-star-3--off'
+                            />
+                            <img
+                                src={% static 'assets/star-green@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--on'
+                                id='order-detail__review-star-3--on'
+                            />
+                        </div>
+                        <div onclick='rateStars(4)'>
+                            <img
+                                src={% static 'assets/star-grey@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--off'
+                                id='order-detail__review-star-4--off'
+                            />
+                            <img
+                                src={% static 'assets/star-green@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--on'
+                                id='order-detail__review-star-4--on'
+                            />
+                        </div>
+                        <div onclick='rateStars(5)'>
+                            <img
+                                src={% static 'assets/star-grey@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--off'
+                                id='order-detail__review-star-5--off'
+                            />
+                            <img
+                                src={% static 'assets/star-green@3x.png' %}
+                                alt='star-green'
+                                class='section-title-rating-star rating-star--on'
+                                id='order-detail__review-star-5--on'
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <textarea
+                class='review-content-textarea'
+                id='review_input_content'
+                placeholder='후기를 작성해주세요'
+                ></textarea>
+        </div>
+
+        <a href='/profile' class='review-submit-button' id='review_submit'>
+            올리기
+        </a>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

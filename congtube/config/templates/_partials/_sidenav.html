@@ -1,0 +1,71 @@
+{% load static %}
+
+
+<ul class='sidenav' id='mobile-demo'>
+    {% if request.user.is_authenticated %}
+        <a href='{% url 'profile' %}' class='side-nav-user-profile'>
+            <div class='side-nav-user-profile__info'>
+                <img
+                    src="{% if request.user.socialaccount_set.all.first.get_avatar_url %}{{ request.user.socialaccount_set.all.first.get_avatar_url }}{% else %}{{ 'https://via.placeholder.com/100x100' }}{% endif %}"
+                    alt='profile'
+                    class='side-nav-user-profile__info-image'
+                />
+                <div class='side-nav-user-profile__info-text'>
+                    <div class='side-nav-user-profile__info-username'>{{ user.get_username }}</div>
+                    <div class='side-nav-user-profile__info-nickname'>{{ user.get_username }}</div>
+                </div>
+            </div>
+            <img
+                src={% static 'assets/arrow-right-black@3x.png' %}
+                alt='arrow-black'
+                class='side-nav-user-profile__arrow-image'
+            />
+        </a>
+        <div class='height15'></div>
+        <li>
+            <a href="{% url 'profile' %}">
+                <img
+                    src={% static 'assets/icon-mypage@3x.png' %}
+                    alt='mypage-icon'
+                    class='side-nav__list-icon'
+                />
+                <span class='side-nav__list-text'>마이페이지</span>
+            </a>
+        </li>
+        <li class='sidenav__signout-container'>
+            <a
+                href='{% url 'account_logout' %}'
+                class='sidenav__signout'
+            >
+                로그아웃
+            </a>
+        </li>
+    {% else %}
+        <a href="{% url 'account_login' %}" class='side-nav-user-profile'>
+            <div class='side-nav-user-profile__info-not-logged-in-text'>
+                <span class='side-nav-user-profile__info-not-logged-in-text-bold'>
+                    로그인/회원가입
+                </span>
+                이후
+                <br />
+                사용가능합니다
+            </div>
+            <img
+                src={% static 'assets/arrow-right-black@3x.png' %}
+                alt='arrow-black'
+                class='side-nav-user-profile__arrow-image'
+            />
+        </a>
+        <div class='height15'></div>
+        <li>
+            <a href='{% url 'account_login' %}'>
+                <img
+                    src={% static 'assets/icon-mypage@3x.png' %}
+                    alt='mypage-icon'
+                    class='side-nav__list-icon'
+                />
+                <span class='side-nav__list-text'>로그인/회원가입</span>
+            </a>
+        </li>
+    {% endif %}
+</ul>

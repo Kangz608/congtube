@@ -1,0 +1,57 @@
+{% extends '_base.html' %} {% block content %}
+<div class="main">
+	{% include '_partials/_header_simple_white.html' %}
+
+	<div class="mask-background">
+		<div class="carousel carousel-slider center">
+			{% for banner in banners %}
+			<div class="carousel-item">
+				<img
+					onclick="redirectTo('{{ banner.url }}')"
+					src="{{ banner.image.url }}"
+					alt="{{ banner.title }}"
+					class="mask-background__image"
+					data-object-fit
+				/>
+				{% comment %}
+				<div class="mask-background__dim-div"></div>
+				{% endcomment %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="search-bar-container">
+			{% include '_partials/_search_bar.html' %}
+		</div>
+
+		<div class="tags" scroll="no">
+			<div
+				class="tags__name-container background-green tags__name-text--white tag_all"
+				onclick="selectChannelTag('all')"
+			>
+				전체
+			</div>
+			{% for tag in tags %}
+			<div
+				class="tags__name-container background-grey tags__name-text--grey tag_{{ tag.slug }}"
+				onclick="selectChannelTag('{{ tag.slug }}')"
+			>
+				{{ tag.name }}
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="channel-cards row">
+			{% for channel in channels %}
+			<div
+				class="channel-card__container col s6 m4 l4 xl3 {% for tag in channel.tags.all %} channel_tag_{{ tag.slug }} {% endfor %}"
+			>
+				{% include '_partials/_channel_card.html' with channel=channel %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}

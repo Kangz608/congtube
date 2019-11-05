@@ -1,0 +1,234 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+{% block meta %}
+    <title>{{ channel.name }} - 주문하기 | 콩튜브</title>
+    <meta name="description" content="{{ channel.description }}">
+    <meta name="keywords" content="{{channel.name}},콩튜브,congtube,스타비디오,영상선물, 연예인영상,유투버영상,서프라이즈선물">
+
+    <meta property="og:title" content="{{ channel.name }} | 콩튜브" />
+    <meta property="og:description" content="{{ channel.description }}">
+
+    <meta property="og:image" content="{{ channel.image.url }}" />
+    <meta property="og:image:secure_url" content="{{ channel.image.url }}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="{{ channel.image.width }}" />
+    <meta property="og:image:height" content="{{ channel.image.height }}" />
+{% endblock %}
+
+
+{% block content %}
+<div class='order'>
+    {% include '_partials/_header_simple_black.html' %}
+
+    <nav class='nav-hidden'></nav>
+
+    <div class='container'>
+        <div class='order-product-info' data-product-id={{ product.id }} data-product-name='{{ product.name }}' data-product-price={{ product.price }}>
+            <div class='order-product-info__image-container'>
+                <img
+                    src={{ channel.image.url }}
+                    alt='channel-profile'
+                    class='order-product-info__image'
+                />
+                <div class='order-product-info__product-text-container'>
+                    <div class='order-product-info__product-text-channel'>
+                        {{ channel.name }}
+                    </div>
+                    <div class='order-product-info__lower-container'>
+                        <div class='order-product-info__product-text-order'>
+                            {{ product.name }}
+                        </div>
+                        <div class='order-product-info__product-price-container'>
+                            <!-- <img -->
+                            <!--     src={% static 'assets/cong-small@3x.png'%} -->
+                            <!--     alt='cong-img' -->
+                            <!--     class='order-product-info__product-price-image' -->
+                            <!--     data-object-fit -->
+                            <!-- /> -->
+                            <div class='order-product-info__product-price-text'>
+                                {{ product.price }}원
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='height30'></div>
+    <div class='grey-divider'></div>
+    <div class='height27'></div>
+
+    <div class='container'>
+        <div class='section-title'>주문 상세사항</div>
+
+        <div class='order-detail'>
+            <div class='wrap'>
+                <div class='order-detail-input'>
+                    <input
+                        type='text'
+                        id='order_input_name'
+                        name='reciever_name'
+                        placeholder='받는 분의 성함을 입력해주세요'
+                        />
+                </div>
+
+                <div class='order-detail__example-text'>
+                    카톡 알림을 위해 번호가 필요해요 :) 
+                </div>
+                <div class='height12'></div>
+                <div class='order-detail-input'>
+                    <input
+                        type='tel'
+                        id='order_input_phone_number'
+                        name='phonenumber'
+                        placeholder='전화번호를 입력해주세요'
+                        />
+                </div>
+
+
+                <div class='order-detail-input'>
+                    <input
+                        type='email'
+                        id='order_input_email'
+                        name='email'
+                        placeholder='이메일 주소를 입력해주세요'
+                        />
+                </div>
+
+                <textarea
+                    class='order-detail-textarea'
+                    id='order_input_content'
+                    name='message'
+                    placeholder='요청사항을 입력해주세요'
+                    ></textarea>
+
+                    <div class='order-detail__example-title'>요청사항 예시 [주문형]</div>
+                    <div class='height12'></div>
+                    <div class='order-detail__example-text'>
+                        제 여친 지영이가 곧 생일이에요.<br />
+                        생일축하 노래 불러주세요~<br />
+                        그리고 토익 시험 앞두고 있는데 응원도 부탁드릴게요!! ㅎ<br />
+                        지영 / 22세
+                    </div>
+
+                    <div class='height24'></div>
+                    <div class='order-detail__example-title'>요청사항 예시 [문장형]</div>
+                    <div class='height12'></div>
+                    <div class='order-detail__example-text'>
+                        지훈오빠 군 영장 나왔다고 왜 이렇게 울상인 거야? <br />
+                        멋진 남자로 성장하여 돌아오기를 기대해요 우리나라는 오빠에게 달려있어 ~ 잘 지켜주세요!!  <br />
+                        힘이 들땐  나를 생각하면서 파이팅 ~ 내가 기다려 줄께요 ~ 오빠 한테 충성 충성 !! ~ 입대를 축하합니다. !! <br />
+                    </div>
+            </div>
+        </div>
+
+        <div class='height47'></div>
+    </div>
+
+    <div class='container'>
+        <div class='section-title'>결제방법</div>
+        <div class='height24'></div>
+
+        <div class='pay-options'>
+            <div class='pay-options__list-item' onclick="selectPayGate('html5_inicis')">
+                <div>
+                    <span class='pay-options__list-item-text'>신용카드</span>
+                </div>
+                <div class='product-list__product-item-option-dot'>
+                    <div
+                        class='product-list__product-item-option-dot-selected'
+                        id='order_payment_html5_inicis'
+                    ></div>
+                </div>
+            </div>
+
+            <div class='pay-options__list-item' onclick="selectPayGate('danal')">
+                <div>
+                    <span class='pay-options__list-item-text'>휴대폰 결제</span>
+                </div>
+                <div class='product-list__product-item-option-dot'>
+                    <div
+                        class='product-list__product-item-option-dot-selected'
+                        id='order_payment_danal'
+                    ></div>
+                </div>
+            </div>
+
+            <div class='pay-options__list-item' onclick="selectPayGate('kakaopay')">
+                <div class='pay-options__list-item-text-container'>
+                    <span class='pay-options__list-item-text'>카카오 페이</span>
+                    <img
+                        src={% static 'assets/pay-kakao@3x.png' %}
+                        alt='kakao-pay'
+                        class='pay-options__list-item-image'
+                        />
+                </div>
+                <div class='product-list__product-item-option-dot'>
+                    <div
+                        class='product-list__product-item-option-dot-selected'
+                        id='order_payment_kakaopay'
+                    ></div>
+                </div>
+            </div>
+
+            <div class='pay-options__list-item' onclick="selectPayGate('naverco')">
+                <div class='pay-options__list-item-text-container'>
+                    <span class='pay-options__list-item-text'>네이버 페이</span>
+                    <img
+                        src={% static 'assets/pay-naver@3x.png' %}
+                        alt='naver-pay'
+                        class='pay-options__list-item-image'
+                        />
+                </div>
+                <div class='product-list__product-item-option-dot'>
+                    <div
+                        class='product-list__product-item-option-dot-selected'
+                        id='order_payment_naverco'
+                    ></div>
+                </div>
+            </div>
+
+            <div class='pay-options__list-item' onclick="selectPayGate('paypal')">
+                <div class='pay-options__list-item-text-container'>
+                    <span class='pay-options__list-item-text'>페이팔</span>
+                    <img
+                        src={% static 'assets/pay-paypal@3x.png' %}
+                        alt='paypal'
+                        class='pay-options__list-item-image'
+                        />
+                </div>
+                <div class='product-list__product-item-option-dot'>
+                    <div
+                        class='product-list__product-item-option-dot-selected'
+                        id='order_payment_paypal'
+                    ></div>
+                </div>
+            </div>
+        </div>
+
+        <div class='height24'></div>
+        <div class='order-detail__example-text'>
+            * 결제 후 주문취소와 변경은 불가하며<br/>
+            * 주문 익일로부터 7일 내 영상이 오지 않을시 주문은 자동취소되며 환불됩니다. 
+        </div>
+    </div>
+
+    <div class='height60'></div>
+
+    <div>
+        <div onclick='pay()' class='payment-button-bottom-fixed'>
+            결제하기
+        </div>
+        <div class='payment-button-bottom-fixed-hidden'></div>
+    </div>
+
+    <script>
+        var contentId = '{{ product.id }}';
+        var contentTitle = '{{ channel.name }}' +  ' - ' + '{{ product.name }}';
+        var contentPrice = '{{ product.price }}';
+    </script>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+<form id='content_search_bar_form' class='search-bar' method='get' action="{% url 'channels:list' %}">
+    <input
+        type='text'
+        name='search'
+        id='searchbar_channel'
+        class='search-bar__input'
+        placeholder='스타를 검색해보세요!'
+        value="{{ search }}"
+    />
+    <img
+        {% load static %}
+        srcSet='{% static 'assets/search-icon.png' %},
+        {% static 'assets/search-icon@2x.png' %} 2x,
+        {% static 'assets/search-icon@3x.png' %} 3x,'
+        
+        id='content_search_bar_submit'
+        src={% static 'assets/search-icon@3x.png' %}
+        alt='검색 아이콘'
+        class='search-bar__icon'
+    />
+    <input type='submit' style='display: none;'/>
+</form>

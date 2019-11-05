@@ -1,0 +1,65 @@
+{
+    "AWSEBDockerrunVersion": "2", 
+    "containerDefinitions": [
+        {
+            "memory": 128,
+            "essential": true,
+            "image": "nginx:latest",
+            "mountPoints": [
+                {
+                    "containerPath": "/etc/nginx/conf.d",
+                    "sourceVolume": "_ConfigNginx"
+                }
+            ],
+            "name": "nginx",
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80
+                }
+            ],
+            "links": [
+                "web"
+            ]
+        },
+        {
+            "memory": 128,
+            "command": [
+                "gunicorn",
+                "config.wsgi:application",
+                "--bind",
+                "0.0.0.0:8000"
+            ],
+            "essential": true,
+            "image": "700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube",
+            "mountPoints": [
+                {
+                    "containerPath": "/code/congtube",
+                    "sourceVolume": "_Congtube"
+                }
+            ],
+            "name": "web",
+            "portMappings": [
+                {
+                    "containerPort": 8000,
+                    "hostPort": 8000
+                }
+            ]
+        }
+    ],
+    "family": "",
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "/var/app/current/config/nginx"
+            },
+            "name": "_ConfigNginx"
+        },
+        {
+            "host": {
+                "sourcePath": "/var/app/current/congtube"
+            },
+            "name": "_Congtube"
+        }
+    ]
+}

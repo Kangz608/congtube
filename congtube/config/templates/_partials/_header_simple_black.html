@@ -1,0 +1,43 @@
+{% load static %}
+<div class='header-simple-black'>
+    <nav>
+        <div class='nav-wrapper'>
+            <a href='/' class='brand-logo left'>
+                <img
+                    srcSet={% static 'assets/logo-black.png' %},
+                    ${% static 'assets/logo-black@2x.png' %} 2x,
+                    ${% static 'assets/logo-black@3x.png' %} 3x
+                    src={% static 'assets/logo-black@3x.png' %}
+                    alt='congtube-logo'
+                    // class='logo-button'
+                    />
+            </a>
+            <a href='#' data-target='mobile-demo' class='sidenav-trigger right'>
+                <img
+                    srcSet={% static 'assets/header-hamburger-black.png' %},
+                    ${% static 'assets/header-hamburger-black@2x.png' %} 2x,
+                    ${% static 'assets/header-hamburger-black@3x.png' %} 3x`}
+                    src={% static 'assets/header-hamburger-black@3x.png' %}
+                    alt='hamburger-menu'
+                    // class='material-icons'
+                    />
+            </a>
+            <ul class='right hide-on-med-and-down'>
+                {% if request.user.is_authenticated %}
+                    <li>
+                        <a href='{% url 'profile' %}'>마이페이지</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href='{% url 'account_login' %}'>회원가입</a>
+                    </li>
+                    <li>
+                        <a href='{% url 'account_login' %}'>로그인</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    {% include '_partials/_sidenav.html' %}
+</div>

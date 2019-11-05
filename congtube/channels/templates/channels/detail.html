@@ -1,0 +1,203 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load review_tags %}
+
+
+{% block meta %}
+    <title>{{ channel.name }} | 콩튜브</title>
+    <meta name="description" content="{{ channel.description }}">
+    <meta name="keywords" content="{{channel.name}},콩튜브,congtube,스타비디오,영상선물, 연예인영상,유투버영상,서프라이즈선물">
+
+    <meta property="og:title" content="{{ channel.name }} | 콩튜브" />
+    <meta property="og:description" content="{{ channel.description }}">
+
+    <meta property="og:image" content="{{ channel.image.url }}" />
+    <meta property="og:image:secure_url" content="{{ channel.image.url }}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="{{ channel.image.width }}" />
+    <meta property="og:image:height" content="{{ channel.image.height }}" />
+{% endblock %}
+
+
+{% block content %}
+    <div class='channel-detail'>
+        {% include '_partials/_header_search_bar.html' %}
+
+        <div class='mask-background'>
+            <video
+                playsinline
+                autoplay
+                loop
+                class='mask-background__image'
+                src="{{ channel.video.url }}"
+                muted='true'
+                id='channel_detail_video'
+            ></video>
+            <img
+                src="{% static 'assets/volume-on.png' %}"
+                class='channel_detail_video__volume-button'
+                id='channel-detail__volume-on'
+                onclick='flipVolumeChannelDetail(true)'
+            />
+            <img
+                src="{% static 'assets/volume-off.png' %}"
+                class='channel_detail_video__volume-button'
+                id='channel-detail__volume-off'
+                onclick='flipVolumeChannelDetail(false)'
+            />
+            {% comment %} <div class='mask-background__dim-div'></div> {% endcomment %}
+        </div>
+
+        <div class='container'>
+            <div class='channel-info'>
+                <div class='channel-info__title'>{{ channel.name }}</div>
+
+                <div class='channel-info__tags'>
+                    {% for tag in channel.tags.all %}
+                    <div class='tags__name-container background-green tags__name-text--white'>
+                        {{ tag.name }}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class='channel-info__description'>
+                    {{ channel.description }}
+                </div>
+            </div>
+        {% comment %} </div> {% endcomment %}
+
+        <div class='container'>
+            <div class='section-title'>옵션</div>
+
+            <div class='product-list'>
+                {% for product in channel.product_set.is_display %}
+                <div class='product-list__product-item' id={{ product.id }} onclick='selectProduct({{ product.id }})'>
+                    <div class='product-list__product-item-title'>{{ product.name }}</div>
+                    <div class='product-list__product-item-option'>
+                        <div class='product-list__product-item-option-wrap'>
+                            <img
+                                src="{% static 'assets/cong-small@3x.png' %}"
+                                alt='cong-img'
+                                style='height: 20px;'
+                            />
+                            <span class='product-list__product-item-option-price'>{{ product.price }}</span>
+                            <span class='product-list__product-item-option-price'>원</span>
+                        </div>
+                        <div class='product-list__product-item-option-dot'>
+                            <div class='product-list__product-item-option-dot-selected' id='channel_product_{{ product.id }}'></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class='height36'></div>
+
+        <div class='grey-divider'></div>
+
+        <div class='height30'></div>
+
+        <div class='container'>
+            <div class='section-title-container'>
+                <div class='section-title'>리뷰</div>
+                <div class='section-title-rating'>
+                    <span class='section-title-rating-number'>{{ channel.review_set.get_rating_mean }}</span>
+                    <div class='section-title-rating-stars'>
+                        {% for i in channel.review_set.get_rating_mean|greens %}
+                            <img
+                            src="{% static 'assets/star-green@3x.png' %}"
+                            alt='star-green'
+                            class='section-title-rating-star'
+                            />
+                        {% endfor %}
+                        {% for i in channel.review_set.get_rating_mean|greys %}
+                            <img
+                            src="{% static 'assets/star-grey@3x.png' %}"
+                            alt='star-grey'
+                            class='section-title-rating-star'
+                            />
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class='height10'></div>
+
+            <div class='review-list'>
+                {% for review in channel.review_set.is_display %}
+                <div class='review-item'>
+                    <div class='review-item__upper'>
+                        <div class='review-item__upper-left'>
+                            <div class='review-item__upper-left-username'>
+                                {{ review.display_name }}
+                            </div>
+                            <div class='review-item__upper-left-created-at'>
+                                {{ review.created_at|date:"Y.m.d." }}
+                            </div>
+                        </div>
+                        <div class='review-item__upper-right'>
+                            {% for i in review.rating|greens %}
+                                <img
+                                src="{% static 'assets/star-green@3x.png' %}"
+                                alt='star-green'
+                                class='section-title-rating-star'
+                                />
+                            {% endfor %}
+                            {% for i in review.rating|greys %}
+                                <img
+                                src="{% static 'assets/star-grey@3x.png' %}"
+                                alt='star-grey'
+                                class='section-title-rating-star'
+                                />
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class='height15'></div>
+
+                    <div class='review-item__lower'>
+                        {{ review.message }}
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class='review-more-button' id='review_flip_btn_show'>
+                + 리뷰 {{ channel.review_set.is_display.count|add:'-3' }}개 더보기
+            </div>
+            <div class='review-more-button' id='review_flip_btn_hide'>
+                접기
+            </div>
+        </div>
+
+        <div class='grey-divider'></div>
+
+        <div class='height30'></div>
+
+        <div class='container'>
+            <div class='section-title'>최근 인기스타</div>
+
+            <div class='row'>
+                {% for channel in channels %}
+                <div class='channel-card__container col s6 m4 l4 xl3'>
+                    {% include '_partials/_channel_card.html' with channel=channel %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+       	<div>
+
+        <div onclick='redirectToOrder()' class='purchase-button-bottom-fixed'>
+             구매하기
+        </div>
+			<div class='purchase-button-bottom-fixed-hidden'></div>
+		</div>
+    </div>
+    <script>
+        var channelId = '{{ channel.id }}';
+        var channelTitle = '{{ channel.name }}';
+    </script>
+{% endblock %}
