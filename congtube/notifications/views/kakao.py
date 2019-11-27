@@ -26,7 +26,8 @@ class Notification:
         print(response.text)
 
     def payment_cancel(self, phonenumber, user, channel, created_at, cancelreason): # 결제취소
-        data = f'|"plusFriendId":"콩튜브","templateCode":"ordercancel","requestDate":"","recipientList":[|"recipientNo":"{phonenumber}","templateParameter":|"고객명":"{user}","채널명":"{channel}","주문일시":"{created_at}","취소사유":"{cancelreason}","연락가능시간":"10:00~20:00","카카오톡 콩튜브 채널 버튼":""??]?'
+        cancel = cancelreason.split(' ')[0]
+        data = f'|"plusFriendId":"콩튜브","templateCode":"ordercancel","requestDate":"","recipientList":[|"recipientNo":"{phonenumber}","templateParameter":|"고객명":"{user}","채널명":"{channel}","주문일시":"{created_at}","취소사유":"{cancel}","연락가능시간":"10:00~20:00","카카오톡 콩튜브 채널 버튼":""??]?'
         result1 = data.replace("|", "{")
         result2 = result1.replace("?", "}")
         response = requests.post(self.url, headers=self.headers, data=result2.encode('utf-8'))
