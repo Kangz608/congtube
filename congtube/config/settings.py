@@ -38,6 +38,7 @@ class Base(Configuration):
         'orders',
         'reviews',
         'banners',
+        'notifications',
 
         'allauth',
         'allauth.account',
