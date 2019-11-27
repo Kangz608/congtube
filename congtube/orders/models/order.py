@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-
+from .cancel import Cancel
 from channels.models import Channel, Product
 
 
@@ -18,18 +18,20 @@ def _order_video_upload_to(order, filename):
 
 
 class Order(models.Model):
-
     objects = OrderManager()
 
     UNPAID = 1
     PAID = 2
     SUCCESS = 3
+    CANCEL = 4
 
     ORDER_STATUS_CHOICES = (
         (UNPAID, '결제실패'),
         (PAID, '결제완료'),
         (SUCCESS, '주문완료'),
+        (CANCEL, '주문취소'),
     )
+
     user = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
@@ -51,6 +53,14 @@ class Order(models.Model):
         default=1,
     )
 
+    cancelreason = models.ForeignKey(
+        Cancel,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        verbose_name='취소사유'
+    )
+
     merchant_uid = models.CharField(
         max_length=64
     )
@@ -67,7 +77,7 @@ class Order(models.Model):
     )
 
     message = models.TextField(
-        max_length=512,
+        max_length=500,
     )
 
     amount = models.PositiveIntegerField(
@@ -88,6 +98,14 @@ class Order(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name='수정일',
+    )
+    is_alarm = models.BooleanField(
+        default=False,
+        verbose_name='영상업로드 알림 전송',
+    )
+    cancel = models.BooleanField(
+        default=False,
+        verbose_name='주문취소 알림 전송'
     )
 
     class Meta:
