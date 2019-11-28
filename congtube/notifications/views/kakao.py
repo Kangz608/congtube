@@ -26,7 +26,7 @@ class Notification:
         print(response.text)
 
     def payment_cancel(self, phonenumber, user, channel, created_at, cancelreason): # 결제취소
-        ctime = str(' ' + created_at).split(' ')[0]
+        ctime = str(created_at).split(' ')[0]
         data = f'|"plusFriendId":"콩튜브","templateCode":"ordercancel","requestDate":"","recipientList":[|"recipientNo":"{phonenumber}","templateParameter":|"고객명":"{user}","채널명":"{channel}","주문일시":"{ctime}","취소사유":"{cancelreason}","연락가능시간":"10:00~20:00","카카오톡 콩튜브 채널 버튼":""??]?'
         result1 = data.replace("|", "{")
         result2 = result1.replace("?", "}")
