@@ -16,7 +16,7 @@ class Notification:
         response = requests.post(self.url, headers=self.headers, data=result2.encode('utf-8'))
         print(response.status_code)
         print(response.text)
-
+        
     def video_complete(self, phonenumber, user, channel): # 영상제작완료
         data = f'|"plusFriendId":"콩튜브","templateCode":"videocheckk","requestDate":"","recipientList":[|"recipientNo":"{phonenumber}","templateParameter":|"고객명":"{user}","채널명":"{channel}","콩튜브 바로가기 버튼":""??]?'
         result1 = data.replace("|", "{")
