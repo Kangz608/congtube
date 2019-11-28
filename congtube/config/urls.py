@@ -46,6 +46,9 @@ urlpatterns = [
     # Orders
     path('orders/', include('orders.urls')),
 
+    # Star
+    path('star/', include('star.urls')),
+
     # API
     path('api/', include('api.urls')),
 
