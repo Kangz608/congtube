@@ -39,7 +39,6 @@ class Base(Configuration):
         'reviews',
         'banners',
         'notifications',
-        'star',
 
         'allauth',
         'allauth.account',
