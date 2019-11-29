@@ -43,6 +43,7 @@ class Order(models.Model):
         blank=True,
         null=True,
     )
+
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
