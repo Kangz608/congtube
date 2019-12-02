@@ -13,10 +13,11 @@ jobs:
             ls -al
             echo '^^^That should look familiar^^^'
 
-      - run: docker build -t congtube .
-      - run: docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-      - run: docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-      - run: eb deploy congtube-env
+      - run: docker info
+#      - run: docker build -t congtube .
+#      - run: docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+#      - run: docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+#      - run: eb deploy congtube-env
 
 
 
