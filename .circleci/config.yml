@@ -1,0 +1,22 @@
+jobs:
+  build:
+    docker:
+      - image: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+        aws_auth:
+          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
+          aws_secret_access_key: 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
+    steps:
+      - checkout
+      - run:
+          name: Code Has Arrived
+          command: |
+            ls -al
+            echo '^^^That should look familiar^^^'
+
+      - run: docker build -t congtube .
+      - run: docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+      - run: docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+      - run: eb deploy congtube-env
+
+
+
