@@ -16,6 +16,9 @@ jobs:
             echo '^^^Current folder^^^'
             apt-get update
             apt-get install docker -y
+      - run: |
+          echo "!#Dd9450109" | docker login --username 2044smile --password-stdin
+          docker run -i -t 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest /bin/bash
       - setup_remote_docker:
           version: 17.03.0-ce
       - run:
