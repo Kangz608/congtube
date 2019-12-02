@@ -12,9 +12,6 @@ class ChannelAdmin(admin.ModelAdmin):
 
         'is_display',
         'is_hot',
-        'pause',
-        'vacation_start_pause',
-        'vacation_end_pause',
     )
 
     list_filter = (
