@@ -6,9 +6,6 @@ jobs:
           aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
           aws_secret_access_key: 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
     steps:
-      name: Deploy
-      service:
-        - docker
       - checkout
       - run:
           name: Code Has Arrived
@@ -17,7 +14,7 @@ jobs:
             echo '^^^That should look familiar^^^'
             apt-get update
             apt-get install docker -y
-
+      - setup_remote_docker
       - run: docker info
 #      - run: docker build -t congtube .
 #      - run: docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
