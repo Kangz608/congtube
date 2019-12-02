@@ -11,13 +11,13 @@ jobs:
           name: Code Has Arrived
           command: |
             ls -al
-            echo '^^^That should look familiar^^^'
+            echo '^^^Current folder^^^'
             apt-get update
             apt-get install docker -y
       - setup_remote_docker:
-          version: 19.03.4
-#      - run: docker info
-      - run: docker build -t congtube .
+          version: 18.06.0-ce
+      - run: docker login
+#      - run: docker build -t congtube .
 #      - run: docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
 #      - run: docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
 #      - run: eb deploy congtube-env
