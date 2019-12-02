@@ -6,6 +6,9 @@ jobs:
           aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
           aws_secret_access_key: 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
     steps:
+      name: Deploy
+      service:
+        - docker
       - checkout
       - run:
           name: Code Has Arrived
