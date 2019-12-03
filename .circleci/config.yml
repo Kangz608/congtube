@@ -1,12 +1,4 @@
-orbs:
-  aws-ecr: circleci/aws-ecr@6.5.0
 version: 2.1
-workflows:
-  build_and_push_image:
-    jobs:
-      - aws-ecr/build-and-push-image:
-          create-repo: true
-
 jobs:
   build:
     docker:
@@ -24,6 +16,7 @@ jobs:
           name: run tests
           command: |
             ls -al
+            (aws ecr get-login --no-include-email --region ap-northeast-2)
             docker build -t congtube .
             docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
             docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
