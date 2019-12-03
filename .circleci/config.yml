@@ -13,7 +13,9 @@ jobs:
           name: Docker image build
           command: |
             ls -al
-            docker build -t congtube .
+            docker-machine regenerate-certs default
+            eval "$(docker-machine env default)"
+            docker info
 #    steps:
 #      - checkout
 #      - run:
