@@ -2,20 +2,13 @@ version: 2
 
 jobs:
   build:
-    docker:
-      - image: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-        aws_auth:
-          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
-          aws_secret_access_key: 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
+#    docker:
+#      - image: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+#        aws_auth:
+#          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
+#          aws_secret_access_key: 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
     steps:
       - checkout
-      - run:
-          name: Code Has Arrived
-          command: |
-            ls -al
-            echo '^^^Current folder^^^'
-#            apt-get update
-#            apt-get install docker -y
       - run:
           name: Install Docker client
           command: |
@@ -28,10 +21,10 @@ jobs:
       - run:
           name: Build and push Docker image
           command: |
+            docker login -u 2044smile -p !#Dd9451304
             docker build -t congtube .
             docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
             docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-            eb deploy congtube-env
 #          echo "!#Dd9450109" | docker login --username 2044smile --password-stdin
 #          docker run -i -t 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest /bin/bash
 #      - setup_remote_docker:
