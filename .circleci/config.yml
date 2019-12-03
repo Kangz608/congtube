@@ -9,8 +9,6 @@ jobs:
           aws_secret_access_key: Sk6HQo0MUOvFczQk2aQhg8CExKw6NfP7k6F9eK+3
     steps:
       - checkout
-      - setup_remote_docker:
-            docker_layer_caching: true
       - run:
           name: Install Docker client
           command: |
