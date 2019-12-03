@@ -5,9 +5,9 @@ jobs:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
       - image: circleci/python:3.6.1
-          aws_auth:
-            aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
-            aws_secret_access_key: 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
+        aws_auth:
+          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
+          aws_secret_access_key: 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
 #
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
