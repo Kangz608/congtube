@@ -6,29 +6,12 @@ jobs:
 #        aws_auth:
 #          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
 #          aws_secret_access_key: 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
-#
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
     working_directory: ~/repo
 
     steps:
       - checkout
       - setup_remote_docker:
           version: 18.06.0-ce
-
-  test:
-    docker:
-      - image: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-        aws_auth:
-          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX
-          aws_secret_access_key: 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
-    steps:
-      - checkout
-      - setup_remote_docker:
-            version: 18.06.0-ce
       - run:
           name: run tests
           command: |
@@ -36,38 +19,3 @@ jobs:
             docker build -t congtube .
             docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
             docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-      # Download and cache dependencies
-#      - restore_cache:
-#          keys:
-#          - v1-dependencies-{{ checksum "requirements.txt" }}
-#          # fallback to using the latest cache if no exact match is found
-#          - v1-dependencies-
-
-#      - run:
-#          name: install dependencies
-#          command: |
-#            python3 -m venv venv
-#            . venv/bin/activate
-#            pip install -r requirements.txt
-
-#      - save_cache:
-#          paths:
-#            - ./venv
-#          key: v1-dependencies-{{ checksum "requirements.txt" }}
-
-      # run tests!
-
-#            . venv/bin/activate
-#            cd congtube
-#            python manage.py runserver
-
-#      - store_artifacts:
-#          path: test-reports
-#          destination: test-reports
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test
