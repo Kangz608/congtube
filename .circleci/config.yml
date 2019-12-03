@@ -2,6 +2,8 @@ version: 2
 
 jobs:
   build:
+    macos:
+      xcode: "9.0"
 #    docker:
 #      - image: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
 ##        aws_auth:
