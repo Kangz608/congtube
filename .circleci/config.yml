@@ -15,8 +15,8 @@ jobs:
       - run:
           name: folder
           command: |
-          ls -al
-          pwd
+            ls -al
+            pwd
       - run:
           name: Install awscli
           command: sudo pip install awscli
