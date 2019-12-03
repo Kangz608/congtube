@@ -2,13 +2,15 @@ version: 2
 
 jobs:
   build:
-#    docker:
-#      - image: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-#        aws_auth:
-#          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
-#          aws_secret_access_key: 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
+    docker:
+      - image: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+        aws_auth:
+          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
+          aws_secret_access_key: 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
     steps:
       - checkout
+      - setup_remote_docker:
+            docker_layer_caching: true
       - run:
           name: Install Docker client
           command: |
