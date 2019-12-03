@@ -1,45 +1,47 @@
-version: 2.1
-
+version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.13-alpine
-##        aws_auth:
-##          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
-##          aws_secret_access_key: Sk6HQo0MUOvFczQk2aQhg8CExKw6NfP7k6F9eK+3
+      # specify the version you desire here
+      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
+      - image: circleci/python:3.6.1
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+    working_directory: ~/repo
+
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 18.06.0-ce
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
       - run:
+          name: install dependencies
           command: |
-            TAG=0.1.$CIRCLE_BUILD_NUM
-            docker build -t CircleCI-Public/circleci-demo-docker:$TAG .
-            echo !#Dd9450109 | docker login -u 2044smile --password-stdin
-            docker push CircleCI-Public/circleci-demo-docker:$TAG
-#    steps:
-#      - checkout
-#      - run:
-#          name: Install Docker client
-#          command: |
-#            set -x
-#            VER="17.03.0-ce"
-#            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
-#            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-#            mv /tmp/docker/* /usr/bin
-#
-#      - run:
-#          name: Build and push Docker image
-#          command: |
-#            docker login -u 2044smile -p !#Dd9451304
-#            docker build -t congtube .
-#            docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-#            docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-#          echo "!#Dd9450109" | docker login --username 2044smile --password-stdin
-#          docker run -i -t 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest /bin/bash
-#      - setup_remote_docker:
-#          version: 17.03.0-ce
-#      - run: docker build -t congtube .
-#      - run: docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-#      - run: docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-#      - run: eb deploy congtube-env
+            docker info
+            . venv/bin/activate
+            pip install -r requirements.txt
+
+#      - save_cache:
+#          paths:
+#            - ./venv
+#          key: v1-dependencies-{{ checksum "requirements.txt" }}
+
+      # run tests!
+      # this example uses Django's built-in test-runner
+      # other common Python testing frameworks include pytest and nose
+      # https://pytest.org
+      # https://nose.readthedocs.io
+      - run:
+          name: run tests
+          command: |
+            . venv/bin/activate
+            python manage.py test
