@@ -9,22 +9,25 @@ jobs:
           aws_secret_access_key: Sk6HQo0MUOvFczQk2aQhg8CExKw6NfP7k6F9eK+3
     steps:
       - checkout
-      - run:
-          name: Install Docker client
-          command: |
-            set -x
-            VER="17.03.0-ce"
-            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            mv /tmp/docker/* /usr/bin
-
-      - run:
-          name: Build and push Docker image
-          command: |
-            docker login -u 2044smile -p !#Dd9451304
-            docker build -t congtube .
-            docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-            docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+      - run: docker build -t congtube .
+#    steps:
+#      - checkout
+#      - run:
+#          name: Install Docker client
+#          command: |
+#            set -x
+#            VER="17.03.0-ce"
+#            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
+#            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+#            mv /tmp/docker/* /usr/bin
+#
+#      - run:
+#          name: Build and push Docker image
+#          command: |
+#            docker login -u 2044smile -p !#Dd9451304
+#            docker build -t congtube .
+#            docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+#            docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
 #          echo "!#Dd9450109" | docker login --username 2044smile --password-stdin
 #          docker run -i -t 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest /bin/bash
 #      - setup_remote_docker:
