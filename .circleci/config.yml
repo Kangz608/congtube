@@ -1,52 +1,39 @@
-orbs:
-  aws-ecr: circleci/aws-ecr@6.5.0
-version: 2.1
-workflows:
-  build_and_push_image:
-    jobs:
-      environment:
-        awsAccountNum = 700208687160
-      - aws-ecr/build-and-push-image:
-          account-url: "{awsAccountNum}.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest"
-          aws-access-key-id: "AKIA2GB5QVA4PHBPUDHX"
-          aws-secret-access-key: "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"
-          context: myContext
-          create-repo: true
-          dockerfile: myDockerfile
-          path: pathToMyDockerfile
-          profile-name: myProfileName
-          region: ap-northeast-2
-          repo: congtube
-          tag: 'latest'
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.1
+#        aws_auth:
+#          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
+#          aws_secret_access_key: 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
+    working_directory: ~/congtube
 
-          environment:
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 18.06.0-ce
+      - run:
+          name: folder
+          command: |
+          ls -al
+          pwd
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy
+          command: |
+            aws configure
+            AKIA2GB5QVA4PHBPUDHX
+            Sk6HQo0MUOvFczQk2aQhg8CExKw6NfP7k6F9eK+3
+            ap-northeast-2
+
+            docker build -t congtube .
+            docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+            docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
 
 
-#version: 2
-#jobs:
-#  build:
-#    docker:
-#      - image: circleci/python:3.6.1
-##        aws_auth:
-##          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
-##          aws_secret_access_key: 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
-#    working_directory: ~/congtube
-#
-#    steps:
-#      - checkout
-#      - setup_remote_docker:
-#          version: 18.06.0-ce
-#      - run:
-#          name: folder
-#          command: |
-#          ls -al
-#          pwd
-#      - run:
-#          name: Install awscli
-#          command: sudo pip install awscli
-#
-#
-#
+
 #  deploy:
 #    docker:
 #      - image: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
@@ -60,7 +47,7 @@ workflows:
 #            docker build -t congtube .
 #            docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
 #            docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-#
+
 #workflows:
 #  version: 2
 #  build_and_test:
