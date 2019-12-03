@@ -23,7 +23,6 @@ jobs:
       - run:
           name: Deploy
           command: |
-            aws configure
             aws configure set profile.prod.aws_access_key_id AKIA2GB5QVA4PHBPUDHX
             aws configure set profile.prod.aws_secret_access_key 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
             aws configure set profile.prod.region ap-northeast-2
