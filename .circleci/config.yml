@@ -26,10 +26,6 @@ jobs:
             mv /tmp/docker/* /usr/bin
 
       - run:
-          name: Build service
-          command: make
-
-      - run:
           name: Build and push Docker image
           command: |
             docker build -t congtube .
