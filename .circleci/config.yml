@@ -2,7 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.1
+#      - image: circleci/python:3.6.1
+      - image: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+        aws_auth:
+          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX
+          aws_secret_access_key: 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
 #        aws_auth:
 #          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
 #          aws_secret_access_key: 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
