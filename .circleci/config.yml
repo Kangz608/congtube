@@ -41,7 +41,9 @@ jobs:
       - run:
           name: run tests
           command: |
-            docker info
+            docker build docker build -t congtube .
+            docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
+            docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
             . venv/bin/activate
             cd congtube
             python manage.py runserver
