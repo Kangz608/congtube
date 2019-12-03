@@ -5,9 +5,9 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
-          account-url: 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
-          aws-access-key-id: AKIA2GB5QVA4PHBPUDHX
-          aws-secret-access-key: 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
+          account-url: "700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest"
+          aws-access-key-id: "AKIA2GB5QVA4PHBPUDHX"
+          aws-secret-access-key: "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"
           context: myContext
           create-repo: true
           dockerfile: myDockerfile
