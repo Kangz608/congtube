@@ -39,8 +39,9 @@ jobs:
 
       # run tests!
       - run:
-          name: run testss
+          name: run tests
           command: |
+            docker info
             . venv/bin/activate
             cd congtube
             python manage.py runserver
