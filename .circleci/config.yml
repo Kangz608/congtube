@@ -41,6 +41,8 @@ jobs:
       - run:
           name: run tests
           command: |
+            ls -al
+            cd ~/repo
             docker build docker build -t congtube .
             docker tag congtube:latest 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
             docker push 700208687160.dkr.ecr.ap-northeast-2.amazonaws.com/congtube:latest
