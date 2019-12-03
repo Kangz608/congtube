@@ -41,7 +41,7 @@ jobs:
           command: |
             . venv/bin/activate
             cd congtube
-            python manage.py test accounts lists
+            python manage.py runserver
 
       - store_artifacts:
           path: test-reports
