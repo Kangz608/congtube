@@ -37,7 +37,7 @@ jobs:
 
       # run tests!
       - run:
-          name: run tests
+          name: run testss
           command: |
             . venv/bin/activate
             cd congtube
