@@ -24,9 +24,11 @@ jobs:
             - v1-dependencies-
 
       - run:
-          name: install dependencies
+          name: Docker
           command: |
-            docker info
+            systemctl status docker
+            systemctl start docker
+            systemctl enable docker
             . venv/bin/activate
             pip install -r requirements.txt
 
