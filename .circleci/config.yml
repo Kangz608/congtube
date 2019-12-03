@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.9
+      - image: circleci/golang:1.13-alpine
 ##        aws_auth:
 ##          aws_access_key_id: AKIA2GB5QVA4PHBPUDHX  # can specify string literal values
 ##          aws_secret_access_key: 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
@@ -12,12 +12,11 @@ jobs:
       - setup_remote_docker:
           version: 18.06.0-ce
       - run:
-          name: Docker image build
           command: |
-            ls -al
-            docker-machine regenerate-certs default
-            eval "$(docker-machine env default)"
-            docker info
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            docker build -t CircleCI-Public/circleci-demo-docker:$TAG .
+            echo !#Dd9450109 | docker login -u 2044smile --password-stdin
+            docker push CircleCI-Public/circleci-demo-docker:$TAG
 #    steps:
 #      - checkout
 #      - run:
