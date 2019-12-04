@@ -20,11 +20,11 @@
 
 
 {% block content %}
+{% include '_partials/_header_search_bar.html' %}
 <div class='channel-detail'>
-    {% include '_partials/_header_search_bar.html' %}
-
     <div class='mask-background'>
-        <video
+        <div class="mask-background-item">
+            <video
                 playsinline
                 autoplay
                 loop
@@ -32,44 +32,44 @@
                 src="{{ channel.video.url }}"
                 muted='true'
                 id='channel_detail_video'
-        ></video>
-        <img
-                src="{% static 'assets/volume-on.png' %}"
-                class='channel_detail_video__volume-button'
-                id='channel-detail__volume-on'
-                onclick='flipVolumeChannelDetail(true)'
-        />
-        <img
-                src="{% static 'assets/volume-off.png' %}"
-                class='channel_detail_video__volume-button'
-                id='channel-detail__volume-off'
-                onclick='flipVolumeChannelDetail(false)'
-        />
-        {% comment %}
-        <div class='mask-background__dim-div'></div>
-        {% endcomment %}
-    </div>
-
-    <div class='container'>
-        <div class='channel-info'>
-            <div class='channel-info__title'>{{ channel.name }}</div>
-
-            <div class='channel-info__tags'>
-                {% for tag in channel.tags.all %}
-                <div class='tags__name-container background-green tags__name-text--white'>
-                    {{ tag.name }}
-                </div>
-                {% endfor %}
-            </div>
-
-            <div class='channel-info__description'>
-                {{ channel.description }}
-            </div>
+            ></video>
+            <img
+                    src="{% static 'assets/volume-on.png' %}"
+                    class='channel_detail_video__volume-button'
+                    id='channel-detail__volume-on'
+                    onclick='flipVolumeChannelDetail(true)'
+            />
+            <img
+                    src="{% static 'assets/volume-off.png' %}"
+                    class='channel_detail_video__volume-button'
+                    id='channel-detail__volume-off'
+                    onclick='flipVolumeChannelDetail(false)'
+            />
+            {% comment %}
+            <div class='mask-background__dim-div'></div>
+            {% endcomment %}
         </div>
-        {% comment %}
+        <div class='channel-info'>
+                <div class='channel-info__title'>{{ channel.name }}</div>
+    
+                <div class='channel-info__tags'>
+                    {% for tag in channel.tags.all %}
+                    <div class='tags__name-container background-green tags__name-text--white'>
+                        {{ tag.name }}
+                    </div>
+                    {% endfor %}
+                </div>
+    
+                <div class='channel-info__description'>
+                    {{ channel.description }}
+                </div>
+            </div>
+            {% comment %}
+        </div>
+        {% endcomment %}    
     </div>
-    {% endcomment %}
-
+    <div class='container'>
+       
     <div class='container'>
         <div class='section-title'>옵션</div>
 
