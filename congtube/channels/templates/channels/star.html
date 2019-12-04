@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load custom_tags %}
 
 
 {% block content %}
@@ -7,20 +8,22 @@
 <div class="container">
     <table border="1">
         <tr>
-            <th>ID</th>
+            <th></th>
             <th>상품명</th>
             <th>가격</th>
             <th>요청자</th>
-            <th style="text-align: center">요청내용</th>
+            <th>요청내용</th>
+            <th>제작기간</th>
         </tr>
         {% for order in object_list %} <!-- Q(channel=self.get_object()) & Q(status=2) -->
         {% if order.channel == channel and order.status == 2 %}
         <tr>
-            <td>{{ order.user }}</td>
+            <td>{{ forloop.counter}}</td>
             <td>{{ order.product.name }}</td>
             <td>{{ order.amount }}</td>
             <td>{{ order.reciever_name }}</td>
             <td>{{ order.message }}</td>
+            <td>{{ order.created_at|date:"Y년 M d일"}} ~ {{ order.created_at|deadline:order.created_at }}</td>
         </tr>
         {% endif %}
         {% endfor %}
