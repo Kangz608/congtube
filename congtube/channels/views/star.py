@@ -12,7 +12,7 @@ class StarDetailView(DetailView, MultipleObjectMixin): # paginate_by를 사용�
 
     def get_context_data(self, **kwargs):
         # Multiple을 사용하기 위해선 object_list로 선언해주어야 한다. ListView의 Default는 object_list 이기 때문에
-        object_list = Order.objects.filter(Q(channel=self.get_object()) & Q(status=2)) # 주문완료이면서 channel = get_object()
+        object_list = Order.objects.filter(Q(channel=self.get_object()) & Q(status=2)).order_by('id') # 주문완료이면서 channel = get_object()
         context = super(StarDetailView, self).get_context_data(object_list=object_list, **kwargs)
         # StarDetailView 위에 get_context_data의 object_list를 위에서 선언한 object_list로 변경
         paginator = context['paginator']
