@@ -50,6 +50,7 @@ class Base(Configuration):
         'axes',
         'pipeline',
         'admin_honeypot',
+        'django_crontab',
     ]
 
     MIDDLEWARE = [
@@ -185,6 +186,10 @@ class Base(Configuration):
     # https://docs.djangoproject.com/en/2.2/ref/contrib/sites/#module-django.contrib.sites
 
     SITE_ID = 1
+
+    CRONJOBS = [
+        ('*/1 * * * *','notifications.cron.order_confirmations')
+    ]
 
 
 class Dev(Base):
