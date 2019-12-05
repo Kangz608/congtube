@@ -55,7 +55,7 @@ class BestVideo(models.Model):
         verbose_name_plural = '베스트 비디오'
 
     def __str__(self):
-        return 'new'
+        return str(self.channel) + '님의 베스트 비디오'
 
     def get_absolute_url(self):
         from django.urls import reverse
