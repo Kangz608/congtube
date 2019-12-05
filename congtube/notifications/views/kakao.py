@@ -33,3 +33,6 @@ class Notification:
         response = requests.post(self.url, headers=self.headers, data=result2.encode('utf-8'))
         print(response.status_code)
         print(response.text)
+
+    def order_confirmations(self, requestDate):
+        requestDate = '2019-12-05 12:15'
