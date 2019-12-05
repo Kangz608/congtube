@@ -20,5 +20,9 @@ class Celebrity(models.Model):
         max_length=11
     )
 
+    class Meta:
+        verbose_name = '셀럽'
+        verbose_name_plural = '셀럽'
+
     def __str__(self):
         return '아이디 : ' + str(self.user) + ', 채널명 : ' + str(self.channel)
