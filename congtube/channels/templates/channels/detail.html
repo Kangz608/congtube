@@ -19,57 +19,58 @@
 {% endblock %}
 
 
-{% block content %}
-<div class='channel-detail'>
+    {% block content %}
     {% include '_partials/_header_search_bar.html' %}
-
-    <div class='mask-background'>
-        <video
-                playsinline
-                autoplay
-                loop
-                class='mask-background__image'
-                src="{{ channel.video.url }}"
-                muted='true'
-                id='channel_detail_video'
-        ></video>
-        <img
-                src="{% static 'assets/volume-on.png' %}"
-                class='channel_detail_video__volume-button'
-                id='channel-detail__volume-on'
-                onclick='flipVolumeChannelDetail(true)'
-        />
-        <img
-                src="{% static 'assets/volume-off.png' %}"
-                class='channel_detail_video__volume-button'
-                id='channel-detail__volume-off'
-                onclick='flipVolumeChannelDetail(false)'
-        />
-        {% comment %}
-        <div class='mask-background__dim-div'></div>
-        {% endcomment %}
-    </div>
-
-    <div class='container'>
-        <div class='channel-info'>
-            <div class='channel-info__title'>{{ channel.name }}</div>
-
-            <div class='channel-info__tags'>
-                {% for tag in channel.tags.all %}
-                <div class='tags__name-container background-green tags__name-text--white'>
-                    {{ tag.name }}
+    <div class='channel-detail'>
+        <div class="info-container">
+            <div class='channel-info'>
+                <div class='channel-info__title'>{{ channel.name }}</div>
+    
+                <div class='channel-info__tags'>
+                    {% for tag in channel.tags.all %}
+                    <div class='tags__name-container background-green tags__name-text--white'>
+                        {{ tag.name }}
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-
-            <div class='channel-info__description'>
-                {{ channel.description }}
-            </div>
+    
+                <div class='channel-info__description'>
+                    {{ channel.description }}
+                </div>
         </div>
-        {% comment %}
+        <div class='mask-background'>
+            <div class="mask-background-item">
+                <video
+                    playsinline
+                    autoplay
+                    loop
+                    class='mask-background__image'
+                    src="{{ channel.video.url }}"
+                    muted='true'
+                    id='channel_detail_video'
+                ></video>
+                <img
+                        src="{% static 'assets/volume-on.png' %}"
+                        class='channel_detail_video__volume-button'
+                        id='channel-detail__volume-on'
+                        onclick='flipVolumeChannelDetail(true)'
+                />
+                <img
+                        src="{% static 'assets/volume-off.png' %}"
+                        class='channel_detail_video__volume-button'
+                        id='channel-detail__volume-off'
+                        onclick='flipVolumeChannelDetail(false)'
+                />
+                {% comment %}
+                <div class='mask-background__dim-div'></div>
+                {% endcomment %}
+            </div>
+            {% comment %}
+        </div>
+        {% endcomment %}   
+        </div> 
     </div>
-    {% endcomment %}
-
+    <div class='container'>
     <div class='container'>
         <div class='section-title'>옵션</div>
 
@@ -77,6 +78,25 @@
             {% for product in channel.product_set.is_display %}
             <div class='product-list__product-item' id={{ product.id }} onclick='selectProduct({{ product.id }})'>
                 <div class='product-list__product-item-title'>{{ product.name }}</div>
+                <div class='section-title-rating'>
+                    <span class='section-title-rating-number'>{{ channel.review_set.get_rating_mean }}</span>
+                    <div class='section-title-rating-stars'>
+                        {% for i in channel.review_set.get_rating_mean|greens %}
+                        <img
+                                src="{% static 'assets/star-green@3x.png' %}"
+                                alt='star-green'
+                                class='section-title-rating-star'
+                        />
+                        {% endfor %}
+                        {% for i in channel.review_set.get_rating_mean|greys %}
+                        <img
+                                src="{% static 'assets/star-grey@3x.png' %}"
+                                alt='star-grey'
+                                class='section-title-rating-star'
+                        />
+                        {% endfor %}
+                    </div>
+                </div>
                 <div class='product-list__product-item-option'>
                     <div class='product-list__product-item-option-wrap'>
                         <img
@@ -94,16 +114,6 @@
                 </div>
             </div>
             {% endfor %}
-            {% for bestvideo in channel.bestvideo_set.is_display %}
-            <video
-                    playsinline
-                    autoplay
-                    loop
-                    src="{{ bestvideo.video.url }}"
-                    muted='true'
-                    width="50%"
-            ></video>
-            {% endfor %}
         </div>
     </div>
 
@@ -116,25 +126,6 @@
     <div class='container'>
         <div class='section-title-container'>
             <div class='section-title'>리뷰</div>
-            <div class='section-title-rating'>
-                <span class='section-title-rating-number'>{{ channel.review_set.get_rating_mean }}</span>
-                <div class='section-title-rating-stars'>
-                    {% for i in channel.review_set.get_rating_mean|greens %}
-                    <img
-                            src="{% static 'assets/star-green@3x.png' %}"
-                            alt='star-green'
-                            class='section-title-rating-star'
-                    />
-                    {% endfor %}
-                    {% for i in channel.review_set.get_rating_mean|greys %}
-                    <img
-                            src="{% static 'assets/star-grey@3x.png' %}"
-                            alt='star-grey'
-                            class='section-title-rating-star'
-                    />
-                    {% endfor %}
-                </div>
-            </div>
         </div>
 
         <div class='height10'></div>
@@ -178,7 +169,16 @@
             </div>
             {% endfor %}
         </div>
-
+        {% for bestvideo in channel.bestvideo_set.is_display %}
+        <video
+                playsinline
+                autoplay
+                loop
+                src="{{ bestvideo.video.url }}"
+                muted='true'
+                width="50%"
+        ></video>
+        {% endfor %}
         <div class='review-more-button' id='review_flip_btn_show'>
             + 리뷰 {{ channel.review_set.is_display.count|add:'-3' }}개 더보기
         </div>
@@ -186,8 +186,8 @@
             접기
         </div>
     </div>
-    <div class="grey-divider"></div>
-    <!--            임시 비디오 이용정책 [!]추후 style에서 작업이 필요합니다.-->
+        <div class="grey-divider"></div>
+        <!--            임시 비디오 이용정책 [!]추후 style에서 작업이 필요합니다.-->
     <div class="container">
         <div class='section-title-container'>
             <div class='section-title'>비디오 이용정책</div>
@@ -229,13 +229,13 @@
     </div>
 </div>
 
-<div>
+    <div>
 
-    <div onclick='redirectToOrder()' class='purchase-button-bottom-fixed'>
-        구매하기
+        <div onclick='redirectToOrder()' class='purchase-button-bottom-fixed'>
+            구매하기
+        </div>
+        <div class='purchase-button-bottom-fixed-hidden'></div>
     </div>
-    <div class='purchase-button-bottom-fixed-hidden'></div>
-</div>
 </div>
 <script>
     var channelId = '{{ channel.id }}';
