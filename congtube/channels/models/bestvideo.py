@@ -6,6 +6,7 @@ class ChannelQuerySet(models.QuerySet):
     def is_display(self):
         return self.filter(is_display=True)
 
+
 class ChannelManager(models.Manager):
 
     def get_queryset(self):
