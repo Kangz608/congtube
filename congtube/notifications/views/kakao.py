@@ -36,10 +36,12 @@ class Notification:
         print(response.status_code)
         print(response.text)
 
-    def order_confirmation_alarm(self, celebrity_phonenumber):
+    def order_confirmations_alarm(self, celebrity_phonenumber):
         request_date = timezone.now().strftime("%Y-%m-%d 18:00") # 오늘 6시에 알림 전송
         c = celebrity_phonenumber # 셀럽 번호
-        data = f'|"plusFriendId":"콩튜브","templateCode":"ordercancel","requestDate":"{request_date}","recipientList":[|"recipientNo":"01084401304","templateParameter":|"고객명":"이창석"??]?'
+        data = f'|"plusFriendId":"콩튜브","templateCode":"TEST1","requestDate":"","recipientList":[|"recipientNo":"01084401304","templateParameter":|??]?'
         result1 = data.replace("|", "{")
         result2 = result1.replace("?", "}")
         response = requests.post(self.url, headers=self.headers, data=result2.encode('utf-8'))
+        print(response.status_code)
+        print(response.text)

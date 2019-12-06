@@ -188,7 +188,7 @@ class Base(Configuration):
     SITE_ID = 1
 
     CRONJOBS = [
-        ('0 59 17 1/1 * ? *','notifications.cron.order_confirmations')
+        ('59 12 * * *', 'notifications.cron.order_confirmations')
     ]
 
 
