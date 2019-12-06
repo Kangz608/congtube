@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 import requests
 
 
@@ -26,7 +28,7 @@ class Notification:
         print(response.text)
 
     def payment_cancel(self, phonenumber, user, channel, created_at, cancelreason): # 결제취소
-        ctime = str(created_at).split(' ')[0]
+        ctime = str(created_at).split(' ')[0] # 취소일시
         data = f'|"plusFriendId":"콩튜브","templateCode":"ordercancel","requestDate":"","recipientList":[|"recipientNo":"{phonenumber}","templateParameter":|"고객명":"{user}","채널명":"{channel}","주문일시":"{ctime}","취소사유":"{cancelreason}","연락가능시간":"10:00~20:00","카카오톡 콩튜브 채널 버튼":""??]?'
         result1 = data.replace("|", "{")
         result2 = result1.replace("?", "}")
@@ -34,5 +36,10 @@ class Notification:
         print(response.status_code)
         print(response.text)
 
-    def order_confirmations(self, date):
-        requestdate = '2019-12-05 14:40'
+    def order_confirmation_alarm(self, celebrity_phonenumber):
+        request_date = timezone.now().strftime("%Y-%m-%d 18:00") # 오늘 6시에 알림 전송
+        c = celebrity_phonenumber # 셀럽 번호
+        data = f'|"plusFriendId":"콩튜브","templateCode":"ordercancel","requestDate":"{request_date}","recipientList":[|"recipientNo":"01084401304","templateParameter":|"고객명":"이창석"??]?'
+        result1 = data.replace("|", "{")
+        result2 = result1.replace("?", "}")
+        response = requests.post(self.url, headers=self.headers, data=result2.encode('utf-8'))
