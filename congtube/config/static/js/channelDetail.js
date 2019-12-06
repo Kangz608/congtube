@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
   for (var rII = 0; rII < allReviewItems.length; rII++) {
     if (rII < 3) {
       allReviewItems[rII].style.display = 'block';
+    }else{
+      allReviewItems[rII].style.display = 'none';
     }
   }
 
@@ -86,4 +88,21 @@ function flipVolumeChannelDetail(status) {
     document.getElementById('channel-detail__volume-off').style.display = 'block';
   }
   document.getElementById('channel_detail_video').muted = status;
+}
+
+// play bestvideo
+
+function flipPlayChannelDetail(status){
+  var bestvideo = document.getElementById('channel_bestvideo');
+
+  if(!status){
+    document.getElementById('channel-detail__play-off').style.display = 'block';
+    document.getElementById('channel-detail__play-on').style.display = 'none';
+
+  }else{
+    document.getElementById('channel-detail__play-off').style.display = 'none';
+    document.getElementById('channel-detail__play-on').style.display = 'block';
+
+  }
+  document.getElementById('channel_bestvideo').play() = status;
 }
