@@ -90,19 +90,26 @@ function flipVolumeChannelDetail(status) {
   document.getElementById('channel_detail_video').muted = status;
 }
 
-// play bestvideo
+//베스트비디오 play on/off
 
-function flipPlayChannelDetail(status){
-  var bestvideo = document.getElementById('channel_bestvideo');
+var videoItem = document.getElementsByClassName("bestvideo-item");
+var video = document.getElementsByTagName('video');
 
-  if(!status){
-    document.getElementById('channel-detail__play-off').style.display = 'block';
-    document.getElementById('channel-detail__play-on').style.display = 'none';
-
-  }else{
-    document.getElementById('channel-detail__play-off').style.display = 'none';
-    document.getElementById('channel-detail__play-on').style.display = 'block';
-
+for(var i=0; i<video.length; i++){
+  (function(i){
+    videoItem[i].addEventListener("click", togglePlayVideo);
+    function togglePlayVideo(){ 
+      var playon = video[i].nextElementSibling;
+      var playoff = playon.nextElementSibling;
+      if(video[i].paused){
+        playon.style.display = 'block';
+        playoff.style.display = 'none';
+        video[i].play();
+      }else{
+        playon.style.display = 'none';
+        playoff.style.display = 'block';
+        video[i].pause();
   }
-  document.getElementById('channel_bestvideo').play() = status;
+     }
+  })(i);
 }
