@@ -83,19 +83,6 @@ class Channel(models.Model):
         verbose_name='인기',
     )
 
-    pause = models.BooleanField(
-        default=False,
-        verbose_name='주문정지'
-    )
-
-    vacation_start_pause = models.DateTimeField(
-        '휴가 시작일'
-    )
-
-    vacation_end_pause = models.DateTimeField(
-        '휴가 종료일'
-    )
-
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='생성일',
