@@ -2388,6 +2388,14 @@ input {
 	color: #333333;
 }
 
+.header-search-bar .side-nav-user-profile__info-email {
+	font-size: 15px;
+	line-height: 15px;
+	font-weight: lighter;
+	letter-spacing: 0.37px;
+	color: #333333;
+}
+
 .header-search-bar .side-nav-user-profile__arrow-image {
 	width: 9px;
 	height: 14px;
@@ -2525,6 +2533,14 @@ input {
 }
 
 .header-simple-black .side-nav-user-profile__info-nickname {
+	font-size: 15px;
+	line-height: 15px;
+	font-weight: lighter;
+	letter-spacing: 0.37px;
+	color: #333333;
+}
+
+.header-simple-black .side-nav-user-profile__info-email {
 	font-size: 15px;
 	line-height: 15px;
 	font-weight: lighter;
@@ -2675,6 +2691,14 @@ input {
 }
 
 .header-simple-white .side-nav-user-profile__info-nickname {
+	font-size: 15px;
+	line-height: 15px;
+	font-weight: lighter;
+	letter-spacing: 0.37px;
+	color: #333333;
+}
+
+.header-simple-white .side-nav-user-profile__info-email {
 	font-size: 15px;
 	line-height: 15px;
 	font-weight: lighter;
