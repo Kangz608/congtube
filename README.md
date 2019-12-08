@@ -9,6 +9,8 @@ $ python manage.py runserver --settings=config.settings --configuration=Dev
 ```
 
 # Chris Beams의 How to Write a Git Commit Message
+https://meetup.toast.com/posts/106
+
 1. 제목과 본문을 한 줄 띄워 분리하기
 
 2. 제목은 영문 기준 50자 이내로
