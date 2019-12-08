@@ -1,9 +1,8 @@
 from django.contrib import admin
 
-from channels.models import Channel, BestVideo
+from channels.models import Channel
 
 from .product import ProductInline
-from .bestvideo import BestVideoInline
 
 
 @admin.register(Channel)
@@ -13,6 +12,9 @@ class ChannelAdmin(admin.ModelAdmin):
 
         'is_display',
         'is_hot',
+        'pause',
+        'vacation_start_pause',
+        'vacation_end_pause',
     )
 
     list_filter = (
@@ -29,7 +31,6 @@ class ChannelAdmin(admin.ModelAdmin):
 
     inlines = (
         ProductInline,
-        BestVideoInline,
     )
 
 

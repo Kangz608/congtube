@@ -1,0 +1,41 @@
+{% load static %}
+
+<ul class="pagination">
+    {% if page_obj.has_previous %} <!-- 이전 페이지가 있다면 -->
+    <li class="active"> <!-- active 로 변경 -->
+        <a href="?page={{page_obj.previous_page_number }}"> <!-- 이전 페이지 넘버를 가져온다. -->
+            <i class="material-icons">Previous</i>
+        </a>
+    </li>
+    {% else %}
+    <li class="disabled">
+        <a href="#!"><i class="material-icons">Previous</i> <!-- 이전 페이지가 없다면 -->
+        </a>
+    </li>
+    {% endif %}
+    {% for page in page_range %} <!-- 총 페이지를 page에 넘긴다. -->
+    {% if page == page_obj.number %}
+    <li class="page-item" class="active">
+        <a class="page-link" href="?page={{ page }}" style="color: red;"><b>{{ page }}</b></a>
+    </li>
+    {% else %}
+    <li class="page-item" class="active">
+        <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+    </li>
+    {% endif %}
+
+    {% endfor %}
+    {% if page_obj.has_next %}
+    <li class="active"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">Next</i></a>
+    </li>
+    {% else %}
+    <li class="disabled"><a href="#"><i class="material-icons">Next</i></a>
+    </li>
+    {% endif %}
+</ul>
+<br>
+
+<!--프론트 개발 이후 적용할 것-->
+<!--{% if is_paginated %}-->
+<!--{% endif %}-->
+
