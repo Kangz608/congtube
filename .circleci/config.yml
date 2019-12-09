@@ -45,7 +45,7 @@ jobs:
           command: |
             . venv/bin/activate
             cd congtube
-            python manage.py test banners, channels, notifications, orders, reviews, users
+            python manage.py runserver
 
       - store_artifacts:
           path: test-reports
