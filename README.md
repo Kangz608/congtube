@@ -7,8 +7,7 @@ $ export DJANGO_SETTINGS_MODULE=config.settings
 
 $ python manage.py runserver --settings=config.settings --configuration=Dev
 ```
-[![CircleCI](https://circleci.com/gh/congtubeteam/congtube.svg?style=svg)](https://circleci.com/gh/congtubeteam/congtube)
-
+[![CircleCI](https://circleci.com/gh/congtubeteam/congtube/tree/feature%2Fcircle_test.svg?style=svg&circle-token=a5a9ec6695456802388548645287391246c3f7f3)](https://circleci.com/gh/congtubeteam/congtube/tree/feature%2Fcircle_test)
 
 # Chris Beams의 How to Write a Git Commit Message
 https://meetup.toast.com/posts/106
