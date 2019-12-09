@@ -9,6 +9,8 @@ $ python manage.py runserver --settings=config.settings --configuration=Dev
 ```
 [![CircleCI](https://circleci.com/gh/congtubeteam/congtube/tree/feature%2Fcircle_test.svg?style=svg&circle-token=a5a9ec6695456802388548645287391246c3f7f3)](https://circleci.com/gh/congtubeteam/congtube/tree/feature%2Fcircle_test)
 
+[![codecov](https://codecov.io/gh/congtubeteam/congtube/branch/master/graph/badge.svg?token=PyfWQSARdA)](https://codecov.io/gh/congtubeteam/congtube)
+
 # Chris Beams의 How to Write a Git Commit Message
 https://meetup.toast.com/posts/106
 
