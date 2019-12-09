@@ -20,212 +20,303 @@
 
 
 {% block content %}
+{% include '_partials/_header_search_bar.html' %}
 <div class='channel-detail'>
-    {% include '_partials/_header_search_bar.html' %}
-
-    <div class='mask-background'>
-        <video
-                playsinline
-                autoplay
-                loop
-                class='mask-background__image'
-                src="{{ channel.video.url }}"
-                muted='true'
-                id='channel_detail_video'
-        ></video>
-        <img
-                src="{% static 'assets/volume-on.png' %}"
-                class='channel_detail_video__volume-button'
-                id='channel-detail__volume-on'
-                onclick='flipVolumeChannelDetail(true)'
-        />
-        <img
-                src="{% static 'assets/volume-off.png' %}"
-                class='channel_detail_video__volume-button'
-                id='channel-detail__volume-off'
-                onclick='flipVolumeChannelDetail(false)'
-        />
-        {% comment %}
-        <div class='mask-background__dim-div'></div>
-        {% endcomment %}
-    </div>
-
-    <div class='container'>
-        <div class='channel-info'>
-            <div class='channel-info__title'>{{ channel.name }}</div>
-
-            <div class='channel-info__tags'>
-                {% for tag in channel.tags.all %}
-                <div class='tags__name-container background-green tags__name-text--white'>
-                    {{ tag.name }}
-                </div>
-                {% endfor %}
-            </div>
-
-            <div class='channel-info__description'>
-                {{ channel.description }}
-            </div>
-        </div>
-        {% comment %}
-    </div>
-    {% endcomment %}
-
-    <div class='container'>
-        <div class='section-title'>옵션</div>
-
-        <div class='product-list'>
-            {% for product in channel.product_set.is_display %}
-            <div class='product-list__product-item' id={{ product.id }} onclick='selectProduct({{ product.id }})'>
-                <div class='product-list__product-item-title'>{{ product.name }}</div>
-                <div class='product-list__product-item-option'>
-                    <div class='product-list__product-item-option-wrap'>
-                        <img
-                                src="{% static 'assets/cong-small@3x.png' %}"
-                                alt='cong-img'
-                                style='height: 20px;'
-                        />
-                        <span class='product-list__product-item-option-price'>{{ product.price }}</span>
-                        <span class='product-list__product-item-option-price'>원</span>
-                    </div>
-                    <div class='product-list__product-item-option-dot'>
-                        <div class='product-list__product-item-option-dot-selected'
-                             id='channel_product_{{ product.id }}'></div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    <div class='height36'></div>
-
-    <div class='grey-divider'></div>
-
-    <div class='height30'></div>
-
-    <div class='container'>
-        <div class='section-title-container'>
-            <div class='section-title'>리뷰</div>
-            <div class='section-title-rating'>
-                <span class='section-title-rating-number'>{{ channel.review_set.get_rating_mean }}</span>
-                <div class='section-title-rating-stars'>
-                    {% for i in channel.review_set.get_rating_mean|greens %}
+    <!-- 상단 비디오, info -->
+    <div style="background-color:#fafafa">
+        <div class="info-container">
+            <!-- 동영상 -->
+            <div class='mask-background'>
+                <div class="mask-background-item">
+                    <video
+                        playsinline
+                        autoplay
+                        loop
+                        class='mask-background__image'
+                        src="{{ channel.video.url }}"
+                        muted='true'
+                        id='channel_detail_video'
+                    ></video>
                     <img
-                            src="{% static 'assets/star-green@3x.png' %}"
-                            alt='star-green'
-                            class='section-title-rating-star'
+                            src="{% static 'assets/icon_sound_on.png' %}"
+                            class='channel_detail_video__volume-button'
+                            id='channel-detail__volume-on'
+                            onclick='flipVolumeChannelDetail(true)'
                     />
-                    {% endfor %}
-                    {% for i in channel.review_set.get_rating_mean|greys %}
                     <img
-                            src="{% static 'assets/star-grey@3x.png' %}"
-                            alt='star-grey'
-                            class='section-title-rating-star'
+                            src="{% static 'assets/icon_sound_off.png' %}"
+                            class='channel_detail_video__volume-button'
+                            id='channel-detail__volume-off'
+                            onclick='flipVolumeChannelDetail(false)'
                     />
-                    {% endfor %}
+                    {% comment %}
+                    <div class='mask-background__dim-div'></div>
+                    {% endcomment %}
                 </div>
-            </div>
-        </div>
-
-        <div class='height10'></div>
-
-        <div class='review-list'>
-            {% for review in channel.review_set.is_display %}
-            <div class='review-item'>
-                <div class='review-item__upper'>
-                    <div class='review-item__upper-left'>
-                        <div class='review-item__upper-left-username'>
-                            {{ review.display_name }}
-                        </div>
-                        <div class='review-item__upper-left-created-at'>
-                            {{ review.created_at|date:"Y.m.d." }}
-                        </div>
-                    </div>
-                    <div class='review-item__upper-right'>
-                        {% for i in review.rating|greens %}
+                {% comment %}
+                <div></div>
+                {% endcomment %} 
+            </div> 
+            <!-- Channel info -->
+            <div class='channel-info'>
+                <!-- 채널명 -->
+                <div class='channel-info__title'>{{ channel.name }}</div>
+                <!-- 채널평점-->
+                <div class="channel-info__stars">
+                    <div class='section-title-rating-stars'>
+                        {% for i in channel.review_set.get_rating_mean|greens %}
                         <img
                                 src="{% static 'assets/star-green@3x.png' %}"
                                 alt='star-green'
                                 class='section-title-rating-star'
                         />
                         {% endfor %}
-                        {% for i in review.rating|greys %}
+                        {% for i in channel.review_set.get_rating_mean|greys %}
                         <img
                                 src="{% static 'assets/star-grey@3x.png' %}"
                                 alt='star-grey'
                                 class='section-title-rating-star'
                         />
                         {% endfor %}
+                        <span class='section-title-rating-number section-title-rating-number'>{{ channel.review_set.get_rating_mean }}</span>
                     </div>
                 </div>
-
-                <div class='height15'></div>
-
-                <div class='review-item__lower'>
-                    {{ review.message }}
+                <!-- 채널태그 -->
+                <div class='channel-info__tags'>
+                    {% for tag in channel.tags.all %}
+                    <div class='tags__name-container background-green tags__name-text--white'>
+                        {{ tag.name }}
+                    </div>
+                    {% endfor %}
+                </div> 
+                <!-- 채널설명 -->
+                <div class='channel-info__description'>
+                    {{ channel.description }}
                 </div>
-
+                <!-- 상품옵션 -->
+                <div class='product-list'>
+                        {% for product in channel.product_set.is_display %}
+                        <div class='product-list__product-item' id={{ product.id }} onclick='selectProduct({{ product.id }})'>
+                            <div class='product-list__product-item-title'>{{ product.name }}</div>
+                            <div class='product-list__product-item-option'>
+                                <div class='product-list__product-item-option-wrap'>
+                                    <img
+                                            src="{% static 'assets/cong-small@3x.png' %}"
+                                            alt='cong-img'
+                                            style='height: 11px;'
+                                    />
+                                    <span class='product-list__product-item-option-price'>{{ product.price }}원</span>
+                                    <!-- <span class='product-list__product-item-option-price'></span> -->
+                                </div>
+                                <div class='product-list__product-item-option-dot'>
+                                    <div class='product-list__product-item-option-dot-selected'
+                                            id='channel_product_{{ product.id }}'></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                </div>
+                <!-- 구매버튼 -->
+                <div>
+                    <div onclick='redirectToOrder()' class='purchase-button-bottom-fixed'>
+                        구매하기
+                    </div>
+                    <div class='purchase-button-bottom-fixed-hidden'></div>
+                </div>
             </div>
-            {% endfor %}
-        </div>
-
-        <div class='review-more-button' id='review_flip_btn_show'>
-            + 리뷰 {{ channel.review_set.is_display.count|add:'-3' }}개 더보기
-        </div>
-        <div class='review-more-button' id='review_flip_btn_hide'>
-            접기
         </div>
     </div>
-        <div class="grey-divider"></div>
-        <!--            임시 비디오 이용정책 [!]추후 style에서 작업이 필요합니다.-->
-    <div class="container">
-        <div class='section-title-container'>
-            <div class='section-title'>비디오 이용정책</div>
-        </div>
-        <div style="text-align: left">
-            <p>구매한 비디오의 저작권은 스타에게 있으며, 사용자는 1년간 사용할 권리를 보유합니다.</p>
-            <p>사용자는 [비디오 다운로드] 및 [비디오 SNS 공유]만 비영리적 목적에 한하여 가능하며 상업적 이용과 워터마크 제거, 2차적 저작물 제작은 불가합니다.</p>
-            <p>사용범위를 위반할 경우 관계법령에 의해 처벌받으실 수 있으니 유의바랍니다.</p>
-        </div>
-        <!--            임시 이용정책 취소/환불 규정 [!}추후 style에서 작업이 필요합니다.-->
-        <div class='section-title-container'>
-            <div class='section-title'>이용정책 취소/환불 규정</div>
-        </div>
-        <div style="text-align: left">
-            <p>1. 결제 이후 사용자는 요청사항에 대해 수정할 수 없으니 유의해주세요.</p>
-            <p>2. 스타가 콘텐츠 제작에 착수한 이후에는 콘텐츠 주문을 취소할 수 없으며, 이에 따른 환불을 요청할 수 없습니다.</p>
-            <p>3. 사용자가 결제한 익일로부터 7일 내에 스타가 이용자에게 콘텐츠 제공을 완료하지 못한 경우, 해당 주문에 대한 결제는 자동으로 취소되며, 회사는 해당 이용자에게 환불조치를 완료하도록
-                합니다.</p>
-            (일반 스타는 7일내로 / 연예인은 최대 한달 소요)
-            <p>서비스 이용시 발생하는 모든 민원에 대해 <a href="http://pf.kakao.com/_hYXWT/chat" target="_blank">@콩튜브 카톡오톡 채널</a>로 문의하실 수
-                있습니다.</p>
-        </div>
-    </div>
-
-    <div class='grey-divider'></div>
-
-    <div class='height30'></div>
-
-    <div class='container'>
-        <div class='section-title'>최근 인기스타</div>
-
-        <div class='row'>
-            {% for channel in channels %}
-            <div class='channel-card__container col s6 m4 l4 xl3'>
-                {% include '_partials/_channel_card.html' with channel=channel %}
+    <!-- Contents wrap -->
+    <div class='wrap-container'>
+        <!-- 베스트 비디오 -->
+        <div class="container bestVideo-container">
+            <div class="section-title-container">
+                <div class="section-title">
+                    베스트 비디오
+                </div>
+            </div>   
+            <div class="bestvideo"> 
+                {% for bestvideo in channel.bestvideo_set.is_display %}
+                <div class="bestvideo-item">
+                    <video
+                            playsinline
+                            loop
+                            src="{{ bestvideo.video.url }}"
+                            muted='true'
+                            pause='true'
+                            id="channel_bestvideo"
+                            class="bestvideo__image"
+                    ></video>
+                    <img
+                        src="{% static 'assets/icon_video_play.png' %}"
+                        id = "channel-detail__play-off"
+                        class="bestvideo_play_button bestvideo_play_on"
+                        onclick='flipPlayChannelDetail(true)'
+                    >
+                    <img
+                         src="{% static 'assets/icon_video_pause.png' %}"
+                         id = "channel-detail__play-on"
+                         class="bestvideo_play_button bestvideo_play_off"
+                         onclick='flipPlayChannelDetail(false)'
+                    >
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-    </div>
-</div>
-
-    <div>
-
-        <div onclick='redirectToOrder()' class='purchase-button-bottom-fixed'>
-            구매하기
+        <!-- 비디오 이용정책 -->
+        <div class="container policy-container">
+            <div class="section-title-container">
+                <div class="section-title">
+                    비디오 이용정책
+                </div>
+            </div>
+            <div class="policy">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="row">비디오 다운로드</th>
+                            <th scope="row">비디오 SNS공유</th>
+                            <th scope="row">비디오 워터마크 제거</th>
+                            <th scope="row">광고목적의 송출</th>
+                            <th scope="row">그 외 2차 저작물</th>
+                            <th scope="row">비디오 재판매</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row" class="icon_policy policy_agree">
+                                <img 
+                                   src="{% static 'assets/icon_agree.png' %}"
+                                   alt="허용"
+                                >
+                            </td> 
+                            <td scope="row" class="icon_policy policy_agree">
+                                    <img 
+                                       src="{% static 'assets/icon_agree.png' %}"
+                                       alt="허용"
+                                    ></td> 
+                            <td scope="row" class="icon_policy policy_disagree">
+                                    <img 
+                                       src="{% static 'assets/icon_disagree.png' %}"
+                                       alt="불가"
+                                    ></td> 
+                            <td scope="row" class="icon_policy policy_disagree">
+                                    <img 
+                                       src="{% static 'assets/icon_disagree.png' %}"
+                                       alt="불가"
+                                    ></td> </td> 
+                            <td scope="row" class="icon_policy policy_disagree">
+                                    <img 
+                                       src="{% static 'assets/icon_disagree.png' %}"
+                                       alt="불가"
+                                    ></td> </td> 
+                            <td scope="row" class="icon_policy policy_disagree">
+                                    <img 
+                                       src="{% static 'assets/icon_disagree.png' %}"
+                                       alt="불가"
+                                    ></td> </td> 
+                        </tr>
+                    </tbody>
+                </table>
+                <p>구매한 비디오의 저작권은 스타에게 있으며, 사용자는 1년간 사용할 권리를 보유합니다. 사용자는 [비디오 다운로드] 및 [비디오 SNS공유]만 비영리적 목적에 한하여 가능하며 상업적 이용과 워터마크 제거, 2차적 저작물 제작은 불가합니다. 사용범위를 위반할 경우 관계 법령에 의해 처벌받으실 수 있으니 유의바랍니다.</p>
+            </div>
         </div>
-        <div class='purchase-button-bottom-fixed-hidden'></div>
-    </div>
+        <!-- 취소 환불규정 -->
+        <div class="container refund-container">
+            <div class="section-title-container">
+                <div class="section-title">
+                    취소 / 환불규정
+                </div>
+            </div>
+            <div class="refund">
+                <p>1. 결제 이후 사용자는 요청 사항에 대해 수정할 수 없으니 유의해주세요.<br>
+                2. 스타가 콘텐츠 제작에 착수한 이후에는 콘텐츠 주문을 취소할 수 없으며, 이에 따른 환불을 요청할 수 없습니다.<br>
+                3. 사용자가 결제한 익일로부터 7일 이내에 스타가 이용자에게 콘텐츠 제공을 완료하지 못한 경우, 해당 주문에 대한 결제는 자동으로 취소되며, 회사는 해당 이용자에게 환불조치를 완료하도록 합니다. <span>(일반 스타는 7일 내 / 연예인은 최대 한달 소요)</span></p>
+            </div>
+        </div>
+        <!-- 리뷰 -->
+        <div class="container review-container">
+            <div class="section-title-container">
+                <div class="section-title left">리뷰 <span></span></div>
+                <div class="channel-info__stars right">
+                    <div class='section-title-rating-stars'>
+                        {% for i in channel.review_set.get_rating_mean|greens %}
+                        <img
+                                src="{% static 'assets/star-green@3x.png' %}"
+                                alt='star-green'
+                                class='section-title-rating-star'
+                        />
+                        {% endfor %}
+                        {% for i in channel.review_set.get_rating_mean|greys %}
+                        <img
+                                src="{% static 'assets/star-grey@3x.png' %}"
+                                alt='star-grey'
+                                class='section-title-rating-star'
+                        />
+                        {% endfor %}
+                        <span class='section-title-rating-number section-title-rating-number'>{{ channel.review_set.get_rating_mean }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class='review'>
+                <div class='review-list'>
+                    {% for review in channel.review_set.is_display %}
+                    <div class='review-item'>
+                        <div class="left review-item__upper-left">
+                            <div class='review-item__upper-left-username'>
+                                {{ review.display_name }}
+                            </div>
+                            <div class='review-item__lower'>
+                                {% for i in review.rating|greens %}
+                                <img
+                                        src="{% static 'assets/star-green@3x.png' %}"
+                                        alt='star-green'
+                                        class='section-title-rating-star'
+                                />
+                                {% endfor %}
+                                {% for i in review.rating|greys %}
+                                <img
+                                        src="{% static 'assets/star-grey@3x.png' %}"
+                                        alt='star-grey'
+                                        class='section-title-rating-star'
+                                />
+                                {% endfor %}
+                            </div>
+                        </div>
+                            <div class='review-message'>
+                                {{ review.message }}
+                            </div>
+                        <div class='review-item__upper-left-created-at'>
+                            {{ review.created_at|date:"Y.m.d" }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class='review-more-button' id='review_flip_btn_show'>
+                    <span class="reviw_count">{{channel.review_set.is_display.count|add:'-3'}}</span>개의 리뷰 더보기
+                    <img src="{% static 'assets/icon_more_arrow.png' %}">
+                </div>
+                <div class='review-more-button' id='review_flip_btn_hide'>
+                    접기
+                </div>
+            </div>
+        </div>
+        <!-- 최근 인기스타 -->
+        <div class="container channelCard-container">
+            <div class="section-title-container">
+                <div class="section-title">
+                    최근 인기스타
+                </div>
+            </div>
+            <div class='row'>
+                {% for channel in channels %}
+                <div class='channel-card__container col s6 m4 l4 xl3'>
+                    {% include '_partials/_channel_card.html' with channel=channel %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </divc>
 </div>
 <script>
     var channelId = '{{ channel.id }}';
