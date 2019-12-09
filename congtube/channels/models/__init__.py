@@ -1,3 +1,3 @@
-from .channel import Channel
-from .product import Product
-from .tag import Tag
+from channels.models.channel import *
+from channels.models.product import *
+from channels.models.tag import *

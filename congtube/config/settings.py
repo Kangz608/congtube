@@ -19,38 +19,6 @@ class Base(Configuration):
 
     # Application definition
 
-    INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.sites',
-        'django.contrib.staticfiles',
-        'django.contrib.flatpages',
-        'django.contrib.sitemaps',
-
-        'rest_framework',
-        'api',
-
-        'users',
-        'channels',
-        'orders',
-        'reviews',
-        'banners',
-        'notifications',
-
-        'allauth',
-        'allauth.account',
-        'allauth.socialaccount',
-        'allauth.socialaccount.providers.kakao',
-        'allauth.socialaccount.providers.naver',
-
-        'robots',
-        'axes',
-        'pipeline',
-        'admin_honeypot',
-    ]
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
@@ -83,6 +51,38 @@ class Base(Configuration):
                 ],
             },
         },
+    ]
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.sites',
+        'django.contrib.staticfiles',
+        'django.contrib.flatpages',
+        'django.contrib.sitemaps',
+
+        'rest_framework',
+        'api',
+
+        'users.apps.UsersConfig',
+        'channels.apps.ChannelsConfig',  # error
+        'orders.apps.OrdersConfig',  # error
+        'reviews.apps.ReviewsConfig', # error
+        'banners.apps.BannersConfig',
+        'notifications.apps.NotificationsConfig',
+
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.kakao',
+        'allauth.socialaccount.providers.naver',
+
+        'robots',
+        'axes',
+        'pipeline',
+        'admin_honeypot',
     ]
 
     WSGI_APPLICATION = 'config.wsgi.application'
