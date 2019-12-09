@@ -1,9 +1,8 @@
 from django.contrib import admin
 
-from channels.models import Channel, BestVideo
+from channels.models import Channel
 
 from .product import ProductInline
-from .bestvideo import BestVideoInline
 
 
 @admin.register(Channel)
@@ -29,7 +28,6 @@ class ChannelAdmin(admin.ModelAdmin):
 
     inlines = (
         ProductInline,
-        BestVideoInline,
     )
 
 

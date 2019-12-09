@@ -38,8 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
   for (var rII = 0; rII < allReviewItems.length; rII++) {
     if (rII < 3) {
       allReviewItems[rII].style.display = 'block';
-    }else{
-      allReviewItems[rII].style.display = 'none';
     }
   }
 
@@ -88,28 +86,4 @@ function flipVolumeChannelDetail(status) {
     document.getElementById('channel-detail__volume-off').style.display = 'block';
   }
   document.getElementById('channel_detail_video').muted = status;
-}
-
-//베스트비디오 play on/off
-
-var videoItem = document.getElementsByClassName("bestvideo-item");
-var video = document.getElementsByTagName('video');
-
-for(var i=0; i<video.length; i++){
-  (function(i){
-    videoItem[i].addEventListener("click", togglePlayVideo);
-    function togglePlayVideo(){ 
-      var playon = video[i].nextElementSibling;
-      var playoff = playon.nextElementSibling;
-      if(video[i].paused){
-        playon.style.display = 'block';
-        playoff.style.display = 'none';
-        video[i].play();
-      }else{
-        playon.style.display = 'none';
-        playoff.style.display = 'block';
-        video[i].pause();
-  }
-     }
-  })(i);
 }
