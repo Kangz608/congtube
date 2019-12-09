@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from channels.models import Tag
+from channels.models.tag import Tag
 
 from .channel import ChannelInline
 

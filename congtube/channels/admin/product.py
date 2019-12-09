@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from channels.models import Product
+from channels.models.product import Product
 
 
 @admin.register(Product)

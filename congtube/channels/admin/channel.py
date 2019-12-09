@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from channels.models import Channel
+from channels.models.channel import Channel
 
 from .product import ProductInline
 
