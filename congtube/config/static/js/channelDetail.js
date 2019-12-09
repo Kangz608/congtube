@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', function () {
         allReviewItems[rII].style.display = 'none';
       }
     }
+    reviewFlipShowBtn.style.display = 'block';
+    reviewFlipHideBtn.style.display = 'none';
   }
 });
 
