@@ -44,7 +44,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-	    cd congtube
+            cd congtube
             python manage.py test accounts lists
 
       - store_artifacts:
