@@ -33,7 +33,8 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
-            pip install coverage codecov
+            pip install coverage
+            pip install --user codecov && codecov -t 98bffdbd-0df0-4b68-a4e8-9fab1b36d2cb
 
       - save_cache:
           paths:
@@ -47,7 +48,6 @@ jobs:
             . venv/bin/activate
             cd congtube
             coverage run ./manage.py test banners channels notifications orders reviews users
-            bash <(curl -s https://codecov.io/gh/congtubeteam/congtube) -t 98bffdbd-0df0-4b68-a4e8-9fab1b36d2cb
             codecov
 
       - store_artifacts:
