@@ -1,7 +1,7 @@
 from django.views.generic.detail import DetailView
 
-from channels.models.channel import Channel
-from channels.models.channel import Product
+from channels.models import Channel
+from channels.models import Product
 
 
 class ChannelOrderView(DetailView):
