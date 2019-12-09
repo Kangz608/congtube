@@ -137,13 +137,12 @@
             </div>   
             <div class="bestvideo"> 
                 {% for bestvideo in channel.bestvideo_set.is_display %}
-                <div class="bestvideo-item">
+                <div class="bestvideo-item" id='bestvideo_item'>
                     <video
                             playsinline
-                            loop
                             src="{{ bestvideo.video.url }}"
                             muted='true'
-                            pause='true'
+                            pause
                             id="channel_bestvideo"
                             class="bestvideo__image"
                     ></video>
@@ -151,13 +150,11 @@
                         src="{% static 'assets/icon_video_play.png' %}"
                         id = "channel-detail__play-off"
                         class="bestvideo_play_button bestvideo_play_on"
-                        onclick='flipPlayChannelDetail(true)'
                     >
                     <img
                          src="{% static 'assets/icon_video_pause.png' %}"
                          id = "channel-detail__play-on"
                          class="bestvideo_play_button bestvideo_play_off"
-                         onclick='flipPlayChannelDetail(false)'
                     >
                 </div>
                 {% endfor %}
@@ -310,14 +307,71 @@
             </div>
             <div class='row'>
                 {% for channel in channels %}
-                <div class='channel-card__container col s6 m4 l4 xl3'>
+                <div class='channel-card__container col s6 m3 l3 xl3'>
                     {% include '_partials/_channel_card.html' with channel=channel %}
                 </div>
                 {% endfor %}
             </div>
         </div>
     </divc>
+    </div>
 </div>
+<aside>
+    <img
+        src="{% static 'assets/floating_btn.png' %}"
+        class="floating_btn"
+        id="floating_btn_on"
+        onclick = 'floatPurchaseOpen()'
+    >
+    <div class="float_option" id="floating_btn_off">
+        <div class="float-option_purchase_info">
+            <div class="float_option_top">
+                <p>콩튜브 영상 구매하기</p>
+                <p class="float_close_btn" onclick='floatPurchaseClose()'>
+                    <img src="{% static 'assets/floating_close_btn.png' %}" alt="">
+                </p>
+            </div>
+           <div class="float_option_info">
+                <p>{{ channel.name }}</p>
+                <div class='channel-info__tags'>
+                    {% for tag in channel.tags.all %}
+                    <div class='tags__name-container tags__name-text--white'>
+                        {{ tag.name }}
+                    </div>
+                    {% endfor %}
+                </div>
+           </div>
+        </div>
+        <div class='product-list'>
+                {% for product in channel.product_set.is_display %}
+                <div class='product-list__product-item' id={{ product.id }} onclick='selectProduct({{ product.id }})'>
+                    <div class='product-list__product-item-title'>{{ product.name }}</div>
+                    <div class='product-list__product-item-option'>
+                        <div class='product-list__product-item-option-wrap'>
+                            <img
+                                    src="{% static 'assets/cong-small@3x.png' %}"
+                                    alt='cong-img'
+                                    style='height: 11px;'
+                            />
+                            <span class='product-list__product-item-option-price'>{{ product.price }}원</span>
+                            <!-- <span class='product-list__product-item-option-price'></span> -->
+                        </div>
+                        <div class='product-list__product-item-option-dot'>
+                            <div class='product-list__product-item-option-dot-selected'
+                                    id='channel_product_{{ product.id }}'></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+        <div class="float_option_purchase_button">
+            <div onclick='redirectToOrder()' class='purchase-button-bottom-fixed'>
+                구매하기
+            </div>
+            <div class='purchase-button-bottom-fixed-hidden'></div>
+        </div>
+    </div>
+</aside>
 <script>
     var channelId = '{{ channel.id }}';
     var channelTitle = '{{ channel.name }}';
