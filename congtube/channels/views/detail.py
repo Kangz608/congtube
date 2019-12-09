@@ -1,6 +1,6 @@
 from django.views.generic.detail import DetailView
 
-from channels.models.channel import Channel
+from channels.models import Channel
 
 
 class ChannelDetailView(DetailView):

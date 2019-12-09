@@ -1,7 +1,7 @@
 from django.views.generic.list import ListView
 
-from channels.models.channel import Channel
-from channels.models.tag import Tag
+from channels.models import Channel
+from channels.models import Tag
 from banners.models import Banner
 
 
