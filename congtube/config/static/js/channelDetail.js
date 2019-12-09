@@ -64,9 +64,11 @@ document.addEventListener('DOMContentLoaded', function () {
         allReviewItems[rII].style.display = 'none';
       }
     }
-    reviewFlipShowBtn.style.display = 'block';
-    reviewFlipHideBtn.style.display = 'none';
   }
+
+  
+  document.getElementById('channel-detail__play-off').style.display = 'block';
+  document.getElementById('channel-detail__play-on').style.display = 'none';
 });
 
 // document.addEventListener('DOMContentLoaded', function () {
@@ -90,19 +92,53 @@ function flipVolumeChannelDetail(status) {
   document.getElementById('channel_detail_video').muted = status;
 }
 
-// play bestvideo
+// play on-off bestvideo
+window.onload = function(){
 
-function flipPlayChannelDetail(status){
-  var bestvideo = document.getElementById('channel_bestvideo');
+  var videoItem = document.getElementsByClassName("bestvideo-item");
+  var video = document.getElementsByClassName('bestvideo__image');
 
-  if(!status){
-    document.getElementById('channel-detail__play-off').style.display = 'block';
-    document.getElementById('channel-detail__play-on').style.display = 'none';
+  for(var i=0; i<video.length; i++){
+    (function(i){
+      var playon = video[i].nextElementSibling;
+      var playoff = playon.nextElementSibling;
 
-  }else{
-    document.getElementById('channel-detail__play-off').style.display = 'none';
-    document.getElementById('channel-detail__play-on').style.display = 'block';
+      videoItem[i].addEventListener("click", togglePlayVideo);
+      video[i].addEventListener("ended",videoEnded);
 
-  }
-  document.getElementById('channel_bestvideo').play() = status;
-}
+      function togglePlayVideo(){ 
+        if(video[i].paused){
+          playon.style.display = 'none';
+          playoff.style.display = 'block';
+          video[i].play();
+        }else{
+          playon.style.display = 'block';
+          playoff.style.display = 'none';
+          video[i].pause();
+        }
+      }
+
+      function videoEnded(){
+          playon.style.display = 'block';
+          playoff.style.display = 'none';
+          video[i].currentTime=0;
+      }
+    })(i);
+  };
+
+};
+
+
+
+
+// float purchase
+
+function floatPurchaseOpen(){
+    document.getElementById('floating_btn_on').style.display='none';
+    document.getElementById('floating_btn_off').style.display='block';
+};
+
+function floatPurchaseClose(){
+  document.getElementById('floating_btn_on').style.display='block';
+  document.getElementById('floating_btn_off').style.display='none';
+};
