@@ -1,5 +1,5 @@
 from django.contrib import admin
-from banners.models import Banner
+from banners.models.banner import Banner
 
 
 @admin.register(Banner)
