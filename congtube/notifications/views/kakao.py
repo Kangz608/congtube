@@ -36,9 +36,10 @@ class Notification:
         print(response.status_code)
         print(response.text)
 
-    def order_confirmations_alarm(self, celebrity_phonenumber):
+    def order_confirmations_alarm(self): # 6시에 요청자가 있는 제공자에게 알림 메시지 보내기
         request_date = timezone.now().strftime("%Y-%m-%d 18:00") # 오늘 6시에 알림 전송
-        c = celebrity_phonenumber # 셀럽 번호
+        # c = celebrity_phonenumber # 셀럽 번호
+        print('order_confirmations_alarm 카카오알람 보내기 전')
         data = f'|"plusFriendId":"콩튜브","templateCode":"TEST1","requestDate":"","recipientList":[|"recipientNo":"01084401304","templateParameter":|??]?'
         result1 = data.replace("|", "{")
         result2 = result1.replace("?", "}")
