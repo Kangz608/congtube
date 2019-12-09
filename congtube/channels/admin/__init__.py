@@ -1,3 +1,3 @@
-from .channel import *
-from .product import *
-from .tag import *
+from channels.admin.channel import *
+from channels.admin.product import *
+from channels.admin.tag import *
