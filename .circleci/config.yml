@@ -19,8 +19,6 @@ jobs:
 
     steps:
       - checkout
-      - codecov/upload:
-          file: coverage.xml
 
       # Download and cache dependencies
       - restore_cache:
