@@ -23,7 +23,7 @@
 {% include '_partials/_header_search_bar.html' %}
 <div class='channel-detail'>
     <!-- 상단 비디오, info -->
-    <div style="background-color:#fafafa">
+    <div class="channel-detail-top-wrap">
         <div class="info-container">
             <!-- 동영상 -->
             <div class='mask-background'>
@@ -59,41 +59,48 @@
             </div> 
             <!-- Channel info -->
             <div class='channel-info'>
-                <!-- 채널명 -->
-                <div class='channel-info__title'>{{ channel.name }}</div>
-                <!-- 채널평점-->
-                <div class="channel-info__stars">
-                    <div class='section-title-rating-stars'>
-                        {% for i in channel.review_set.get_rating_mean|greens %}
-                        <img
-                                src="{% static 'assets/star-green@3x.png' %}"
-                                alt='star-green'
-                                class='section-title-rating-star'
-                        />
-                        {% endfor %}
-                        {% for i in channel.review_set.get_rating_mean|greys %}
-                        <img
-                                src="{% static 'assets/star-grey@3x.png' %}"
-                                alt='star-grey'
-                                class='section-title-rating-star'
-                        />
-                        {% endfor %}
-                        <span class='section-title-rating-number section-title-rating-number'>{{ channel.review_set.get_rating_mean }}</span>
+                <div class="channel-info-wrap">
+                    <!-- 채널명 -->
+                    <div class='channel-info__title'>{{ channel.name }}</div>
+                    <!-- 채널평점-->
+                    <div class="channel-info__stars">
+                        <div class='section-title-rating-stars'>
+                            {% for i in channel.review_set.get_rating_mean|greens %}
+                            <img
+                                    src="{% static 'assets/star-green@3x.png' %}"
+                                    alt='star-green'
+                                    class='section-title-rating-star'
+                            />
+                            {% endfor %}
+                            {% for i in channel.review_set.get_rating_mean|greys %}
+                            <img
+                                    src="{% static 'assets/star-grey@3x.png' %}"
+                                    alt='star-grey'
+                                    class='section-title-rating-star'
+                            />
+                            {% endfor %}
+                            <span class='section-title-rating-number section-title-rating-number'>{{ channel.review_set.get_rating_mean }}</span>
+                        </div>
                     </div>
-                </div>
-                <!-- 채널태그 -->
-                <div class='channel-info__tags'>
-                    {% for tag in channel.tags.all %}
-                    <div class='tags__name-container background-green tags__name-text--white'>
-                        {{ tag.name }}
+                    <!-- 채널태그 -->
+                    <div class='channel-info__tags'>
+                        {% for tag in channel.tags.all %}
+                        <div class='tags__name-container background-green tags__name-text--white'>
+                            {{ tag.name }}
+                        </div>
+                        {% endfor %}
+                    </div> 
+                    <!-- 채널설명 -->
+                    <div class='channel-info__description'>
+                        {{ channel.description }}
                     </div>
-                    {% endfor %}
-                </div> 
-                <!-- 채널설명 -->
-                <div class='channel-info__description'>
-                    {{ channel.description }}
                 </div>
                 <!-- 상품옵션 -->
+                <div class="section-title-container product-list-title-container">
+                    <div class="section-title">
+                        옵션
+                    </div>
+                </div>   
                 <div class='product-list'>
                         {% for product in channel.product_set.is_display %}
                         <div class='product-list__product-item' id={{ product.id }} onclick='selectProduct({{ product.id }})'>
@@ -161,13 +168,23 @@
             </div>
         </div>
         <!-- 비디오 이용정책 -->
-        <div class="container policy-container">
+        <div class="container policy-container" id="accordion">
             <div class="section-title-container">
-                <div class="section-title">
+                <div class="section-title" onclick="readMore(this);">
                     비디오 이용정책
+                    <img 
+                    class="readMore fold"
+                    id="fold"
+                    src="{% static 'assets/accordion_arrow_open.png' %}"
+                    alt="비디오 이용정책 더보기">
+                    <img 
+                    class="readMore"
+                    id="unfold"
+                    src="{% static 'assets/accordion_arrow_close.png' %}"
+                    alt="비디오 이용정책 접기">
                 </div>
             </div>
-            <div class="policy">
+            <div class="policy accordion">
                 <table>
                     <thead>
                         <tr>
@@ -219,23 +236,65 @@
             </div>
         </div>
         <!-- 취소 환불규정 -->
-        <div class="container refund-container">
+        <div class="container refund-container" id="accordion">
             <div class="section-title-container">
-                <div class="section-title">
+                <div class="section-title" onclick="readMore(this);">
                     취소 / 환불규정
+                    <img 
+                    class="readMore fold"
+                    id="fold"
+                    src="{% static 'assets/accordion_arrow_open.png' %}"
+                    alt="취소 및 환불규정 더보기">
+                    <img 
+                    class="readMore"
+                    id="unfold"
+                    src="{% static 'assets/accordion_arrow_close.png' %}"
+                    alt="취소 및 환불규정 접기">
                 </div>
             </div>
-            <div class="refund">
+            <div class="refund accordion">
                 <p>1. 결제 이후 사용자는 요청 사항에 대해 수정할 수 없으니 유의해주세요.<br>
                 2. 스타가 콘텐츠 제작에 착수한 이후에는 콘텐츠 주문을 취소할 수 없으며, 이에 따른 환불을 요청할 수 없습니다.<br>
                 3. 사용자가 결제한 익일로부터 7일 이내에 스타가 이용자에게 콘텐츠 제공을 완료하지 못한 경우, 해당 주문에 대한 결제는 자동으로 취소되며, 회사는 해당 이용자에게 환불조치를 완료하도록 합니다. <span>(일반 스타는 7일 내 / 연예인은 최대 한달 소요)</span></p>
             </div>
         </div>
         <!-- 리뷰 -->
-        <div class="container review-container">
+        <div class="container review-container" id="accordion">
             <div class="section-title-container">
-                <div class="section-title left">리뷰 <span></span></div>
-                <div class="channel-info__stars right">
+                <div class="section-title left" onclick="readMore(this);">
+                    <img 
+                    class="readMore fold"
+                    id="fold"
+                    src="{% static 'assets/accordion_arrow_open.png' %}"
+                    alt="리뷰 더보기">
+                    <img 
+                    class="readMore"
+                    id="unfold"
+                    src="{% static 'assets/accordion_arrow_close.png' %}"
+                    alt="리뷰 접기">
+                    <span>리뷰</span>
+                    <span class="font_gr">({{channel.review_set.is_display.count}})</span>   
+                    <div class="channel-info__stars mobile_rating_stars">
+                        <div class='section-title-rating-stars'>
+                            {% for i in channel.review_set.get_rating_mean|greens %}
+                            <img
+                                    src="{% static 'assets/star-green@3x.png' %}"
+                                    alt='star-green'
+                                    class='section-title-rating-star'
+                            />
+                            {% endfor %}
+                            {% for i in channel.review_set.get_rating_mean|greys %}
+                            <img
+                                    src="{% static 'assets/star-grey@3x.png' %}"
+                                    alt='star-grey'
+                                    class='section-title-rating-star'
+                            />
+                            {% endfor %}
+                            <span class='section-title-rating-number section-title-rating-number'>{{ channel.review_set.get_rating_mean }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="channel-info__stars right pc_rating_stars">
                     <div class='section-title-rating-stars'>
                         {% for i in channel.review_set.get_rating_mean|greens %}
                         <img
@@ -255,7 +314,7 @@
                     </div>
                 </div>
             </div>
-            <div class='review'>
+            <div class='review accordion'>
                 <div class='review-list'>
                     {% for review in channel.review_set.is_display %}
                     <div class='review-item'>
