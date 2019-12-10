@@ -1,5 +1,6 @@
 from django.contrib import admin
-from ..models.cancel import Cancel
+from orders.models import Cancel
+
 
 @admin.register(Cancel)
 class CancelAdmin(admin.ModelAdmin):

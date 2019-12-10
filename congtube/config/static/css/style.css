@@ -1513,6 +1513,14 @@ p.banner-main-title, p.banner-main-title span{
 	color: #333333;
 }
 
+.mypage .user-summary__user-info-email {
+	line-height: 15px;
+	font-size: 15px;
+	font-weight: lighter;
+	letter-spacing: 0.37px;
+	color: #333333;
+}
+
 .mypage .section-title {
 	text-align: left;
 	font-size: 18px;
@@ -1550,6 +1558,11 @@ p.banner-main-title, p.banner-main-title span{
 		line-height: 18px;
 	}
 
+	.mypage .user-summary__user-info-email {
+		font-size: 18px;
+		line-height: 18px;
+	}
+
 	.mypage .section-title {
 		font-size: 24px;
 		margin: 30px 0 22px;
@@ -1576,6 +1589,11 @@ p.banner-main-title, p.banner-main-title span{
 	}
 
 	.mypage .user-summary__user-info-nickname {
+		font-size: 22px;
+		line-height: 22px;
+	}
+
+	.mypage .user-summary__user-info-email {
 		font-size: 22px;
 		line-height: 22px;
 	}
@@ -3103,6 +3121,14 @@ nav a.sidenav-trigger{
 	color: #333333;
 }
 
+.header-search-bar .side-nav-user-profile__info-email {
+	font-size: 15px;
+	line-height: 15px;
+	font-weight: lighter;
+	letter-spacing: 0.37px;
+	color: #333333;
+}
+
 .header-search-bar .side-nav-user-profile__arrow-image {
 	width: 9px;
 	height: 14px;
@@ -3282,6 +3308,14 @@ nav a.sidenav-trigger{
 	color: #333333;
 }
 
+.header-simple-black .side-nav-user-profile__info-email {
+	font-size: 15px;
+	line-height: 15px;
+	font-weight: lighter;
+	letter-spacing: 0.37px;
+	color: #333333;
+}
+
 .header-simple-black .side-nav-user-profile__arrow-image {
 	width: 9px;
 	height: 14px;
@@ -3425,6 +3459,14 @@ nav a.sidenav-trigger{
 }
 
 .header-simple-white .side-nav-user-profile__info-nickname {
+	font-size: 15px;
+	line-height: 15px;
+	font-weight: lighter;
+	letter-spacing: 0.37px;
+	color: #333333;
+}
+
+.header-simple-white .side-nav-user-profile__info-email {
 	font-size: 15px;
 	line-height: 15px;
 	font-weight: lighter;
