@@ -44,7 +44,27 @@ window.addEventListener('DOMContentLoaded',function(){
         };
         sI++;
     }
+    
+    // indicator 선택시 해당 banner contents 보이게
 
+    var bannerIndicator = document.getElementsByClassName('indicator-item');
+    var activeIndicator = document.getElementsByClassName('indicator-item active');
+
+        var iI=0;
+        
+        function toggleBannerShow(){ 
+
+            activeSlideContents.innerHTML = '';
+            while (iI<bannerIndicator.length){  
+                if(bannerIndicator[iI].className=='indicator-item active'){
+                    activeSlideContents.innerHTML = activeConts[iI];
+                    activeSlideContents.style.display='block';
+                    activeSlideContents.className += 'banner-'+iI+'-wrap'
+                    // activeSlideContents.innerHTML = 'activeConts[iI].innerHTML';
+                };
+                iI++;
+            }
+        }
 });
 
 // });
