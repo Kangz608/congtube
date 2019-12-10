@@ -116,13 +116,10 @@ input {
 
 .main .mask-background {
 	position: relative;
-	width: 400px;
+	width: 100%;
 	height: 710px;
-
 	display: -webkit-box;
-
 	display: -ms-flexbox;
-
 	display: flex;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
@@ -230,12 +227,12 @@ input {
 }
 
 .main .tags {
-	margin: 22px 0;
+	margin: 20px 0;
 	width: 100%;
 	display: inline-block;
 	white-space: nowrap;
 	overflow-y: hidden;
-	overflow-x: scroll;
+	/* overflow-x: scroll; */
 	-ms-overflow-style: none;
 	/* &::-webkit-scrollbar { 
     display: none !important;
@@ -243,7 +240,10 @@ input {
 }
 
 .main .tags .tags__name-container {
-	font-size: 14px;
+	display: inline-block;
+	padding: 7px 26px;
+	font-size: 18px;
+	border-radius: 20px;
 }
 
 .main .tags .background-grey {
@@ -251,7 +251,8 @@ input {
 }
 
 .main .tags .background-green {
-	background-color: #62be51;
+	/* background-color: #62be51; */
+	background-color: #5cc25b;
 }
 
 .main .tags .tags__name-text--grey {
