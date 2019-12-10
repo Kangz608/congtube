@@ -361,7 +361,19 @@ p.banner-main-title, p.banner-main-title span{
 	color: #ffde00;
 }
 
-@media only scree
+/* m_bnr01 */
+@media only screen and (max-width : 992px){
+	.banner-0-wrap p.banner-sub-title{
+		left: 10%;
+		top: 18%;
+		margin-left: 0;
+		font-size: 20px;
+	}
+	.banner-0-wrap p.banner-main-title{
+		font-size: 70px;
+	}
+
+}
 
 
 /* banner02 */
