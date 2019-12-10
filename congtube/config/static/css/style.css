@@ -1,8 +1,11 @@
 @charset 'utf-8';
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@font-face { font-family: 'S-CoreDream-5Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); 
+font-weight: normal; font-style: normal; }
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
 
 * {
-	font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif' !important;
+	font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'
 }
 
 body {
@@ -172,6 +175,101 @@ input {
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
+#banner-conts>img{
+	position: absolute;
+}
+
+#banner-conts p.banner-sub-title,#banner-conts p.banner-main-title,
+#banner-conts p.banner-title-link{
+	position: absolute;
+}
+
+/* indicator */
+.carousel .indicators{z-index: 2;}
+
+/* banner contents : 배너 변경시 수정 필수 */
+/* banner01 */
+
+#banner-conts{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	z-index: 1;
+}
+
+#banner-conts.banner-0-wrap>img{
+	left: 50%;
+	top:70px;
+}
+
+.banner-0-wrap p.banner-sub-title{
+	left: 27%;
+	top: 20%;
+	margin-left:-35px;
+	color: #fefefe;
+	font-size: 23px;
+	font-weight: 500;
+	letter-spacing: -0.69px;
+}
+.banner-0-wrap p.banner-sub-title *{
+	font-family: 'S-CoreDream-5Medium';
+}
+
+.banner-0-wrap .banner-sub-title span{
+	margin-right:18px;
+}
+
+.banner-0-wrap p.banner-main-title{
+	left: 27%;
+	top: 22%;
+	margin-left:-50px;
+	color: #fff;
+	line-height: 1.15;
+	text-align: left;
+	letter-spacing: -2.37px;
+	font-style: italic;
+	font-size: 79px;
+}
+p.banner-main-title, p.banner-main-title span{
+	font-family:"Black Han Sans";
+}
+
+.banner-0-wrap p.banner-title-link{
+	left: 27%;
+	top: 68%;
+	width:214px;
+	height:49px;
+	margin-left:-35px;
+	color: #fefefe;
+	font-size: 18px;
+	font-family: 'S-CoreDream-5Medium';
+	letter-spacing: -0.54px;
+	line-height: 49px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.banner-main-title .banner-title-green{
+	color: #57d684;
+}
+
+.banner-main-title .banner-title-yellow{
+	color: #ffde00;
+}
+
+/* banner02 */
+.banner-02-wrap>img{
+	left: 50%;
+	top: 15%;
+	margin-left:-300px;
+}
+
+.
+
 .main .height113 {
 	height: 113px;
 }
@@ -244,6 +342,7 @@ input {
 	padding: 7px 26px;
 	font-size: 18px;
 	border-radius: 20px;
+	cursor:pointer;
 }
 
 .main .tags .background-grey {

@@ -1,4 +1,8 @@
-{% extends '_base.html' %} {% block content %}
+
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+
 <div class="main">
 	{% include '_partials/_header_simple_white.html' %}
 
@@ -17,7 +21,51 @@
 				<div class="mask-background__dim-div"></div>
 				{% endcomment %}
 			</div>
+			<div id="banner-conts"></div>
 			{% endfor %}
+			<!-- banner contents : 배너 변경시 수정 필수 start-->
+			<div class="banner-contents-wrap">
+				<!-- banner01 -->
+				<div class="banner-cont-container banner-0-wrap">
+					<img src="{% static 'assets/img.png' %}">
+					<p class="banner-sub-title"><span>#최애</span><span>#셀럽</span><span>#새로운덕질</span><span>#어덕행덕</span></p>
+					<p class="banner-main-title">
+						나만의 <span class="banner-title-green">스타영상</span>을<br><span class="banner-title-yellow">GET</span>하라
+					</p>
+					<p class="banner-title-link" style="background-image:url({% static 'assets/banner-btn-01.png'%})">콩튜브 알아보기
+						<img src="{% static 'assets/banner-btn-arrow.png' %}" >
+					</p>
+				</div>
+				<!-- banner02 -->
+				<div class="banner-cont-container banner-1-wrap">
+					<img src="{% static 'assets/banner02_img.png' %}">
+					<p class="banner-sub-title"><span>#영상편지</span><span>#원한다면 TAKE IT</span></p>
+					<p class="banner-main-title">세러데이<br>To. 선데이</p>
+					<p class="banner-title-link">선데이들에게 직접 답해주는 세러데이의<br>영상메세지를 만나보세요!</p>
+				</div>
+				<!-- banner03 -->
+				<div class="banner-cont-container banner-2-wrap">
+						<img src="{% static 'assets/banner02_img.png' %}">
+						<p class="banner-sub-title"><span>#영상편지</span><span>#원한다면 TAKE IT</span></p>
+						<p class="banner-main-title">세러데이<br>To. 선데이</p>
+						<p class="banner-title-link">선데이들에게 직접 답해주는 세러데이의<br>영상메세지를 만나보세요!</p>
+					</div>
+				<!-- banner04 -->
+				<div class="banner-cont-container banner-3-wrap">
+						<img src="{% static 'assets/banner02_img.png' %}">
+						<p class="banner-sub-title"><span>#영상편지</span><span>#원한다면 TAKE IT</span></p>
+						<p class="banner-main-title">세러데이<br>To. 선데이</p>
+						<p class="banner-title-link">선데이들에게 직접 답해주는 세러데이의<br>영상메세지를 만나보세요!</p>
+					</div>
+				<!-- banner05 -->
+				<div class="banner-cont-container banner-4-wrap">
+						<img src="{% static 'assets/banner02_img.png' %}">
+						<p class="banner-sub-title"><span>#영상편지</span><span>#원한다면 TAKE IT</span></p>
+						<p class="banner-main-title">세러데이<br>To. 선데이</p>
+						<p class="banner-title-link">선데이들에게 직접 답해주는 세러데이의<br>영상메세지를 만나보세요!</p>
+				</div>
+			</div>
+			<!-- banner contents : 배너 변경시 수정 필수 end-->
 		</div>
 	</div>
 
