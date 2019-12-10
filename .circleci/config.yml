@@ -47,7 +47,7 @@ jobs:
             . venv/bin/activate
             cd congtube
             coverage run ./manage.py test banners channels notifications orders reviews users
-            codecov
+            codecov -token=98bffdbd-0df0-4b68-a4e8-9fab1b36d2cb
 
       - store_artifacts:
           path: test-reports
