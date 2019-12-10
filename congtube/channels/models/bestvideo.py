@@ -17,7 +17,7 @@ class ChannelManager(models.Manager):
 
 def _channel_video_upload_to(instance, filename):
     extension = filename.split('.')[-1]
-    return 'channels/{slug}/video.{extension}'.format(
+    return 'channels/{slug}/best_video.{extension}'.format(
         slug=instance.channel.slug,
         extension=extension,
     )
