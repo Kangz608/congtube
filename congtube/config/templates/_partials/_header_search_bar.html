@@ -6,18 +6,12 @@
         <div class='nav-wrapper'>
             <a href='/' class='brand-logo left'>
                 <img
-                    srcSet='{% static 'assets/congtube_logo.png' %},
-                    {% static 'assets/congtube_logo@2x.png' %} 2x,
-                    {% static 'assets/congtube_logo@3x.png' %} 3x '
-                    src={% static 'assets/congtube_logo@3x.png' %}
+                    src="{% static 'assets/congtube_logo@3x.png' %}"
                     alt='congtube-logo'
                     class='header-search-bar__left-logo-image header-search-bar__left-logo-image_m'
                 />
                 <img
-                    srcSet='{% static 'assets/logo-black.png' %},
-                    {% static 'assets/logo-black@2x.png' %} 2x,
-                    {% static 'assets/logo-black@3x.png' %} 3x '
-                    src={% static 'assets/logo-black@3x.png' %}
+                    src="{% static 'assets/logo-black@3x.png' %}"
                     alt='congtube-logo'
                     class='header-search-bar__left-logo-image header-search-bar__left-logo-image_pc'
                 />
@@ -32,11 +26,7 @@
                         placeholder='스타를 검색해보세요!'
                     />
                     <img
-                        {% load static %}
-                        srcSet='{% static 'assets/search-icon.png' %},
-                        {% static 'assets/search-icon@2x.png' %} 2x,
-                        {% static 'assets/search-icon@3x.png' %} 3x'
-                        src='{% static 'assets/search-icon@3x.png' %}'
+                        src="{% static 'assets/search-icon@3x.png' %}"
                         id='header_search_bar_submit'
                         alt='검색 아이콘'
                         class='search-bar__icon'
@@ -46,10 +36,7 @@
             </div>
             <a href='#' data-target='mobile-demo' class='sidenav-trigger right'>
                 <img
-                    srcSet='{% static 'assets/icon_hambuger_menu.png' %},
-                    {% static 'assets/icon_hambuger_menu@2x.png' %} 2x,
-                    {% static 'assets/icon_hambuger_menu@3x.png' %} 3x'
-                    src='{% static 'assets/icon_hambuger_menu@3x.png' %}'
+                    src="{% static 'assets/icon_hambuger_menu@3x.png' %}"
                     alt='hamburger-menu'
                     class='material-icons'
                 />
@@ -57,14 +44,14 @@
             <ul class='right hide-on-med-and-down'>
                 {% if request.user.is_authenticated %}
                     <li>
-                        <a href='{% url 'profile' %}'>마이페이지</a>
+                        <a href="{% url 'profile' %}">마이페이지</a>
                     </li>
                 {% else %}
                     <li>
-                        <a href='{% url 'account_login' %}'>회원가입</a>
+                        <a href="{% url 'account_login' %}">회원가입</a>
                     </li>
                     <li>
-                        <a href='{% url 'account_login' %}'>로그인</a>
+                        <a href="{% url 'account_login' %}">로그인</a>
                     </li>
                 {% endif %}
             </ul>

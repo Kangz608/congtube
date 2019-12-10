@@ -1,11 +1,10 @@
 @charset 'utf-8';
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
-@font-face { font-family: 'S-CoreDream-5Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); 
-font-weight: normal; font-style: normal; }
+@font-face { font-family: 'S-CoreDream-5Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
 @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
 
 * {
-	font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'
+	font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
 }
 
 body {
@@ -64,7 +63,7 @@ footer p{
 }
 
 #footerWrap .left>img{
-	width:172px
+	width:172px;
 }
 
 #footerWrap .left img+p{
@@ -155,9 +154,13 @@ footer .copyright{
 
 @media only screen and (max-width : 992px){
 	
+	aside+script+footer{
+		padding-bottom:61px;
+	}
+
 	footer{
 		font-size: 12px;
-		padding: 18px 0 0;
+		padding: 18px 0 61px;
 	}
 
 	#footerWrap{
@@ -238,13 +241,11 @@ footer .copyright{
 	right: 0;
 	top: 0;
 	z-index: 0;
-
 	width: 100%;
 	height: 100% !important;
 }
 
 .main .carousel.carousel-slider .carousel-item {
-
 	min-height: 0 !important;
 }
 
@@ -267,11 +268,9 @@ footer .copyright{
 	right: 0;
 	top: 0;
 	z-index: -1;
-
 	width: 100%;
 	height: 100%;
 	cursor: default;
-
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -361,6 +360,23 @@ p.banner-main-title, p.banner-main-title span{
 	color: #ffde00;
 }
 
+<<<<<<< HEAD
+=======
+/* m_bnr01 */
+@media only screen and (max-width : 992px){
+	.banner-0-wrap p.banner-sub-title{
+		left: 10%;
+		top: 18%;
+		margin-left: 0;
+		font-size: 20px;
+	}
+	.banner-0-wrap p.banner-main-title{
+		font-size: 70px;
+	}
+
+}
+
+>>>>>>> feature/mainbanner
 /* banner02 */
 .banner-02-wrap>img{
 	left: 50%;
@@ -383,7 +399,6 @@ p.banner-main-title, p.banner-main-title span{
 .main .mask-background__textbox {
 	text-align: center;
 	z-index: 0;
-
 	margin-bottom: 74px;
 }
 
@@ -561,7 +576,6 @@ p.banner-main-title, p.banner-main-title span{
 	width: 100%;
 	height: 520px;
 	cursor: default;
-
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
