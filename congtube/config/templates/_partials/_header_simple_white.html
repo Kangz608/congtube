@@ -4,35 +4,35 @@
         <div class='nav-wrapper'>
             <a href='/' class='brand-logo left'>
                 <img
-                    srcSet='{% static 'assets/logo-white.png' %},
+                    srcSet="{% static 'assets/logo-white.png' %},
                     {% static 'assets/logo-white@2x.png' %} 2x,
-                    {% static 'assets/logo-white@3x.png' %} 3x '
-                    src={% static 'assets/logo-white@3x.png' %}
+                    {% static 'assets/logo-white@3x.png' %} 3x "
+                    src="{% static 'assets/logo-white@3x.png' %}"
                     alt='congtube-logo'
                     class='logo-button'
                     />
             </a>
             <a href='#' data-target='mobile-demo' class='sidenav-trigger right'>
                 <img
-                    srcSet='{% static 'assets/icon_hambuger_menu.png' %},
+                    srcSet="{% static 'assets/icon_hambuger_menu.png' %},
                     {% static 'assets/icon_hambuger_menu@2x.png' %} 2x,
-                    {% static 'assets/icon_hambuger_menu@3x.png' %} 3x'
-                    src='{% static 'assets/icon_hambuger_menu@3x.png' %}'
+                    {% static 'assets/icon_hambuger_menu@3x.png' %} 3x"
+                    src="{% static 'assets/icon_hambuger_menu@3x.png' %}"
                     alt='hamburger-menu'
-                    // class='material-icons'
                     />
+                    <!-- class='material-icons' -->
             </a>
             <ul class='right hide-on-med-and-down'>
                 {% if request.user.is_authenticated %}
                     <li>
-                        <a href='{% url 'profile' %}'>마이페이지</a>
+                        <a href="{% url 'profile' %}">마이페이지</a>
                     </li>
                 {% else %}
                     <li>
-                        <a href='{% url 'account_login' %}'>회원가입</a>
+                        <a href="{% url 'account_login' %}">회원가입</a>
                     </li>
                     <li>
-                        <a href='{% url 'account_login' %}'>로그인</a>
+                        <a href="{% url 'account_login' %}">로그인</a>
                     </li>
                 {% endif %}
             </ul>
