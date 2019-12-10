@@ -154,6 +154,10 @@ footer .copyright{
 
 @media only screen and (max-width : 992px){
 	
+	aside+script+footer{
+		padding-bottom:61px;
+	}
+
 	footer{
 		font-size: 12px;
 		padding: 18px 0 61px;
