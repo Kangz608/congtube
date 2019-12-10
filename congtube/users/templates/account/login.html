@@ -10,7 +10,15 @@
 
 {% block content %}
     <div class='sign-in'>
-        <div class=''></div>
+        <div class="m-background-video">
+            <video 
+               src="{% static 'assets/login_bg_m.mp4' %}"
+               autoplay
+               muted
+               loop
+               id="m_background_video"
+            ></video>
+        </div>
         <div class='background__dim-div'></div>
         <div class='container'>
             <img
