@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
   for (var rII = 0; rII < allReviewItems.length; rII++) {
     if (rII < 3) {
       allReviewItems[rII].style.display = 'block';
+    }else{
+      allReviewItems[rII].style.display = 'none';
     }
   }
 
@@ -67,6 +69,26 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+
+// 반응형 resize할 때 readmore icon view 설정
+window.addEventListener('resize',function(){
+
+  var readMore = document.getElementsByClassName('readMore');
+  var readMoreMobile = document.querySelectorAll('#fold');
+
+  if(window.innerWidth>992){
+    for (var RI = 0; RI<readMore.length;RI++){
+      readMore[RI].style.display='none';
+    }
+  }else{
+    for (var RI = 0; RI<readMore.length;RI++){
+      for (var RMI = 0; RMI<readMoreMobile.length;RMI++){
+        readMoreMobile[RMI].style.display='block';
+      }
+    }
+  }
+},true);
+
 // document.addEventListener('DOMContentLoaded', function () {
 //   var optionPriceElements = document.getElementsByClassName('product-list__product-item-option-price');
 
@@ -86,4 +108,75 @@ function flipVolumeChannelDetail(status) {
     document.getElementById('channel-detail__volume-off').style.display = 'block';
   }
   document.getElementById('channel_detail_video').muted = status;
+}
+
+// play on-off bestvideo
+window.onload = function(){
+
+  var videoItem = document.getElementsByClassName("bestvideo-item");
+  var video = document.getElementsByClassName('bestvideo__image');
+
+  for(var i=0; i<video.length; i++){
+    (function(i){
+      var playon = video[i].nextElementSibling;
+      var playoff = playon.nextElementSibling;
+
+      videoItem[i].addEventListener("click", togglePlayVideo);
+      video[i].addEventListener("ended",videoEnded);
+
+      function togglePlayVideo(){ 
+        if(video[i].paused){
+          playon.style.display = 'none';
+          playoff.style.display = 'block';
+          video[i].play();
+        }else{
+          playon.style.display = 'block';
+          playoff.style.display = 'none';
+          video[i].pause();
+        }
+      }
+
+      function videoEnded(){
+          playon.style.display = 'block';
+          playoff.style.display = 'none';
+          video[i].currentTime=0;
+      }
+    })(i);
+  };
+
+};
+
+// float purchase
+
+function floatPurchaseOpen(){
+    document.getElementById('floating_btn_on').style.display='none';
+    document.getElementById('floating_btn_off').style.display='block';
+};
+
+function floatPurchaseClose(){
+  document.getElementById('floating_btn_on').style.display='block';
+  document.getElementById('floating_btn_off').style.display='none';
+};
+
+//mobile _ 비디오 이용정책, 환불규정, 리뷰 더보기 버튼 (아코디언)
+
+function readMore(id){
+  if(window.innerWidth<993){
+    var fold = id.childNodes[1];
+    var unfold = id.childNodes[3];
+
+    if(fold.style.display!='none'){
+
+      id.parentNode.className += ' on';
+      id.parentNode.parentNode.className += ' on';
+      fold.style.display = 'none';
+      unfold.style.display = 'block';
+
+    }else{
+      id.parentNode.classList.remove('on');
+      id.parentNode.parentNode.classList.remove('on');
+      fold.style.display = 'block';
+      unfold.style.display = 'none';
+    }
+  }
 }
