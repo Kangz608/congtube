@@ -1,1 +1,1 @@
-from .review import *
+from reviews.admin.review import *
