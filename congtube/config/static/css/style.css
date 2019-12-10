@@ -77,17 +77,6 @@ footer p{
 	margin:5px 0; 
 }
 
-#footerWrap .left .big{
-	margin-top: 12px;
-	color: #62be51;
-	font-weight: bold;
-	font-size: 18px;
-}
-
-.big a{
-	color: #62be51;
-}
-
 #footerWrap .right{
 	text-align: right;
 }
@@ -107,6 +96,8 @@ address{
 	color: #c4c4c4;
 	font-style: normal;
 }
+
+address a{color: #c4c4c4;}
 
 address .congtube_footer_notice{color: #62be51;}
 
@@ -3041,6 +3032,10 @@ nav a.sidenav-trigger{
 	transform:translateY(-10%)
 }
 
+nav a.sidenav-trigger>img{
+	width: 100%;
+}
+
 .header-search-bar .sidenav li > a .side-nav__list-icon {
 	height: 16px;
 	padding: 0 44px;
@@ -3753,7 +3748,7 @@ nav a.sidenav-trigger{
 	cursor: pointer;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 992px) {
 	.search-bar {
 		height: 50px;
 		border-radius: 25px;
@@ -3762,14 +3757,13 @@ nav a.sidenav-trigger{
 	.search-bar input[type='text'] {
 		width: calc(100% - 50px - 14px);
 		height: 100%;
-
 		padding-right: 25px;
 		font-size: 15px;
 	}
 
 	.search-bar .search-bar__icon {
-		right: 25px;
+		right: 15px;
 		width: 18px;
-		cursor: pointer;
 	}
+
 }
