@@ -20,96 +20,196 @@ input {
 	overflow: hidden;
 }
 
-.footer {
-	padding: 24px 27px;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: flex-start;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: flex-start;
-	background-color: #f2f2f8;
+/* footer */
+
+footer{
+	width: 100%;
+	padding:35px 0;
+	color: #959595;
+	background-color: #fdfdfd;
+	border-top: 2px solid #62be51;
 }
 
-.footer .footer__title {
+footer img{
+	cursor:pointer;
+	vertical-align: middle;
+}
+
+footer a{
+	color: #959595;
+}
+
+footer p{
+	margin:2px 0;
+	padding: 0;
+	line-height: 1.33;
+}
+
+
+#footerWrap{
+	width: 80%;
+	max-width: 1240px;
+	margin: 0 auto;
+	*zoom:1;
+}
+
+#footerWrap:after{
+	display: block;
+	clear: both;
+	content: '';
+}
+
+#footerWrap .left{
+	text-align: left;
+}
+
+#footerWrap .left>img{
+	width:172px
+}
+
+#footerWrap .left img+p{
+	margin:32px 0 15px;
+	color: #62be51;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#footerWrap .left p {
+	margin:5px 0; 
+}
+
+#footerWrap .left .big{
+	margin-top: 12px;
+	color: #62be51;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.big a{
+	color: #62be51;
+}
+
+#footerWrap .right{
+	text-align: right;
+}
+
+#footerWrap .congtube_address_pc .congtube_sns img{
+	width: 41px;
+}
+#footerWrap .congtube_address_pc .congtube_sns img:not(:last-child){
+	margin-right: 15px;
+}
+
+#footerWrap .congtube_address_pc .congtube_bottom{
+	margin: 37px 0 13px;
+}
+
+address{
+	color: #c4c4c4;
+	font-style: normal;
+}
+
+address .congtube_footer_notice{color: #62be51;}
+
+.congtube_address_m{
+	display: none;
+}
+
+.congtube_address_m span{
+	display: block;
+}
+
+.congtube_address_m .address_title{
+	margin: 14px 0;
+	font-size: 14px;
+	line-height: 1.14;
+	font-weight: bold;
+	color: #62be51;
+}
+
+.congtube_address_m .address_title img{
+	width: 8px;
+}
+
+.congtube_address_m .unfold{display: none;}
+.congtube_address_m address{display: none;}
+
+.congtube_bottom p{
 	font-size: 15px;
 	font-weight: bold;
-	letter-spacing: 0.25px;
-	text-align: center;
-	color: #000000;
-	margin-bottom: 20px;
+	letter-spacing: -0.15px;
 }
 
-.footer .footer__info-row {
-	font-size: 12px;
-	text-align: center;
-	color: rgba(0, 0, 0, 0.6);
-	margin-bottom: 4px;
+.congtube_bottom .bar{
+	display: inline-block;
+	margin: 0 11px;
+	width: 2px;
+	height: 13px;
+	background-color: #959595;
 }
 
-.footer .footer__info-horizon-divider {
-	padding: 0px 4px;
+footer .copyright{
+	color: #dbdbdb;
 }
 
-.footer .footer__disclaimer {
-	width: 90%;
-	font-size: 10px;
-	font-weight: 600;
-	text-align: left;
-	color: #62be51;
-	margin-top: 12px;
-}
 
-.footer .footer__info-terms {
-	margin-top: 12px;
-}
-
-.footer .footer__info-term {
-	font-size: 12px;
-	font-weight: bold;
-	text-align: center;
-	color: rgba(0, 0, 0, 0.6);
-	margin-bottom: 4px;
-}
-
-.footer .height60 {
-	height: 60px;
-}
-
-@media only screen and (min-width: 992px) {
-	.footer .footer__title {
-		font-size: 18px;
-		margin-bottom: 20px;
-	}
-
-	.footer .footer__info-row {
-		font-size: 14px;
-		margin-bottom: 6px;
-	}
-
-	.footer .footer__info-horizon-divider {
-		padding: 0px 6px;
-	}
-
-	.footer .footer__disclaimer {
+@media only screen and (max-width : 992px){
+	
+	footer{
 		font-size: 12px;
-		margin-top: 14px;
+		padding: 18px 0 0;
 	}
 
-	.footer .footer__info-terms {
-		margin-top: 14px;
+	#footerWrap{
+		width: 80%;
 	}
 
-	.footer .footer__info-term {
-		font-size: 14px;
-		margin-bottom: 6px;
+	#footerWrap .left img{
+		width: 118px;
+		margin-bottom:18px;
+	}
+
+	#footerWrap .left img+p{
+		display: none;
+	}
+
+	#footerWrap .left, #footerWrap .right{
+		float: none;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.congtube_address_pc{
+		display: none;
+	}
+
+	.congtube_address_m{
+		display: block;
+	}
+
+	.left b{
+		display: inline-block;
+		margin-right:10px;
+	}
+
+	
+
+	.congtube_sns{
+		margin:18px 0;
+	}
+
+	.congtube_sns img:not(:last-child){
+		margin-right:13px;
+	}
+
+	footer .copyright{
+		margin: 11px 0;
+	}
+
+	.congtube_sns img{
+		width: 30px;
+		height: 30px;
 	}
 }
 
