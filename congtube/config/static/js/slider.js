@@ -18,12 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementsByClassName('indicators')[0].setAttribute('id','indicator');
     var banner = document.getElementsByClassName('carousel-item');
     var bannerIndex =0;
-    var test1 = document.getElementsByClassName('bannerConts');
+    var bannerContents = document.getElementsByClassName('bannerConts');
     var g = document.getElementById('indicator');
     var x1 = null;
     var y = null;
-
-
 
     // bannertitle을 이용해 컨텐츠를 나타내보자.
     while(bannerIndex<banner.length){
@@ -35,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     case '&gt;' : return  '>';
                 };
             });
-            test1[bannerIndex].innerHTML=y;
+            bannerContents[bannerIndex].innerHTML=y;
             break;
         }else{
             continue;
@@ -48,21 +46,57 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             (function(index){
                 g.children[i].onclick = function(){
-                    x1 = document.getElementsByClassName('conts')[i].innerHTML;
+                    x1= document.getElementsByClassName('conts')[index].innerHTML;
                     y = x1.replace(/&lt;|&gt;/g,function(tst){
                         switch(tst){
                             case '&lt;' : return '<';
                             case '&gt;' : return  '>';
                         };
                     });
-                    console.log(test1,x1,y);
-                    test1[i].innerHTML=y;
+                    console.log(y)
+                    bannerContents[index].innerHTML=y;
                 };
             })(i);
         
         };
 
 });
+
+
+//window resize시 img변경 (반응형)
+var bannerRes = document.getElementsByClassName('carousel-item');
+
+window.addEventListener('resize',function(){
+    if(window.innerWidth<993){
+        bannerResize();
+    }else{
+        bannerOriginal();
+    }
+},false);
+
+window.addEventListener('DOMContentLoaded',function(){
+    if(window.innerWidth<993){
+        bannerResize();
+    }else{
+        bannerOriginal();
+    }
+})
+
+function bannerResize(){
+    for(var i =0; i<bannerRes.length;i++){
+        var oldSrc = bannerRes[i].childNodes[1].getAttribute('src');
+        var newSrc = oldSrc.replace(/.png|_m.png/g,'_m.png');
+        bannerRes[i].childNodes[1].setAttribute('src',newSrc);
+    }
+};
+
+function bannerOriginal(){
+    for(var i =0; i<bannerRes.length;i++){
+        var oldSrc = bannerRes[i].childNodes[1].getAttribute('src');
+        var newSrc = oldSrc.replace(/.png|_m.png/g,'.png');
+        bannerRes[i].childNodes[1].setAttribute('src',newSrc);
+    }
+}
 
 
 

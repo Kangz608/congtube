@@ -13,18 +13,17 @@
 				<img
 					onclick="redirectTo('{{ banner.url }}')"
 					src="{{ banner.image.url }}"
-					alt="{{ banner.title }}"
 					class="mask-background__image"
 					data-object-fit
 				/>
-				<p id="bannerConts" class="bannerConts">
-					<span id="conts" class="conts" style="display:none">{{ banner.title }}</span>
-				</p>
+				<div id="bannerConts" class="bannerConts">
+				</div>
+				<span id="conts" class="conts" style="display:none">{{ banner.title }}</span>
 				{% comment %}
 				<div class="mask-background__dim-div"></div>
 				{% endcomment %}
 			</div>
-			{% endfor %}	
+			{% endfor %}
 		</div>
 	</div>
 	<div class="container">
