@@ -116,6 +116,18 @@ window.onload = function(){
   var videoItem = document.getElementsByClassName("bestvideo-item");
   var video = document.getElementsByClassName('bestvideo__image');
 
+  //모바일에서 실행시 안보이는 현상 방지 위해 시작 후 멈춤
+  if(window.innerWidth<993){
+    for(var i =0; i<video.length;i++){
+      video[i].play();
+      window.setTimeout(stop(),1);
+      function stop(){
+        video[i].pause();
+      }
+    }
+}
+
+
   for(var i=0; i<video.length; i++){
     (function(i){
       var playon = video[i].nextElementSibling;
