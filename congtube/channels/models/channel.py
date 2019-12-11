@@ -74,6 +74,8 @@ class Channel(models.Model):
     )
 
     goods_detail = RichTextField(
+        blank=True,
+        null=True,
         verbose_name='굿즈 상세페이지'
     )
 
