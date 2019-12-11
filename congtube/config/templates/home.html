@@ -17,6 +17,9 @@
 					class="mask-background__image"
 					data-object-fit
 				/>
+				<p id="bannerConts" class="bannerConts">
+					<span id="conts" class="conts" style="display:none">{{ banner.title }}</span>
+				</p>
 				{% comment %}
 				<div class="mask-background__dim-div"></div>
 				{% endcomment %}
@@ -24,7 +27,6 @@
 			{% endfor %}	
 		</div>
 	</div>
-
 	<div class="container">
 		<div class="search-bar-container">
 			{% include '_partials/_search_bar.html' %}

@@ -10,9 +10,71 @@ document.addEventListener('DOMContentLoaded', function () {
         fullWidth: true,
         indicators: true,
     });
-    
+});
+
+
+// slide-banner
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementsByClassName('indicators')[0].setAttribute('id','indicator');
+    var banner = document.getElementsByClassName('carousel-item');
+    var bannerIndex =0;
+    var test1 = document.getElementsByClassName('bannerConts');
+    var g = document.getElementById('indicator');
+    var x1 = null;
+    var y = null;
+
+
+
+    // bannertitle을 이용해 컨텐츠를 나타내보자.
+    while(bannerIndex<banner.length){
+        if(banner[bannerIndex].className = 'carousel-item active'){
+            x1 = document.getElementsByClassName('conts')[bannerIndex].innerHTML;
+            y= x1.replace(/&lt;|&gt;/g,function(tst){
+                switch(tst){
+                    case '&lt;' : return '<';
+                    case '&gt;' : return  '>';
+                };
+            });
+            test1[bannerIndex].innerHTML=y;
+            break;
+        }else{
+            continue;
+        }
+        bannerIndex ++;
+    };
+
+    //indicator을 사용할 때 배너 컨텐츠를 바꿔보자
+     for (var i = 0; i < g.children.length; i++)
+        {
+            (function(index){
+                g.children[i].onclick = function(){
+                    x1 = document.getElementsByClassName('conts')[i].innerHTML;
+                    y = x1.replace(/&lt;|&gt;/g,function(tst){
+                        switch(tst){
+                            case '&lt;' : return '<';
+                            case '&gt;' : return  '>';
+                        };
+                    });
+                    console.log(test1,x1,y);
+                    test1[i].innerHTML=y;
+                };
+            })(i);
+        
+        };
 
 });
+
+
+
+
+// var indicator = document.getElementsByClassName('indicator');
+// var indicatorIndex = 0;
+// while(indicatorIndex<indicator.length){
+//     indicator[indicatorIndex]
+//     indicatorIndex++;
+// }
+
+
 
 // // 윈도우 load시 첫번째 banner contents만 보이게
 // window.addEventListener('DOMContentLoaded',function(){
@@ -68,5 +130,4 @@ document.addEventListener('DOMContentLoaded', function () {
 // });
 
 // });
-
 
