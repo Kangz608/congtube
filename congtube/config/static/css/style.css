@@ -468,10 +468,6 @@ footer .copyright{
 }
 
 /* ------------------------------------------------ */
-
-.banner03{
-}
-
 .carousel.carousel-slider .carousel-item .banner03>p:nth-child(1){
 	margin: 0;
 	font-weight: 600;
@@ -520,7 +516,7 @@ footer .copyright{
 	.carousel.carousel-slider .carousel-item .banner03>p:nth-child(2){
 		margin: 3vw 0 0;
 		font-size: 6.7vw;
-		line-height: 1.2em
+		line-height: 1.55em
 	}
 }
 
@@ -609,8 +605,9 @@ footer .copyright{
 	}
 	.carousel.carousel-slider .carousel-item .banner05>p:nth-child(2){
 		margin: 3vw 0 0;
-		font-size: 7vw;
-		line-height: 1.3em;
+		font-size: 6.2vw;
+		line-height: 1.4em;
+		letter-spacing: 0;
 	}
 
 }
