@@ -26,3 +26,4 @@ boto3==1.9.253
 gunicorn==19.9.0
 sentry-sdk==0.13.0
 django-admin-honeypot==1.1.0
+django-ckeditor==5.8.0
