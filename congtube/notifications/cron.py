@@ -6,7 +6,6 @@ from notifications.views.kakao import Notification
 
 
 def order_confirmations():
-    print('order_confirmations 실행')
     n = Notification()
     day = int(timezone.now().strftime('%d')) # 오늘 일수를 int형으로 앞에 0이 붙지 않게
     today_orders = Order.objects.filter(
@@ -18,6 +17,4 @@ def order_confirmations():
         slug = ch.slug
         celebrity = Celebrity.objects.get(channel=ch) # 제공자 <-> 제공자개인정보
         celebrity_phonenumber = celebrity.phonenumber # 제공자개인정보에서 알림을 보내기 위한 폰 번호
-        print('order_confirmations_alarm함수 실행 전')
         n.order_confirmations_alarm(celebrity_phonenumber, slug) # celebrity_phonenumber 를 인자값으로 넘겨준다.
-        print('order_confirmations_alarm함수 실행 후')
