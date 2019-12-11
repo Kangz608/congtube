@@ -1,7 +1,13 @@
 @charset 'utf-8';
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 @font-face { font-family: 'S-CoreDream-5Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
 @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+@font-face { font-family: 'S-CoreDream-2ExtraLight'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'Binggrae-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff'); font-weight: normal; font-style: normal;}
+@font-face { font-family: 'InkLipquid'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face {font-family: 'Binggrae';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff')format('woff');font-weight: normal; font-style: normal;}
+
 
 * {
 	font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
@@ -150,13 +156,13 @@ footer .copyright{
 
 @media only screen and (max-width : 992px){
 	
-	aside+script+footer{
-		padding-bottom:61px;
+	.channel-detail+aside+script+footer{
+		padding-bottom:65px;
 	}
 
 	footer{
 		font-size: 12px;
-		padding: 18px 0 61px;
+		padding: 18px 0 0;
 	}
 
 	#footerWrap{
@@ -230,7 +236,8 @@ footer .copyright{
 .main .mask-background {
 	position: relative;
 	width: 100%;
-	height: 710px;
+	height: 83.5vw;
+	max-height:600px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -266,7 +273,7 @@ footer .copyright{
 	/* -o-object-fit: cover;
 	object-fit: cover; */
 	cursor: pointer;
-	transform:translateX(-50%);
+	transform: translateX(-50%);
 }
 
 .main .mask-background__dim-div {
@@ -287,115 +294,325 @@ footer .copyright{
 	transform: initial;
 }
 
-#banner-conts>img{
-	position: absolute;
+/* 배너 기본값 변경 */
+.carousel .carousel-item > img{
+	width:auto;
+	height:100%;
+	z-index: -1;
 }
 
-#banner-conts p.banner-sub-title,#banner-conts p.banner-main-title,
-#banner-conts p.banner-title-link{
-	position: absolute;
+/* 배너 컨텐츠 공통사항*/
+.bannerConts{
+	position: relative;
+	width: fit-content;
+	left: 20%;
+	top:20%;
+	text-align: left;
+	cursor:pointer;
 }
 
-/* indicator */
-.carousel .indicators{z-index: 2;}
+.bannerConts>div{
+}
 
-/* banner contents : 배너 변경시 수정 필수 */
-/* banner01 */
+.scoredream2, .scoredream2 *{
+	font-family:'S-CoreDream-2ExtraLight';
+}
 
-#banner-conts{
-	display: none;
+.scoredream,.scoredream *{
+	font-family: 'S-CoreDream-5Medium';
+}
+
+
+.blackhan,.blackhan *{
+	font-family: 'Black Han Sans', sans-serif;
+}
+
+.ygjlnan, .ygjlnan *{
+	font-family: 'yg-jalnan';
+}
+
+.binggrae, .binggrae *{
+	font-family: 'Binggrae';
+}
+
+.binggrae2, .binggrae2 *{
+	font-family: 'Binggrae-Bold';
+}
+
+.inkLipquid, .inkLipquid *{
+	font-family: 'InkLipquid';
+}
+
+.font_green{color: #57d684;}
+.font_yellow{color: #ffde00;}
+.font_ltpp{color: #957bb6;}
+.font_pp{color: #7e53b1;}
+.font_pk{color: #f14797;}
+.font_gr{color: #2ac150;}
+.font_bl{color: #02c7f2;}
+
+
+/* 배너 컨텐츠 변동사항 banner contents */
+
+/* 배너 1번 */
+.banner01{
+	color: #fff;
+}
+.carousel.carousel-slider .carousel-item .banner01>p:first-child{
+	font-size: 23px;
+}
+
+.carousel.carousel-slider .carousel-item .banner01>p:nth-child(2){
+	margin: 29px 0 69px;
+	font-size: 79px;
+	letter-spacing: -0.01em;
+	line-height: 1em;
+	font-style: italic;
+}
+
+.carousel.carousel-slider .carousel-item .banner01>p:last-child{
+	display: inline-block;
+	margin: 0;
+	padding: 16px 32px;
+	font-size: 18px;
+	text-align: center;
+	background:linear-gradient(#009821,#00ae00);
+	border-radius: 50vw;
+}
+
+.banner01>p:last-child>img{
+	margin-left: 0.5vw;
+	width: 23px;
+}
+/* 배너 1번 반응형 res_banner01 */
+@media only screen and (max-width:992px){
+
+	.bannerConts{
+		left: 5%;
+		top:25%;
+	}
+	.carousel.carousel-slider .carousel-item .banner01>p:first-child{
+		font-size: 3vw;
+	}
+
+	.carousel.carousel-slider .carousel-item .banner01>p:nth-child(2){
+		margin: 4vw 0 5vw -1vw;
+		font-size: 10vw;
+		line-height: 1em;
+		letter-spacing: -0.01em;
+	}
+
+	.carousel.carousel-slider .carousel-item .banner01>p:last-child{
+		padding:  0.1vw 5vw;
+		line-height: 8vw;
+		font-size: 3vw;
+	}
+	
+	.banner01>p:last-child>img{
+		width: 3vw
+	}
+}
+
+/* ---------------------------------------------------- */
+/* 배너 2번 */
+.banner02{
+}
+
+.carousel.carousel-slider .carousel-item .banner02>p:first-child{
+	display: inline-block;
+	margin: 0;
+	padding: 0 5px;
+	font-weight: 500;
+	font-size: 23px;
+	background-color:rgba(255,255,255,0.5);
+}
+
+.carousel.carousel-slider .carousel-item .banner02>p:nth-child(2){
+	margin: 35px 0;
+	color: #fff;
+	font-size: 77.5px;
+	line-height: 1.3;
+	letter-spacing: -2.33px;
+	font-style: italic;
+	text-shadow: 0px 3px 0 rgba(147,97,68,0.3);
+}
+
+.carousel.carousel-slider .carousel-item .banner02>p:last-child{
+	margin: 0;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 1.5;
+	letter-spacing: -0.6px;
+}
+
+@media only screen and (max-width:992px){
+	.banner02{
+	}
+	.carousel.carousel-slider .carousel-item .banner02>p:first-child{
+		padding:0 6px;
+		font-size: 2.2vw;
+	}
+	
+	.carousel.carousel-slider .carousel-item .banner02>p:nth-child(2){
+		margin: 3vw 0;
+		font-size: 9vw;
+		line-height: 1.2em;
+		letter-spacing: -0.02em;
+	}
+
+	.carousel.carousel-slider .carousel-item .banner02>p:last-child{
+		font-size: 2vw;
+		text-shadow: -0.9px 1.8px 6px rgba(38,12,69,0.25);
+	}
+	
+}
+
+/* ------------------------------------------------ */
+.carousel.carousel-slider .carousel-item .banner03>p:nth-child(1){
+	margin: 0;
+	font-weight: 600;
+	font-size: 22.5px;
+	line-height: 26.5px;
+	letter-spacing: 0.68px;
+}
+
+.banner03>p:nth-child(1)>span{
+	margin:0 8px;
+}
+
+.carousel.carousel-slider .carousel-item .banner03>p:nth-child(2){
+	position: relative;
+	display: inline-block;
+	margin: 39px 0 0;
+	color: #fff;
+	font-size: 58px;
+	line-height: 74.5px;
+	letter-spacing: 1.74px;
+}
+
+
+.carousel.carousel-slider .carousel-item .banner03>p:nth-child(2):after{
+	content: '';
 	position: absolute;
 	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	cursor: pointer;
-	z-index: 1;
+	bottom: 0;
+	width: 99%;
+	height: 15px;
+	background-color: #170c73;
+	z-index: -1;
 }
 
-#banner-conts.banner-0-wrap>img{
-	left: 50%;
-	top:70px;
-}
-
-.banner-0-wrap p.banner-sub-title{
-	left: 27%;
-	top: 20%;
-	margin-left:-35px;
-	color: #fefefe;
-	font-size: 23px;
-	font-weight: 500;
-	letter-spacing: -0.69px;
-}
-.banner-0-wrap p.banner-sub-title *{
-	font-family: 'S-CoreDream-5Medium';
-}
-
-.banner-0-wrap .banner-sub-title span{
-	margin-right:18px;
-}
-
-.banner-0-wrap p.banner-main-title{
-	left: 27%;
-	top: 22%;
-	margin-left:-50px;
-	color: #fff;
-	line-height: 1.15;
-	text-align: left;
-	letter-spacing: -2.37px;
-	font-style: italic;
-	font-size: 79px;
-}
-p.banner-main-title, p.banner-main-title span{
-	font-family:"Black Han Sans";
-}
-
-.banner-0-wrap p.banner-title-link{
-	left: 27%;
-	top: 68%;
-	width:214px;
-	height:49px;
-	margin-left:-35px;
-	color: #fefefe;
-	font-size: 18px;
-	font-family: 'S-CoreDream-5Medium';
-	letter-spacing: -0.54px;
-	line-height: 49px;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-.banner-main-title .banner-title-green{
-	color: #57d684;
-}
-
-.banner-main-title .banner-title-yellow{
-	color: #ffde00;
-}
-
-<<<<<<< HEAD
-=======
-/* m_bnr01 */
 @media only screen and (max-width : 992px){
-	.banner-0-wrap p.banner-sub-title{
-		left: 10%;
-		top: 18%;
-		margin-left: 0;
-		font-size: 20px;
+	.banner03{
 	}
-	.banner-0-wrap p.banner-main-title{
-		font-size: 70px;
+	.carousel.carousel-slider .carousel-item .banner03>p:first-child{
+		font-size: 2vw;
+	}
+	
+	.banner03>p:nth-child(1)>span{
+		margin: 0 1vw;
+	}
+
+	.carousel.carousel-slider .carousel-item .banner03>p:nth-child(2){
+		margin: 3vw 0 0;
+		font-size: 6.7vw;
+		line-height: 1.55em
+	}
+}
+
+/* ------------------------------------------------ */
+
+.banner04{
+}
+
+.banner04 .font_yellow{
+	color: #ffd545;
+}
+
+.carousel.carousel-slider .carousel-item .banner04>p:first-child{
+	display: inline-block;
+	width: 291px;
+	height: 38px;
+	color: #fffefe;
+	font-weight: 300;
+	font-size: 19.5px;
+	line-height: 37px;
+	text-align: center;
+	border: 1px solid #f5f5f5;
+	border-radius: 19px;
+	
+}
+
+.carousel.carousel-slider .carousel-item .banner04>p:nth-child(2){
+	margin: 39px 0 0;
+	color: #f5f5f5;
+	font-size: 55.5px;
+	line-height: 70.5px;
+	text-shadow: 0px 5px 6.8px rgba(0,0,0,0.13);
+}
+
+@media only screen and (max-width:992px){
+	.carousel.carousel-slider .carousel-item .banner04>p:first-child{
+		width: initial;
+		height: initial;
+		line-height: initial;
+		font-size: 1vw;
+		padding: 1vw 3.5vw;
+	}
+	.carousel.carousel-slider .carousel-item .banner04>p:nth-child(2){
+		margin: 2vw 0 0;
+		font-size:7vw;
+		line-height: 1.2em;
+	}
+}
+
+/* ------------------------------------------------ */
+
+.banner05{
+}
+
+.carousel.carousel-slider .carousel-item .banner05>p:first-child{
+	margin: 0;
+	color: #fff;
+	font-size: 41px;
+	line-height: 1.22;
+	letter-spacing: -0.82px;
+	text-shadow: -0.9px 1.8px 3px rgba(195,46,44,0.82);
+}
+
+
+.carousel.carousel-slider .carousel-item .banner05>p:nth-child(2){
+	margin:26px 0 0;
+	color: #fff;
+	font-weight: 900;
+	font-size: 52px;
+	letter-spacing: -1.56px;
+	line-height: 60.5px;
+	text-shadow: -3.6px 7.1px 13px #c32e2c;
+	text-shadow: -2px 2px 0 #f96a6b, -2px -2px 0 #f96a6b, 2px -2px 0 #f96a6b, 2px 2px 0 #f96a6b;
+}
+
+
+.banner05>p>.font_yellow{color: #ffde6c;}
+
+@media only screen and (max-width:992px){
+	.banner05{
+		transform:translateY(10%)
+	}
+
+	.carousel.carousel-slider .carousel-item .banner05>p:first-child{
+		font-size: 5vw;
+	}
+	.carousel.carousel-slider .carousel-item .banner05>p:nth-child(2){
+		margin: 3vw 0 0;
+		font-size: 6.2vw;
+		line-height: 1.4em;
+		letter-spacing: 0;
 	}
 
 }
 
->>>>>>> feature/mainbanner
-/* banner02 */
-.banner-02-wrap>img{
-	left: 50%;
-	top: 15%;
-	margin-left:-300px;
-}
+
 
 .main .height113 {
 	height: 113px;
@@ -494,9 +711,9 @@ p.banner-main-title, p.banner-main-title span{
 }
 
 @media only screen and (min-width: 600px) {
-	.main .mask-background {
+	/* .main .mask-background {
 		height: 450px;
-	}
+	} */
 
 	.main .carousel .indicators {
 		bottom: 10px;
