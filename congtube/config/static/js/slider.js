@@ -34,9 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
             });
             bannerContents[bannerIndex].innerHTML=y;
-        }else{
-            continue;
-        }
+        };
         bannerIndex ++;
     };
 
