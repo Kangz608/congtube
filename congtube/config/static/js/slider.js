@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
             });
             bannerContents[bannerIndex].innerHTML=y;
-            break;
         }else{
             continue;
         }
@@ -53,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             case '&gt;' : return  '>';
                         };
                     });
-                    console.log(y)
                     bannerContents[index].innerHTML=y;
                 };
             })(i);
