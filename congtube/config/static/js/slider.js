@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 var bannerRes = document.getElementsByClassName('carousel-item');
 
 window.addEventListener('resize',function(){
-    if(window.innerWidth<993){
+    if(window.innerWidth<850){
         bannerResize();
     }else{
         bannerOriginal();
@@ -71,7 +71,7 @@ window.addEventListener('resize',function(){
 },false);
 
 window.addEventListener('DOMContentLoaded',function(){
-    if(window.innerWidth<993){
+    if(window.innerWidth<850){
         bannerResize();
     }else{
         bannerOriginal();
