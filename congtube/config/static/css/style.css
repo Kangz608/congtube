@@ -156,7 +156,7 @@ footer .copyright{
 
 	footer{
 		font-size: 12px;
-		padding: 18px 0 0;
+		padding: 18px 0 61px;
 	}
 
 	#footerWrap{
@@ -373,6 +373,8 @@ p.banner-main-title, p.banner-main-title span{
 	color: #ffde00;
 }
 
+<<<<<<< HEAD
+=======
 /* m_bnr01 */
 @media only screen and (max-width : 992px){
 	.banner-0-wrap p.banner-sub-title{
@@ -387,6 +389,7 @@ p.banner-main-title, p.banner-main-title span{
 
 }
 
+>>>>>>> feature/mainbanner
 /* banner02 */
 .banner-02-wrap>img{
 	left: 50%;

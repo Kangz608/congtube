@@ -196,19 +196,21 @@ function readMore(id){
 //mobile _ 하단footer 아코디언
 
 function footerMobileFold(id){
+  if(window.innerWidth<993){
 
-var fold = id.childNodes[1];
-var unfold = id.childNodes[3];
-var address = document.getElementsByTagName('address')[1];
+  var fold = id.childNodes[1];
+  var unfold = id.childNodes[3];
+  var address = document.getElementsByTagName('address')[1];
 
-  if(address.style.display!='block'){
-    fold.style.display='none';
-    unfold.style.display='inline-block';
-    address.style.display='block';
-  }else{
-    fold.style.display='inline-block';
-    unfold.style.display='none';
-    address.style.display='none';
-  }
+    if(address.style.display!='block'){
+      fold.style.display='none';
+      unfold.style.display='inline-block';
+      address.style.display='block';
+    }else{
+      fold.style.display='inline-block';
+      unfold.style.display='none';
+      address.style.display='none';
+    }
   
+  }
 }

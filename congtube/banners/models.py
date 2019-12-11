@@ -22,7 +22,7 @@ class Banner(models.Model):
         verbose_name='이미지',
     )
     title = models.CharField(
-        max_length=32,
+        max_length=1024,
         verbose_name='이름',
     )
     url = models.URLField(
