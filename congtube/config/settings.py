@@ -116,6 +116,7 @@ class Base(Configuration):
         'axes',
         'pipeline',
         'admin_honeypot',
+        'ckeditor',
     ]
 
     WSGI_APPLICATION = 'config.wsgi.application'
