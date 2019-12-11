@@ -167,6 +167,19 @@
                 {% endfor %}
             </div>
         </div>
+        <!-- 굿즈 소개 -->
+        {% if channel.goods_detail %}
+        <div class="container bestVideo-container">
+            <div class="section-title-container">
+                <div class="section-title">
+                    굿즈 소개
+                </div>
+            </div>
+            <div class="goods">
+                {{ channel.goods_detail|safe }}
+            </div>
+        </div>
+        {% endif %}
         <!-- 비디오 이용정책 -->
         <div class="container policy-container" id="accordion">
             <div class="section-title-container">
