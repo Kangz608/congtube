@@ -19,6 +19,39 @@ class Base(Configuration):
 
     # Application definition
 
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.sites',
+        'django.contrib.staticfiles',
+        'django.contrib.flatpages',
+        'django.contrib.sitemaps',
+
+        'rest_framework',
+        'api',
+
+        'users',
+        'channels',
+        'orders',
+        'reviews',
+        'banners',
+        'notifications',
+
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.kakao',
+        'allauth.socialaccount.providers.naver',
+
+        'robots',
+        'axes',
+        'pipeline',
+        'admin_honeypot',
+        'ckeditor',
+    ]
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
