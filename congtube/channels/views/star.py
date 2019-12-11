@@ -7,7 +7,7 @@ from orders.models import Order
 
 class StarDetailView(DetailView, MultipleObjectMixin): # paginate_by를 사용하기 위해 Multiple... 상속
     model = Channel
-    paginate_by = 2 # 한 페이지에 오브젝트가 10개가 보이게 설정
+    paginate_by = 10 # 한 페이지에 오브젝트가 10개가 보이게 설정
     template_name = 'channels/star.html'
 
     def get_context_data(self, **kwargs):
