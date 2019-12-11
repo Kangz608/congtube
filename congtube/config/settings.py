@@ -33,12 +33,12 @@ class Base(Configuration):
         'rest_framework',
         'api',
 
-        'users',
-        'channels',
-        'orders',
-        'reviews',
-        'banners',
-        'notifications',
+        'users.apps.UsersConfig',
+        'channels.apps.ChannelsConfig',
+        'orders.apps.OrdersConfig',
+        'reviews.apps.ReviewsConfig',
+        'banners.apps.BannersConfig',
+        'notifications.apps.NotificationsConfig',
 
         'allauth',
         'allauth.account',
@@ -84,39 +84,6 @@ class Base(Configuration):
                 ],
             },
         },
-    ]
-    INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.sites',
-        'django.contrib.staticfiles',
-        'django.contrib.flatpages',
-        'django.contrib.sitemaps',
-
-        'rest_framework',
-        'api',
-
-        'users.apps.UsersConfig',
-        'channels.apps.ChannelsConfig',  # error
-        'orders.apps.OrdersConfig',  # error
-        'reviews.apps.ReviewsConfig', # error
-        'banners.apps.BannersConfig',
-        'notifications.apps.NotificationsConfig',
-
-        'allauth',
-        'allauth.account',
-        'allauth.socialaccount',
-        'allauth.socialaccount.providers.kakao',
-        'allauth.socialaccount.providers.naver',
-
-        'robots',
-        'axes',
-        'pipeline',
-        'admin_honeypot',
-        'ckeditor',
     ]
 
     WSGI_APPLICATION = 'config.wsgi.application'
