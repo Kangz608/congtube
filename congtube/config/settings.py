@@ -50,6 +50,7 @@ class Base(Configuration):
         'axes',
         'pipeline',
         'admin_honeypot',
+        'ckeditor',
     ]
 
     MIDDLEWARE = [

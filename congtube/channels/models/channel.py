@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class ChannelQuerySet(models.QuerySet):
@@ -70,6 +71,10 @@ class Channel(models.Model):
 
     description = models.TextField(
         verbose_name='설명',
+    )
+
+    goods_detail = RichTextField(
+        verbose_name='굿즈 상세페이지'
     )
 
     is_display = models.BooleanField(
