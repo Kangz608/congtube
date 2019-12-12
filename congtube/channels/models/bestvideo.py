@@ -6,6 +6,7 @@ class ChannelQuerySet(models.QuerySet):
     def is_display(self):
         return self.filter(is_display=True)
 
+
 class ChannelManager(models.Manager):
 
     def get_queryset(self):
@@ -56,6 +57,7 @@ class BestVideo(models.Model):
 
     def __str__(self):
         return str(self.channel) + '님의 베스트 비디오'
+
 
     def get_absolute_url(self):
         from django.urls import reverse

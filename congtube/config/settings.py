@@ -51,6 +51,7 @@ class Base(Configuration):
         'pipeline',
         'admin_honeypot',
         'ckeditor',
+        'django_crontab',
     ]
 
     MIDDLEWARE = [
@@ -84,39 +85,6 @@ class Base(Configuration):
                 ],
             },
         },
-    ]
-    INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.sites',
-        'django.contrib.staticfiles',
-        'django.contrib.flatpages',
-        'django.contrib.sitemaps',
-
-        'rest_framework',
-        'api',
-
-        'users.apps.UsersConfig',
-        'channels.apps.ChannelsConfig',  # error
-        'orders.apps.OrdersConfig',  # error
-        'reviews.apps.ReviewsConfig', # error
-        'banners.apps.BannersConfig',
-        'notifications.apps.NotificationsConfig',
-
-        'allauth',
-        'allauth.account',
-        'allauth.socialaccount',
-        'allauth.socialaccount.providers.kakao',
-        'allauth.socialaccount.providers.naver',
-
-        'robots',
-        'axes',
-        'pipeline',
-        'admin_honeypot',
-        'ckeditor',
     ]
 
     WSGI_APPLICATION = 'config.wsgi.application'
@@ -159,7 +127,7 @@ class Base(Configuration):
     # Internationalization
     # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-    LANGUAGE_CODE = 'en-us'
+    LANGUAGE_CODE = 'ko-kr'
 
     TIME_ZONE = 'Asia/Seoul'
 
@@ -219,6 +187,10 @@ class Base(Configuration):
     # https://docs.djangoproject.com/en/2.2/ref/contrib/sites/#module-django.contrib.sites
 
     SITE_ID = 1
+
+    CRONJOBS = [
+        ('59 17 * * *', 'notifications.cron.order_confirmations')
+    ]
 
 
 class Dev(Base):
