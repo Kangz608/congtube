@@ -58,7 +58,6 @@ class BestVideo(models.Model):
     def __str__(self):
         return str(self.channel) + '님의 베스트 비디오'
 
-
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('channels:detail', args=[self.slug])
