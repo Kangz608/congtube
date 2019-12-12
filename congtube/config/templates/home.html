@@ -9,9 +9,10 @@
 	<div class="mask-background">
 		<div class="carousel carousel-slider center">
 			{% for banner in banners %}
-			<div class="carousel-item">
+			<div
+			class="carousel-item"
+			onclick="redirectTo('{{ banner.url }}')">
 				<img
-					onclick="redirectTo('{{ banner.url }}')"
 					src="{{ banner.image.url }}"
 					class="mask-background__image"
 					data-object-fit
