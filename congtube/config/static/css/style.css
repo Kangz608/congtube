@@ -1901,7 +1901,7 @@ footer .copyright{
 
 .order-product-info__text{
 	float: left;
-	width: 50%;
+	max-width: 50%;
 	margin:81px 0 0 28px;
 }
 
@@ -2150,8 +2150,43 @@ footer .copyright{
 
 /* order반응형 */
 @media only screen and (max-width:992px){
+	.order .header-search-bar{
+		position: initial;
+	}
 	.payment-button-bottom-fixed,.payment-button-bottom-fixed-hidden{
 		width: 100%;
+	}
+	.order .order-product-info-container{
+		background-color: transparent;
+		border-top: initial;
+		border-bottom: initial;
+	}
+	.order .order-product-info{
+		width: 90%;
+		padding: 19px 0;
+	}
+	.order .order-product-info__image{
+		width: 75px;
+		height: 87px;
+	}
+	.order-product-info__text{
+		max-width:40%;
+		margin: 19px 0 0 27px;
+	}
+	.order .order-product-info__product-text-channel{
+		font-size: 4.9vw;
+	}
+	.order .order-product-info__product-text-order{
+		margin-top: 0;
+		font-size: 4.5vw;	
+	}
+	.order .order-product-info__price{
+		margin-top: 43px;
+		font-size: 4.3vw;
+	}
+	.order .order-product-info__product-price-image{
+		width: 11px;
+		margin-right: 4px;
 	}
 }
 
