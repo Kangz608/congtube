@@ -25,12 +25,14 @@
     <div class="order-wrap">
         <div class='order-product-info-container'>
             <div class='order-product-info' data-product-id={{ product.id }} data-product-name='{{ product.name }}' data-product-price={{ product.price }}>
-                <div class="order-product-info__image"
-                    style="background-image: url({{ channel.image.url }});"
-                ></div>
-                <div class="order-product-info__text">
-                    <p class='order-product-info__product-text-channel'>{{ channel.name }}</p>
-                    <p class='order-product-info__product-text-order'>{{ product.name }}</p>
+                <div class="order-product-info__left">
+                    <div class="order-product-info__image"
+                        style="background-image: url({{ channel.image.url }});"
+                    ></div>
+                    <div class="order-product-info__text">
+                        <p class='order-product-info__product-text-channel'>{{ channel.name }}</p>
+                        <p class='order-product-info__product-text-order'>{{ product.name }}</p>
+                    </div>
                 </div>
                 <div class="order-product-info__price">
                     <p>
@@ -38,7 +40,7 @@
                         class="order-product-info__product-price-image"
                         src="{% static 'assets/cong-small@2x.png' %}"
                         >
-                        {{ product.price }}원
+                        <span>{{ product.price }}원</span>
                     </p>
                 </div>
             </div>
