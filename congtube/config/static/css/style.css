@@ -1867,6 +1867,31 @@ footer .copyright{
 	text-align: left;
 }
 
+.order_header_pc{display: block;}
+.order_header_m{display: none;}
+
+.order .order_header_m .header-simple-black{
+	position: initial;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.order .order_header_m .header-simple-black nav .brand-logo{
+	left: initial;
+	transform: initial;
+	-webkit-transform: initial;
+	-ms-transform: initial;
+	width: 125px;
+}
+
+.order .order_header_m .header-simple-black nav .sidenav-trigger.right{
+	width: 19px;
+}
+
+.order .order_header_m .header-simple-black nav .brand-logo>img{
+	width: 100%;
+}
+
 .order .order-product-info-container{
 	width: 100%;
 	background-color: #fafafa;
@@ -2156,8 +2181,11 @@ footer .copyright{
 
 /* order반응형 */
 @media only screen and (max-width:992px){
-	.order .header-search-bar{
-		position: initial;
+	.order .order_header_pc{
+		display: none;
+	}
+	.order .order_header_m{
+		display: block;
 	}
 	.payment-button-bottom-fixed,.payment-button-bottom-fixed-hidden{
 		width: 100%;
