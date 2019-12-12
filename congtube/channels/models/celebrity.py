@@ -1,13 +1,8 @@
-from django.contrib.auth import get_user_model
 from django.db import models
 from channels.models import Channel
 
 
-class Celebrity(models.Model):
-    user = models.ForeignKey(
-        get_user_model(),
-        on_delete=models.CASCADE,
-    )
+class Celebrity(models.Model): # 추후에 User를 추가해야 합니다.
     channel = models.ForeignKey(
         Channel,
         on_delete=models.CASCADE,
@@ -25,4 +20,4 @@ class Celebrity(models.Model):
         verbose_name_plural = '셀럽'
 
     def __str__(self):
-        return '아이디 : ' + str(self.user) + ', 채널명 : ' + str(self.channel)
+        return '채널명 : ' + str(self.channel)
