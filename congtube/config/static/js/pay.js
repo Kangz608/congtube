@@ -115,10 +115,31 @@ function pay() {
         return $(".order-product-info").data('productPrice');
     }
 
-    if (selectedPG === null) {
+    //주문서 필수 항목 작성 요청
+    var orderName = $('#order_input_name');
+    var orderTel = $('#order_input_phone_number');
+    var orderMail = $('#order_input_email');
+    var orderMsg = $('#order_input_content');
+
+    if(!orderName.val()){
+        confirm('이름을 입력해주세요.',orderName.focus());
+        return;
+    }else if(!orderTel.val()){
+        confirm('전화번호를 입력해주세요.',orderTel.focus());
+        return;
+    }else if(!(!isNaN(orderTel.val()))){
+        confirm('올바른 전화번호를 입력해주세요.',orderTel.focus());
+        return;
+    }else if(!orderMail.val()){
+        confirm('이메일을 입력해주세요.',orderMail.focus());
+        return;
+    }else if(!orderMsg.val()){
+        confirm('요청사항을 입력해주세요.',orderMsg.focus());
+        return;
+    }else if (!selectedPG) {
         alert('결제 방법을 선택해주세요.');
         return;
-    }
+    };
 
     var merchant_uid = 'merchant_' + new Date().getTime();
     var redirect_url = window.location.origin + "/orders/complete";
@@ -144,8 +165,9 @@ function pay() {
                 alert('결제 요청에 실패했습니다.');
             }
         });
-    }
 
+    }
+    
     $.ajax({
         url: "/api/orders/",
         dataType: "json",
@@ -164,4 +186,5 @@ function pay() {
     }).error(function (result) {
         alert('주문에 실패했습니다.');
     });
+
 }
