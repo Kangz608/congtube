@@ -113,3 +113,5 @@ media/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+congtube/channels/migrations/
+.vscode/settings.json
