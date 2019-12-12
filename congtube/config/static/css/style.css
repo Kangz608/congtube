@@ -2171,9 +2171,6 @@ footer .copyright{
 	.order .order-product-info{
 		width: 90%;
 	}
-	.order .order-product-info__image{
-		width: 15%;
-	}
 	.order .order-product-info__product-text-channel{
 		font-size: calc(20px + 1vw);
 	}
