@@ -1885,6 +1885,7 @@ footer .copyright{
 }
 
 .order .order_header_m .header-simple-black nav .sidenav-trigger.right{
+	right: 0;
 	width: 19px;
 }
 
