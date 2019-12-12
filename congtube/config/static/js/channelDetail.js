@@ -1,3 +1,8 @@
+//fontFit - font size viweport size에 따라 변동
+document.addEventListener('DOMContentLoaded',function(){
+  jQuery('.fitFonts').fitText(3.1);
+})
+
 var selectedProductId = null;
 
 function selectProduct(productId) {
@@ -112,7 +117,6 @@ function flipVolumeChannelDetail(status) {
 
 // play on-off bestvideo
 window.onload = function(){
-
   var videoItem = document.getElementsByClassName("bestvideo-item");
   var video = document.getElementsByClassName('bestvideo__image');
 
@@ -214,3 +218,4 @@ function footerMobileFold(id){
   
   }
 }
+
