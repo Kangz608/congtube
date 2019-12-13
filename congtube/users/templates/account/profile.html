@@ -4,29 +4,32 @@
 
 {% block content %}
 <div class='mypage'>
-    {% include '_partials/_header_simple_black.html' %}
+    <div class="mypage_header_pc">
+        {% include '_partials/_header_search_bar.html' %}
+    </div>
+    <div class="mypage_header_m">
+        {% include '_partials/_header_simple_black.html' %}
+    </div>
+
     <nav class='nav-hidden'></nav>
 
-    <div class='container'>
         <div class='user-summary'>
-            <div class='user-summary__user-info'>
-                <img src='{% if user.socialaccount_set.all.first.get_avatar_url %}{{ user.socialaccount_set.all.first.get_avatar_url }}{% else %}{{ "https://via.placeholder.com/100x100" }}{% endif %}'
-                     alt='user-profile-img'
-                     class='user-summary__user-info-image'
-                     />
-                <div>
-                    <div class='user-summary__user-info-username'> {{user.get_username}} </div>
-                    <div class='user-summary__user-info-email'> {{user.email}} </div>
+            <div class="container">
+                <div class='user-summary__user-info'>
+                    <p class="user-summary__user-info-image">
+                        <img src='{% if user.socialaccount_set.all.first.get_avatar_url %}{{ user.socialaccount_set.all.first.get_avatar_url }}{% else %}{% static "assets/user_noimg.png" %}{% endif %}'
+                        alt='user-profile-img'
+                        />
+                    </p>
+                    <div>
+                        <p class='user-summary__user-info-username'>{{user.get_username}}</p>
+                        <p class='user-summary__user-info-email'>{{user.email}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class='grey-divider'></div>
-
     <div class='container'>
         <div class='section-title'>주문내역</div>
-
         <div class='order-list'>
             {% for order in orders %}
                 {% include '_partials/_order_item.html' with order=order %}
