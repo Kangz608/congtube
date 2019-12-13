@@ -116,24 +116,34 @@ function pay() {
     }
 
     //주문서 필수 항목 작성 요청
-    var orderName = $('#order_input_name');
-    var orderTel = $('#order_input_phone_number');
-    var orderMail = $('#order_input_email');
-    var orderMsg = $('#order_input_content');
+    var orderName = document.getElementById('#order_input_name');
+    var orderTel = document.getElementById('#order_input_phone_number');
+    var orderMail = document.getElementById('#order_input_email');
+    var orderMsg = document.getElementById('#order_input_content');
+    function email_check( email ) {
+        var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        return (email != '' && email != 'undefined' && regex.test(email));
+    
+    }
 
-    if(!orderName.val()){
+	
+
+    if(!orderName.value){
         confirm('이름을 입력해주세요.',orderName.focus());
         return;
-    }else if(!orderTel.val()){
+    }else if(!orderTel.value){
         confirm('전화번호를 입력해주세요.',orderTel.focus());
         return;
-    }else if(!(!isNaN(orderTel.val()))){
+    }else if(!(!isNaN(orderTel.value))){
         confirm('올바른 전화번호를 입력해주세요.',orderTel.focus());
         return;
-    }else if(!orderMail.val()){
+    }else if(!orderMail.value){
         confirm('이메일을 입력해주세요.',orderMail.focus());
         return;
-    }else if(!orderMsg.val()){
+    }else if(!email_check(orderMail.value)){
+        confirm('올바른 이메일을 입력해주세요.',orderMail.focus());
+        return;
+    }else if(!orderMsg.value){
         confirm('요청사항을 입력해주세요.',orderMsg.focus());
         return;
     }else if (!selectedPG) {
