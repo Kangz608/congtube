@@ -7,7 +7,7 @@ from notifications.views.kakao import Notification
 
 def order_confirmations():
     n = Notification()
-    day = int(timezone.now().strftime('%d')) # 오늘 일수를 int형으로 앞에 0이 붙지 않게
+    day = int(timezone.now().strftime('%d'))  # 오늘 일수를 int형으로 앞에 0이 붙지 않게
     today_orders = Order.objects.filter(
         Q(created_at__day=day) & Q(status=2)).values('channel').order_by('channel').distinct()
         # 오늘 주문 온 사람들 중에서 결제완료인 채널명을 출력하라(중복제거)
