@@ -14,6 +14,7 @@
 }
 
 body {
+	min-width:1300px;
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -3742,6 +3743,7 @@ nav a.sidenav-trigger>img{
 
 /* order */
 .order-list{
+	padding-bottom:110px;
 }
 
 
@@ -3760,10 +3762,6 @@ nav a.sidenav-trigger>img{
 	border-bottom: 0.5px solid #d8d8d8;
 }
 
-.order-list-item:last-child {
-	border-bottom: none;
-}
-
 .order-list-item__left-container {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -3777,7 +3775,7 @@ nav a.sidenav-trigger>img{
 }
 
 .order-list-item__left-channel-container{
-	margin-left: 36px;
+	margin:11px 0 0  36px;
 }
 
 .order-list-item__left-image,.order-list-item__left-channel-container>p {
@@ -3809,39 +3807,31 @@ nav a.sidenav-trigger>img{
 }
 
 .order-list-item__left-channel-container .order-list-item__left-channel-text {
-	line-height: 15px;
-	font-size: 15px;
+	line-height: 1em;
+	font-size: 18px;
 	font-weight: bold;
-	letter-spacing: 0.48px;
-	color: #000000;
-	margin-right: 8px;
+	letter-spacing: 0.58px;
+	color: #000;
+	margin:0 8px 8px 0;
 }
 	
 .order-list-item__product-name {
-	line-height: 15px;
-	font-size: 15px;
-	font-weight: lighter;
-	letter-spacing: 0.37px;
+	line-height: 1em;
+	font-size: 16px;
+	letter-spacing: 0.39px;
 	color: #333333;
 }
 
 .order-list-item__right-container {
-	height: 97px;
-
 	display: -webkit-box;
-
 	display: -ms-flexbox;
-
 	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-ms-flex-direction: column;
 	flex-direction: column;
-
 	-webkit-box-pack: justify;
-
 	-ms-flex-pack: justify;
-
 	justify-content: space-between;
 	-webkit-box-align: end;
 	-ms-flex-align: end;
@@ -3849,10 +3839,10 @@ nav a.sidenav-trigger>img{
 }
 
 .order-list-item__order-created-at {
-	font-size: 10px;
-	font-weight: lighter;
+	margin-top: 11px;
+	font-size: 12px;
 	letter-spacing: 0.32px;
-	color: rgba(0, 0, 0, 0.4);
+	color: #9d9d9d;
 }
 
 .order-list-item__order-price {
@@ -3880,13 +3870,13 @@ nav a.sidenav-trigger>img{
 	font-size: 15px;
 	font-weight: bold;
 	letter-spacing: 0.37px;
-	color: #000000;
+	color: #000;
 }
-
+/* 
 @media only screen and (min-width: 992px) {
-	/* .order-list-item {
+	.order-list-item {
 		height: 140px;
-	} */
+	}
 
 	.order-list-item__left-channel-text {
 		line-height: 17px;
@@ -3902,7 +3892,7 @@ nav a.sidenav-trigger>img{
 	.order-list-item__order-created-at {
 		font-size: 12px;
 	}
-}
+} */
 
 .search-bar {
 	position: absolute;
