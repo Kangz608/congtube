@@ -1,25 +1,28 @@
 {% load static %}
 
 <a href={% url 'orders:detail' order.id %} class='order-list-item'>
-    <div class='order-list-item__left-container'>
-        <p class="order-list-item__left-image" style="background-image: url('{{ order.channel.image.url }}');"></p>
-        <div class="order-list-item__left-channel-container">
-            <p class='order-list-item__left-order-status'>{{ order.get_status_display }}</p>
-            <p class='order-list-item__left-channel-text'>{{ order.channel }}</p>
-            <p class='order-list-item__product-name'>{{ order.product.name }}</p>
-        </div>
-    </div>
-
-    <div class='order-list-item__right-container'>
-        <div class='order-list-item__order-created-at'>{{ order.created_at|date:"Y.m.d." }}</div>
-        <div class='order-list-item__order-price'>
-            <img
-                src={% static 'assets/cong-small@2x.png' %}
-                alt='cong-img'
-                class='order-list-item__order-price-logo'
-                data-object-fit
-                />
-            <div class='order-list-item__order-price-text'>{{ order.product.price }}원</div>
+    <div class='order-list-item__container order_flex'>
+        <p 
+            class="order-list-item__left-image"
+            style="background-image: url('{{ order.channel.image.url }}');"></p>
+        <div class="order-list-item-container">
+            <div class="order-list-item__left order_flex">
+                <p class='order-list-item__left-order-status'>{{ order.get_status_display }}</p>
+                <p class='order-list-item__order-created-at'>{{ order.created_at|date:"Y.m.d." }}</p>
+            </div>
+            <div class="order-list-item__center">
+                <p class='order-list-item__left-channel-text'>{{ order.channel }}</p>
+                <p class='order-list-item__product-name'>{{ order.product.name }}</p>
+            </div>
+            <div class='order-list-item__right'>
+                <img
+                    src="{% static 'assets/cong-small@2x.png' %}"
+                    alt='cong-img'
+                    class='order-list-item__order-price-logo'
+                    data-object-fit
+                    />
+                <span class='order-list-item__order-price-text'>{{ order.product.price }}원</span>
+            </div>
         </div>
     </div>
 </a>
