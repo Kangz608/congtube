@@ -1,3 +1,19 @@
+var selectedProductId = null;
+
+function selectProduct(productId) {
+  selectedProductId = productId;
+
+  var allProductDots = document.getElementsByClassName('product-list__product-item-option-dot-selected');
+
+  for (var dI = 0; dI < allProductDots.length; dI++) {
+    if (allProductDots[dI].id !== 'channel_product_' + productId) {
+      allProductDots[dI].style.display = 'none';
+      continue;
+    }
+    allProductDots[dI].style.display = 'block';
+  }
+}
+
 function redirectToOrder() {
 
   if (selectedProductId == null) {
