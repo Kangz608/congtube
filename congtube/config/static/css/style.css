@@ -13,6 +13,12 @@
 	font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
 }
 
+p{
+	margin: 0;
+	padding: 0;
+	line-height: 1em;
+}
+
 body {
 	min-width:1300px;
 	margin: 0;
@@ -2944,56 +2950,114 @@ footer .copyright{
 	letter-spacing: 1.2px;
 	color: #ffffff;
 }
-
 .sign-in {
 	width: 100%;
-	height: 100vh;
-	overflow: hidden;
+	padding: 50px 0;
+	background-color: #fafafa;
+}
+
+.login_wrap{
+	width: 392px;
+	height: 581px;
+	margin: 0 auto;
+	border: 1px solid #d8d8d8;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+
+.sign-in .login_logo{
+	height: 46%;
+	padding-top: 15%;
+}
+
+.sign-in .login_logo p{
+	font-size: 16px;
+	line-height: 2em;
 }
 
 .sign-in .m-background-video{
-	width: 100%;
-	height: 100%;
+	display: none;
 }
 
-.sign-in #m_background_video{
-	width: 140%;
-	height: 140%;
-	-o-object-fit: cover;
-	object-fit: cover;
+@media only screen and (max-width:992px){
+	.sign-in .m-background-video{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.sign-in #m_background_video{
+		width: 140%;
+		height: 140%;
+		-o-object-fit: cover;
+		object-fit: cover;
+	}
 }
 
-.sign-in .sign-in__center-logo {
-	width: 30%;
-	max-width: 200px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
+
+.sign-in .sign-in__center-logo_m{
+	display: none;
+}
+
+.sign-in .sign-in__center-logo_pc {
+	width: 154px;
+	height: 113px;	
 }
 
 .sign-in .login-buttons {
-	display: block;
-	position: absolute;
-	bottom: 77px;
+	margin: 0;
+	padding: 0;
+	width: calc(100% - 92px);
+	margin: 0 auto;
+	height: 54%;
+}
 
-	width: 84%;
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	transform: translateX(-50%);
+.sign-in .login-buttons li{
+	border-radius: 5px;
+	margin-bottom: 17px;
+}
+
+.sign-in .login-buttons li:nth-child(1){
+	background-color: #ffdf00;
+}
+.sign-in .login-buttons li:nth-child(2){
+	background-color: #03cf5d;
+}
+.sign-in .login-buttons li:nth-child(3){
+	background-color: #3a5ca9;
+}
+.sign-in .login-buttons li:nth-child(4){
+	background-color: #fff;
+	border: 0.5px solid #d8d8d8;
 }
 
 .sign-in .login-buttons a {
 	display: block;
-	margin: 18px auto 0 auto;
+	text-align: left;
+	font-size: 16px;
+}
+
+.sign-in .login-buttons li:nth-child(1) a{
+	color: #2b1718;
+}
+.sign-in .login-buttons li:nth-child(2) a,.sign-in .login-buttons li:nth-child(3) a{
+	color: #fff;
+}
+.sign-in .login-buttons li:nth-child(4) a{
+	color: #000;
 }
 
 .sign-in .login-buttons img {
-	width: 100%;
-	max-width: 400px;
+	width: 55px;
+	vertical-align: middle;
+}
+
+.sign-in .login-buttons span{
+	display: inline-block;
+	width: calc(100% - 100px);
+	vertical-align: middle;
+	text-align: center;
 }
 
 .channel-card {
