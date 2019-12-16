@@ -116,10 +116,10 @@ function pay() {
     }
 
     //주문서 필수 항목 작성 요청
-    var orderName = document.getElementById('#order_input_name');
-    var orderTel = document.getElementById('#order_input_phone_number');
-    var orderMail = document.getElementById('#order_input_email');
-    var orderMsg = document.getElementById('#order_input_content');
+    var orderName = document.getElementById('order_input_name');
+    var orderTel = document.getElementById('order_input_phone_number');
+    var orderMail = document.getElementById('order_input_email');
+    var orderMsg = document.getElementById('order_input_content');
     function email_check( email ) {
         var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
         return (email != '' && email != 'undefined' && regex.test(email));
