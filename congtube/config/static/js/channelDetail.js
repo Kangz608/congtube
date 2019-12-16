@@ -1,24 +1,3 @@
-//fontFit - font size viweport size에 따라 변동
-document.addEventListener('DOMContentLoaded',function(){
-  jQuery('.fitFonts').fitText(3.1);
-})
-
-var selectedProductId = null;
-
-function selectProduct(productId) {
-  selectedProductId = productId;
-
-  var allProductDots = document.getElementsByClassName('product-list__product-item-option-dot-selected');
-
-  for (var dI = 0; dI < allProductDots.length; dI++) {
-    if (allProductDots[dI].id !== 'channel_product_' + productId) {
-      allProductDots[dI].style.display = 'none';
-      continue;
-    }
-    allProductDots[dI].style.display = 'block';
-  }
-}
-
 function redirectToOrder() {
 
   if (selectedProductId == null) {
@@ -81,15 +60,27 @@ window.addEventListener('resize',function(){
   var readMore = document.getElementsByClassName('readMore');
   var readMoreMobile = document.querySelectorAll('#fold');
 
+
   if(window.innerWidth>992){
     for (var RI = 0; RI<readMore.length;RI++){
       readMore[RI].style.display='none';
     }
   }else{
     for (var RI = 0; RI<readMore.length;RI++){
-      for (var RMI = 0; RMI<readMoreMobile.length;RMI++){
-        readMoreMobile[RMI].style.display='block';
+      
+      // if(this.parentNode.nextElementSibling.style='block'){
+      //   for (var RMI = 0; RMI<readMoreMobile.length;RMI++){
+      //     readMoreMobile[RMI].style.display='none';
+      //   }
+      // }else{
+      //   for (var RMI = 0; RMI<readMoreMobile.length;RMI++){
+      //     readMoreMobile[RMI].style.display='block';
+      //   }
+      // }
+      if(this.parentNode.classList[1]=='on'){
+        this.alert('열ㄻ')
       }
+      
     }
   }
 },true);
