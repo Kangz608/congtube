@@ -45,6 +45,7 @@ class Base(Configuration):
         'allauth.socialaccount',
         'allauth.socialaccount.providers.kakao',
         'allauth.socialaccount.providers.naver',
+        'allauth.socialaccount.providers.google',
 
         'robots',
         'axes',
@@ -103,6 +104,17 @@ class Base(Configuration):
     LOGIN_REDIRECT_URL = '/profile/'
     ACCOUNT_LOGOUT_ON_GET = True
 
+    SOCIALACCOUNT_PROVIDERS = {
+        'google': {
+            'SCOPE': [
+                'profile',
+                'email',
+            ],
+            'AUTH_PARAMS': {
+                'access_type': 'online',
+            }
+        }
+    }
 
     # Password validation
     # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
