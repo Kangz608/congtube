@@ -22,6 +22,12 @@ body {
 	text-align: center;
 }
 
+@media only screen and (max-width:992px){
+	body{
+		min-width:360px;
+	}
+}
+
 input {
 	overflow: hidden;
 }
@@ -1614,21 +1620,6 @@ footer .copyright{
 
 
 }
-
-/* @keyframes accordion_on {
-	0%{opacity: 0; height: 0;}
-	50%{opacity: 1;height:130px;}
-	70%{opacity: 1;height: 170px;}
-	100%{opacity: 1;height:auto;}
-} */
-
-/* @keyframes accordion_off{
-	0%{opacity: 1;height:auto;}
-	50%{opacity: 1;}
-	70%{opacity: 1;height:130px;}
-	100%{opacity: 0; height: 0;}
-} */
-
 
 /* @media only screen and (min-width: 600px) {
 	.channel-detail .channel_detail_video__volume-button {
