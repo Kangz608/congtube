@@ -1,8 +1,3 @@
-//fontFit - font size viweport size에 따라 변동
-document.addEventListener('DOMContentLoaded',function(){
-  jQuery('.fitFonts').fitText(3.1);
-})
-
 var selectedProductId = null;
 
 function selectProduct(productId) {
@@ -75,25 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// 반응형 resize할 때 readmore icon view 설정
-window.addEventListener('resize',function(){
-
-  var readMore = document.getElementsByClassName('readMore');
-  var readMoreMobile = document.querySelectorAll('#fold');
-
-  if(window.innerWidth>992){
-    for (var RI = 0; RI<readMore.length;RI++){
-      readMore[RI].style.display='none';
-    }
-  }else{
-    for (var RI = 0; RI<readMore.length;RI++){
-      for (var RMI = 0; RMI<readMoreMobile.length;RMI++){
-        readMoreMobile[RMI].style.display='block';
-      }
-    }
-  }
-},true);
-
 // document.addEventListener('DOMContentLoaded', function () {
 //   var optionPriceElements = document.getElementsByClassName('product-list__product-item-option-price');
 
@@ -119,18 +95,6 @@ function flipVolumeChannelDetail(status) {
 window.onload = function(){
   var videoItem = document.getElementsByClassName("bestvideo-item");
   var video = document.getElementsByClassName('bestvideo__image');
-
-  //모바일에서 실행시 안보이는 현상 방지 위해 시작 후 멈춤
-  if(window.innerWidth<993){
-    for(var i =0; i<video.length;i++){
-      video[i].play();
-      window.setTimeout(stop(),1);
-      function stop(){
-        video[i].pause();
-      }
-    }
-}
-
 
   for(var i=0; i<video.length; i++){
     (function(i){
@@ -196,6 +160,31 @@ function readMore(id){
     }
   }
 }
+
+// 반응형 resize할 때 readmore icon view 설정
+window.addEventListener('resize',function(){
+
+  var readMore = document.getElementsByClassName('readMore');
+  var readMoreMobile = document.querySelectorAll('#fold');
+  var acc = document.getElementsByClassName('accordion');
+
+
+  if(window.innerWidth>992){
+    for (var RI = 0; RI<readMore.length;RI++){
+      readMore[RI].style.display='none';
+    }
+  }else{
+    for (var RI = 0; RI<readMore.length;RI++){
+      readMore[RI].style.display='none';
+    }
+    for (var RI = 0; RI<acc.length;RI++){
+      readMoreMobile[RI].parentNode.classList.remove('on');
+      readMoreMobile[RI].parentNode.parentNode.classList.remove('on');
+      readMoreMobile[RI].style.display='block';
+    }
+    return;
+  }
+},true);
 
 //mobile _ 하단footer 아코디언
 

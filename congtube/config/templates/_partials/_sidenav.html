@@ -6,7 +6,7 @@
         <a href='{% url 'profile' %}' class='side-nav-user-profile'>
             <div class='side-nav-user-profile__info'>
                 <img
-                    src="{% if request.user.socialaccount_set.all.first.get_avatar_url %}{{ request.user.socialaccount_set.all.first.get_avatar_url }}{% else %}{{ 'https://via.placeholder.com/100x100' }}{% endif %}"
+                    src="{% if request.user.socialaccount_set.all.first.get_avatar_url %}{{ request.user.socialaccount_set.all.first.get_avatar_url }}{% else %}{% static 'assets/user_noimg.png' %}{% endif %}"
                     alt='profile'
                     class='side-nav-user-profile__info-image'
                 />
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <img
-                src={% static 'assets/arrow-right-black@3x.png' %}
+                src={% static 'assets/arrow-right-black@2x.png' %}
                 alt='arrow-black'
                 class='side-nav-user-profile__arrow-image'
             />
@@ -25,7 +25,7 @@
         <li>
             <a href="{% url 'profile' %}">
                 <img
-                    src={% static 'assets/icon-mypage@3x.png' %}
+                    src={% static 'assets/icon-mypage@2x.png' %}
                     alt='mypage-icon'
                     class='side-nav__list-icon'
                 />
@@ -51,7 +51,7 @@
                 사용가능합니다
             </div>
             <img
-                src={% static 'assets/arrow-right-black@3x.png' %}
+                src={% static 'assets/arrow-right-black@2x.png' %}
                 alt='arrow-black'
                 class='side-nav-user-profile__arrow-image'
             />
@@ -60,7 +60,7 @@
         <li>
             <a href='{% url 'account_login' %}'>
                 <img
-                    src={% static 'assets/icon-mypage@3x.png' %}
+                    src={% static 'assets/icon-mypage@2x.png' %}
                     alt='mypage-icon'
                     class='side-nav__list-icon'
                 />

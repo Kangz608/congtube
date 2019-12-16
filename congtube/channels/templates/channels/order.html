@@ -19,10 +19,12 @@
 
 
 {% block content %}
+
+<div class="headerPart"></div>
+{% include '_partials/_header_simple_black.html' %}
+{% include '_partials/_header_search_bar.html' %}
+
 <div class='order'>
-    <div class="order_header_pc">{% include '_partials/_header_search_bar.html' %}</div>
-    <div class="order_header_m">{% include '_partials/_header_simple_black.html' %}</div>
-    <!-- <nav class='nav-hidden'></nav> -->
     <div class="order-wrap">
         <div class='order-product-info-container'>
             <div class='order-product-info' data-product-id={{ product.id }} data-product-name='{{ product.name }}' data-product-price={{ product.price }}>
