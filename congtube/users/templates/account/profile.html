@@ -3,16 +3,11 @@
 
 
 {% block content %}
+<div class="headerPart"></div>
+{% include '_partials/_header_simple_black.html' %}
+{% include '_partials/_header_search_bar.html' %}
+
 <div class='mypage'>
-    <div class="mypage_header_pc">
-        {% include '_partials/_header_search_bar.html' %}
-    </div>
-    <div class="mypage_header_m">
-        {% include '_partials/_header_simple_black.html' %}
-    </div>
-
-    <nav class='nav-hidden'></nav>
-
         <div class='user-summary'>
             <div class="container">
                 <div class='user-summary__user-info'>
