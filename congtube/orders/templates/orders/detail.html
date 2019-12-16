@@ -40,7 +40,7 @@
                 {% comment %} <a href='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4' download> {% endcomment %}
                 <a href='{{ order.video.url }}' download>
                     <img
-                        src={% static 'assets/icon-save@3x.png' %}
+                        src={% static 'assets/icon-save@2x.png' %}
                         alt='저장'
                         class='review-product__thumbnail-button-icon'
                         />
@@ -48,7 +48,7 @@
                 {% comment %} <a href='#' onclick="copyToClipboard('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4')"> {% endcomment %}
                 <a href='#' onclick="copyToClipboard('{{ order.video.url }}')">
                     <img
-                        src={% static 'assets/icon-share@3x.png' %}
+                        src={% static 'assets/icon-share@2x.png' %}
                         alt='저장'
                         class='review-product__thumbnail-button-icon'
                         />
@@ -56,7 +56,7 @@
             </div>
         {% else %}
             <img
-                src={% static 'assets/video-preparing@3x.png' %}
+                src={% static 'assets/video-preparing@2x.png' %}
                 alt='order-channel-img'
                 class='review-product__thumbnail-image'
                 data-object-fit
@@ -74,7 +74,7 @@
             </div>
             <div class='review-product-info__price'>
                 <img
-                    src={% static 'assets/cong-small@3x.png' %}
+                    src={% static 'assets/cong-small@2x.png' %}
                     alt='cong-logo'
                     class='review-product-info__price-logo'
                     />
@@ -142,7 +142,7 @@
                         {% for i in order.review_set.first.rating|greens %}
                         <div>
                             <img
-                                src={% static 'assets/star-green@3x.png' %}
+                                src={% static 'assets/star-green@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--on'
                                 id='order-detail__review-star-1--on'
@@ -152,7 +152,7 @@
                         {% for i in order.review_set.first.rating|greys %}
                         <div>
                             <img
-                                src={% static 'assets/star-green@3x.png' %}
+                                src={% static 'assets/star-green@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--on'
                                 id='order-detail__review-star-5--on'
@@ -181,13 +181,13 @@
                     <div class='section-title-rating-stars' id='review-star-0'>
                         <div onclick='rateStars(1)'>
                             <img
-                                src={% static 'assets/star-grey@3x.png' %}
+                                src={% static 'assets/star-grey@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--off'
                                 id='order-detail__review-star-1--off'
                             />
                             <img
-                                src={% static 'assets/star-green@3x.png' %}
+                                src={% static 'assets/star-green@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--on'
                                 id='order-detail__review-star-1--on'
@@ -195,13 +195,13 @@
                         </div>
                         <div onclick='rateStars(2)'>
                             <img
-                                src={% static 'assets/star-grey@3x.png' %}
+                                src={% static 'assets/star-grey@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--off'
                                 id='order-detail__review-star-2--off'
                             />
                             <img
-                                src={% static 'assets/star-green@3x.png' %}
+                                src={% static 'assets/star-green@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--on'
                                 id='order-detail__review-star-2--on'
@@ -209,13 +209,13 @@
                         </div>
                         <div onclick='rateStars(3)'>
                             <img
-                                src={% static 'assets/star-grey@3x.png' %}
+                                src={% static 'assets/star-grey@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--off'
                                 id='order-detail__review-star-3--off'
                             />
                             <img
-                                src={% static 'assets/star-green@3x.png' %}
+                                src={% static 'assets/star-green@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--on'
                                 id='order-detail__review-star-3--on'
@@ -223,13 +223,13 @@
                         </div>
                         <div onclick='rateStars(4)'>
                             <img
-                                src={% static 'assets/star-grey@3x.png' %}
+                                src={% static 'assets/star-grey@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--off'
                                 id='order-detail__review-star-4--off'
                             />
                             <img
-                                src={% static 'assets/star-green@3x.png' %}
+                                src={% static 'assets/star-green@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--on'
                                 id='order-detail__review-star-4--on'
@@ -237,13 +237,13 @@
                         </div>
                         <div onclick='rateStars(5)'>
                             <img
-                                src={% static 'assets/star-grey@3x.png' %}
+                                src={% static 'assets/star-grey@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--off'
                                 id='order-detail__review-star-5--off'
                             />
                             <img
-                                src={% static 'assets/star-green@3x.png' %}
+                                src={% static 'assets/star-green@2x.png' %}
                                 alt='star-green'
                                 class='section-title-rating-star rating-star--on'
                                 id='order-detail__review-star-5--on'
