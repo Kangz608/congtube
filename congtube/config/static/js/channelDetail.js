@@ -162,6 +162,7 @@ function readMore(id){
 }
 
 // 반응형 resize할 때 readmore icon view 설정
+var oldWidth = window.innerWidth;
 window.addEventListener('resize',function(){
 
   var readMore = document.getElementsByClassName('readMore');
@@ -173,7 +174,7 @@ window.addEventListener('resize',function(){
     for (var RI = 0; RI<readMore.length;RI++){
       readMore[RI].style.display='none';
     }
-  }else{
+  }else if(window.innerWidth!==oldWidth&&window.innerWidth<993){
     for (var RI = 0; RI<readMore.length;RI++){
       readMore[RI].style.display='none';
     }
@@ -182,6 +183,7 @@ window.addEventListener('resize',function(){
       readMoreMobile[RI].parentNode.parentNode.classList.remove('on');
       readMoreMobile[RI].style.display='block';
     }
+    oldWidth = window.innerWidth;
     return;
   }
 },true);
