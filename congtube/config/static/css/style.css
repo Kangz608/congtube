@@ -1266,8 +1266,10 @@ footer .copyright{
 }
 
 .policy p{
+	margin: 12.5px 0;
 	color: #747474;
 	font-size: 13px;
+	line-height: 1.54;
 	letter-spacing: -0.13px;
 	text-align: left;
 }
