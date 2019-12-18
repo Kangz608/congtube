@@ -29,15 +29,17 @@
             {% for order in object_list %}
                 {% include '_partials/_order_item.html' with order=order %}
             {% endfor %}
-            {% if object_list %}
-                {% include '_partials/_pagination.html' %}
-            {% else %}
-                <p class="orderNone">
-                    주문내역이 없습니다.
-                </p>
-            {% endif %}
+            <div class="pagination-container">
+                {% if object_list %}
+                    {% include '_partials/_pagination.html' %}
+                {% else %}
+                    <p class="orderNone">
+                        주문내역이 없습니다.
+                    </p>
+                {% endif %}
+            </div>
         </div>
-
     </div>
+    <p id="top"></p>
 </div>
 {% endblock %}
