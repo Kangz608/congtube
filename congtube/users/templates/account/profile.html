@@ -29,6 +29,7 @@
             {% for order in orders %}
                 {% include '_partials/_order_item.html' with order=order %}
             {% endfor %}
+            {% include '_partials/_pagination.html' %}
         </div>
     </div>
 </div>
