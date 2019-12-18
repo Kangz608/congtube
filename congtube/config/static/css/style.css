@@ -4114,3 +4114,42 @@ nav a.sidenav-trigger>img{
 	}
 
 }
+
+/* order-list pagination */
+.pagination ul{
+	padding: 0;
+	margin: 41px 0;
+}
+.pagination li{
+	height: 26px;
+}
+.pagination li a{
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	color: #a3a3a3;
+	font-size: 13px;
+	line-height: 26px;
+	border-radius: 50%;
+	cursor: pointer !important;
+}
+.pagination .active a{
+	color: #fff;
+	background-color: #62be51;
+}
+.pagination li .pagination_btn{
+	width: 28px;
+	height: 28px;
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.pagination .prev{
+	margin-right: 20px;
+	background-image: url('../assets/list_pagenation_pre@2x.png');
+}
+
+.pagination .next{
+	margin-left: 20px;
+	background-image: url('../assets/list_pagenation_next@2x.png') ;
+}
