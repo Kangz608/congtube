@@ -30,10 +30,10 @@ body {
 
 @media only screen and (max-width:992px){
 	body{
-		min-height: 100%;
+		min-height: 100vh;
 		min-width:320px;
 	}
-	footer{
+	.mypage+footer{
 		position: absolute;
 		bottom: 0;
 	}
@@ -1107,8 +1107,6 @@ footer .copyright{
 	}
 
 	.channel-detail .mask-background__image{
-		width:100vh;
-		height: auto;
 		border-radius: initial;
 		z-index: -1;
 	}
@@ -1831,6 +1829,9 @@ footer .copyright{
 }
 
 @media only screen and (max-width:992px){
+	.mypage{
+		min-height: initial;
+	}
 	.header-simple-black+.header-search-bar{
 		display: none;
 	}
