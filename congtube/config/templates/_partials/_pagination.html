@@ -1,0 +1,40 @@
+{% load static %}
+
+<ul class="pagination">
+    {% if page_obj.has_previous %} <!-- 이전 페이지가 있다면 -->
+    <li class="active"> <!-- active 로 변경 -->
+        <a href="?page={{page_obj.previous_page_number }}" class="prev pagination_btn" > <!-- 이전 페이지 넘버를 가져온다. -->
+            
+        </a>
+    </li>
+    {% else %}
+    <li class="disabled">
+        <a href="#!" class="prev pagination_btn"> <!-- 이전 페이지가 없다면 -->
+        </a>
+    </li>
+    {% endif %}
+    {% for page in page_range %} <!-- 총 페이지를 page에 넘긴다. -->
+    {% if page == page_obj.number %}
+    <li class="page-item" class="active">
+        <a class="page-link active" href="?page={{ page }}">{{ page }}</a>
+    </li>
+    {% else %}
+    <li class="page-item" class="active">
+        <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+    </li>
+    {% endif %}
+
+    {% endfor %}
+    {% if page_obj.has_next %}
+    <li class="active"><a href="?page={{ page_obj.next_page_number }}" class="next pagination_btn"></a>
+    </li>
+    {% else %}
+    <li class="disabled"><a href="#" class="next pagination_btn"></a>
+    </li>
+    {% endif %}
+</ul>
+<br>
+
+<!--{% if is_paginated %}-->
+<!--{% endif %}-->
+

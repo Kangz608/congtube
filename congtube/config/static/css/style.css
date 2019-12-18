@@ -30,7 +30,12 @@ body {
 
 @media only screen and (max-width:992px){
 	body{
+		min-height: 100vh;
 		min-width:320px;
+	}
+	.mypage+footer{
+		position: absolute;
+		bottom: 0;
 	}
 }
 
@@ -1102,8 +1107,6 @@ footer .copyright{
 	}
 
 	.channel-detail .mask-background__image{
-		width:100vh;
-		height: auto;
 		border-radius: initial;
 		z-index: -1;
 	}
@@ -1818,6 +1821,11 @@ footer .copyright{
 
 .mypage .order_list {
 	text-align: center;
+}
+
+.orderNone{
+	color: #a6a6a6;
+	font-size: 16px;
 }
 
 @media only screen and (max-width:992px){
@@ -4009,6 +4017,9 @@ nav a.sidenav-trigger>img{
 }
 
 @media only screen and (max-width: 992px) {
+	.order-list{
+		padding-bottom: 30px;
+	}
 	.order-list-item__left-image{
 		width: 81px;
 		height: 81px;
@@ -4113,4 +4124,47 @@ nav a.sidenav-trigger>img{
 		width: 18px;
 	}
 
+}
+
+/* order-list pagination */
+.pagination ul{
+	padding: 0;
+	margin: 41px 0;
+}
+.pagination li{
+	height: 26px;
+}
+.pagination li a{
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	color: #a3a3a3;
+	font-size: 13px;
+	line-height: 24px;
+	border-radius: 50%;
+	cursor: pointer !important;
+}
+.pagination li a.active{
+	color: #fff;
+	background-color: #62be51;
+}
+.pagination li .pagination_btn{
+	width: 28px;
+	height: 28px;
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.pagination .prev{
+	margin-right: 20px;
+	background-image: url('../assets/list_pagenation_pre@2x.png');
+}
+
+.pagination .next{
+	margin-left: 20px;
+	background-image: url('../assets/list_pagenation_next@2x.png') ;
+}
+
+.pagination li.active{
+	background-color:transparent;
 }
