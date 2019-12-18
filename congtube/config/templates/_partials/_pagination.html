@@ -4,12 +4,12 @@
     {% if page_obj.has_previous %} <!-- 이전 페이지가 있다면 -->
     <li class="active"> <!-- active 로 변경 -->
         <a href="?page={{page_obj.previous_page_number }}"> <!-- 이전 페이지 넘버를 가져온다. -->
-            <i class="material-icons">Previous</i>
+            Previous
         </a>
     </li>
     {% else %}
     <li class="disabled">
-        <a href="#!"><i class="material-icons">Previous</i> <!-- 이전 페이지가 없다면 -->
+        <a href="#!">Previous <!-- 이전 페이지가 없다면 -->
         </a>
     </li>
     {% endif %}
@@ -26,10 +26,10 @@
 
     {% endfor %}
     {% if page_obj.has_next %}
-    <li class="active"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">Next</i></a>
+    <li class="active"><a href="?page={{ page_obj.next_page_number }}">Next</a>
     </li>
     {% else %}
-    <li class="disabled"><a href="#"><i class="material-icons">Next</i></a>
+    <li class="disabled"><a href="#">Next/a>
     </li>
     {% endif %}
 </ul>
