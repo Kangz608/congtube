@@ -5,7 +5,7 @@ from orders.models.order import Order
 
 class ProfileListView(ListView):
     model = Order
-    paginate_by = 5
+    paginate_by = 8
     template_name = 'account/profile.html'
 
     def get_context_data(self, **kwargs):
