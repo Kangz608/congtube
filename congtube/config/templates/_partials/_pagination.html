@@ -16,7 +16,7 @@
     {% for page in page_range %} <!-- 총 페이지를 page에 넘긴다. -->
     {% if page == page_obj.number %}
     <li class="page-item" class="active">
-        <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+        <a class="page-link active" href="?page={{ page }}">{{ page }}</a>
     </li>
     {% else %}
     <li class="page-item" class="active">
