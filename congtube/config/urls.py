@@ -34,7 +34,7 @@ urlpatterns = [
 
     # Users
     path('accounts/', include('allauth.urls')),
-    path('profile/', ProfileView.as_view(), name='profile'),
+    path('profile/', ProfileListView.as_view(), name='profile'),
 
     # Template
     path('', HomeView.as_view(), name='home'),
