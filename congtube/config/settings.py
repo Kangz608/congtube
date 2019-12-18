@@ -7,7 +7,6 @@ class Base(Configuration):
     # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
     # Quick-start development settings - unsuitable for production
     # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -15,7 +14,6 @@ class Base(Configuration):
     SECRET_KEY = '_3@6ni2p0s&5jt^ujg-yy%lo&w$ttxfhs1w92fwji_0gwe4g4+'
 
     ALLOWED_HOSTS = []
-
 
     # Application definition
 
@@ -90,7 +88,6 @@ class Base(Configuration):
 
     WSGI_APPLICATION = 'config.wsgi.application'
 
-
     # Database
     # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -117,13 +114,17 @@ class Base(Configuration):
         },
         'facebook': {
             'METHOD': 'oauth2',
-            'SCOPE': ['email', 'public_profile', 'user_friends'],
+            'SCOPE': ['email', 'public_profile'],
             'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
             'INIT_PARAMS': {'cookie': True},
             'FIELDS': [
                 'id',
                 'email',
                 'name',
+                'first_name',
+                'last_name',
+                'friends',
+                'verified',
             ],
             'EXCHANGE_TOKEN': True,
             'LOCALE_FUNC': lambda request: 'ko_KR',
@@ -150,7 +151,6 @@ class Base(Configuration):
         },
     ]
 
-
     # Internationalization
     # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -164,7 +164,6 @@ class Base(Configuration):
 
     USE_TZ = True
 
-
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -176,11 +175,10 @@ class Base(Configuration):
     ]
     STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
     STATICFILES_FINDERS = (
-	'django.contrib.staticfiles.finders.FileSystemFinder',
-	'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-	'pipeline.finders.PipelineFinder',
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+        'pipeline.finders.PipelineFinder',
     )
-
 
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -194,7 +192,7 @@ class Base(Configuration):
         'STYLESHEETS': {
             'main': {
                 'source_filenames': (
-                  'css/style.css',
+                    'css/style.css',
                 ),
                 'output_filename': 'css/congtube.css',
             }
@@ -202,13 +200,12 @@ class Base(Configuration):
         'JAVASCRIPT': {
             'main': {
                 'source_filenames': (
-                  'js/*.js',
+                    'js/*.js',
                 ),
                 'output_filename': 'js/congtube.js',
             }
         },
     }
-
 
     # Sites Framework
     # https://docs.djangoproject.com/en/2.2/ref/contrib/sites/#module-django.contrib.sites
