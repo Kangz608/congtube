@@ -31,7 +31,7 @@ class OrderAdmin(admin.ModelAdmin):
                 n.video_complete(obj.phonenumber, obj.user, obj.channel) # 비디오 완성 알림
                 obj.save()
                 # 주문취소 발생 시
-            else:
+            elif obj.status == 4 and obj.cancelreason and obj.cancel:
                 iamport = Iamport(
                     imp_key='8161721766694252',
                     imp_secret='kJqNZpHNzkWkA55fMJ9h1GyOm5ataB1vkrikRZ8qk4KUaQaWAjeB0MpmRAQ2bRxwjPRaP0B94m4fdecO'
