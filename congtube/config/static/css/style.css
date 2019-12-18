@@ -30,12 +30,8 @@ body {
 
 @media only screen and (max-width:992px){
 	body{
-		min-height: 100vh;
+		min-height: 100%;
 		min-width:320px;
-	}
-	.mypage+footer{
-		position: absolute;
-		bottom: 0;
 	}
 }
 
@@ -303,8 +299,8 @@ footer .copyright{
 	left: 50%;
 	top: 0;
 	z-index: 0;
-	width: auto;
-	height: 100%;
+	width: 100%;
+	height: auto;
 	/* -o-object-fit: cover;
 	object-fit: cover; */
 	cursor: pointer;
@@ -4167,4 +4163,21 @@ nav a.sidenav-trigger>img{
 
 .pagination li.active{
 	background-color:transparent;
+}
+
+.mypage #top{
+	display: none;
+	position: fixed;
+	bottom: 22px;
+	right: 18px;
+	width: 64px;
+	height: 64px;
+	background-image: url('../assets/orderlist_floating_top_btn@2x.png') ;
+	background-position: center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+@media only screen and (max-width:992px){
+	.pagination-container{display: none;}
 }
