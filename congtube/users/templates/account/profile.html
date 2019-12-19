@@ -28,11 +28,10 @@
     <div class='container'>
         <div class='section-title'>주문내역</div>
         <div class='order-list'>
-            {{ object_list.paginate_by.count}}
-            {% for order in object_list %}
-                {% include '_partials/_order_item.html' with order=order %}
-            {% endfor %}
             <div class="pagination-container">
+            {% for order in object_list %}
+                {% include '_partials/_order_item.html' %}
+            {% endfor %}
                 {% if object_list %}
                     {% include '_partials/_pagination.html' %}
                 {% else %}
@@ -40,6 +39,11 @@
                         주문내역이 없습니다.
                     </p>
                 {% endif %}
+            </div>
+            <div id="paginationContainerM">
+                {% for order in orders %} 
+                    {% include '_partials/_order_item.html' with order=order %}
+                {% endfor %}
             </div>
         </div>
     </div>
