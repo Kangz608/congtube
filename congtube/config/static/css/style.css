@@ -1714,10 +1714,6 @@ footer .copyright{
 	width: 100%;
 }
 
-.mypage {
-	min-height: 100vh;
-}
-
 .mypage .user-summary {
 	width: 100%;
 	padding: 70px 0;
@@ -3091,9 +3087,7 @@ footer .copyright{
 	.sign-in #m_background_video{
 		width:140%;
 	}
-	.sign-in+footer{
-		display: none;
-	}
+
 	.sign-in .login_logo{
 		position: relative;
 		left: 50%;
@@ -3101,6 +3095,7 @@ footer .copyright{
 		padding-top: 0;
 		height:calc(100vh - 290px);
 	}
+
 	.sign-in .sign-in__center-logo_m{
 		position: absolute;
 		display: initial;
@@ -3109,6 +3104,7 @@ footer .copyright{
 		width: 191px;
 		transform: translate(-50%,-50%);
 	}
+
 	.sign-in .login-buttons{
 		max-width:400px;
 		height: initial;
