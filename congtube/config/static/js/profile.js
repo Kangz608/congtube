@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded',function(){
 
     var oldWidth = window.innerWidth;
-    var oII = 0;
-    var test5 = document.getElementById('paginationContainerM').childNodes;
-    var test6 = test5.nodeName;
-    var test7 = [];
-    console.log(test5)
-    
+    var oII = 0;    
     var WIH = window.innerHeight;
     var BOH = document.body.offsetHeight;
+    var orderMCont = document.getElementById('paginationContainerM').childNodes;
+    var orderItem = [];
+    var orderItemIndex =0;
 
     if(oldWidth<993){
         toggleBlock();
@@ -16,7 +14,22 @@ document.addEventListener('DOMContentLoaded',function(){
         toggleNone();
     };
 
-    function toggleBlock (){
+    function toggleBlock (){       
+    
+        while(orderItemIndex<orderMCont.length){
+            var orderItemAll = orderMCont[orderItemIndex].nodeName;
+            if(orderItemAll=='A'){
+                orderItem.push(orderMCont[orderItemIndex]);
+            };
+            orderItemIndex++;
+        };
+    
+        for(var i = 0 ; i<orderItem.length ;i++){
+            if(i>7){
+                orderItem[i].style.height='0';
+            };
+        };
+        
         document.addEventListener('scroll',topScroll);
         document.getElementById('top').style.display='block';
     };
@@ -36,22 +49,16 @@ document.addEventListener('DOMContentLoaded',function(){
         return;
     };
 
-    // function toggleOrderItems(){
-    // };
-
-    for(var i=8;i<test7.length;i++){
-        test7[i].style.display='none'
-    }
 
     function topScroll(){
-
         var scrollTop = window.scrollY;
-
+        
+        console.log(scrollTop,BOH,WIH)
         if(scrollTop==(BOH-WIH)){
             
-            console.log('?')
+            alert('?')
 
-        }
+        };
 
         if(window.scrollY===0){
             document.getElementById('top').style.display='none';

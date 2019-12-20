@@ -28,10 +28,11 @@
     <div class='container'>
         <div class='section-title'>주문내역</div>
         <div class='order-list'>
-            
-            {% for order in orders %} 
-                {% include '_partials/_order_item.html' with order=order %}
-            {% endfor %}
+            <div id="paginationContainerM">
+                {% for order in orders %} 
+                    {% include '_partials/_order_item.html' with order=order %}
+                {% endfor %}
+            </div>
             <div class="pagination-container">
                 {% for order in object_list %}
                     {% include '_partials/_order_item.html' %}

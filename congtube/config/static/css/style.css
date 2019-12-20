@@ -4015,7 +4015,7 @@ nav a.sidenav-trigger>img{
 	}
 	.order-list-item__left-image{
 		width: 81px;
-		height: 81px;
+		height: 108px;
 	}
 	.order-list-item-container{
 		width: calc(100% - 100px);
@@ -4187,5 +4187,5 @@ nav a.sidenav-trigger>img{
 
 
 @media only screen and (max-width:992px){
-	/* .pagination-container{display: none;} */
+	.pagination-container{display: none;}
 }

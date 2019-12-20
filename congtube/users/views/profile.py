@@ -24,11 +24,11 @@ class ProfileListView(ListView):
 
         page_range = paginator.page_range[start_index:end_index]
         context['page_range'] = page_range
-        # context['orders'] = self.request.user.order_set.is_display()
+        context['orders'] = self.request.user.order_set.is_display()
         return context
 
     def get_queryset(self):
-        return Order.objects.filter(Q(user=self.request.user) & Q(status__gt=1))
+        return Order.objects.filter(user=self.request.user)
 
 
 # from django.views.generic.base import TemplateView
