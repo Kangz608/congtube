@@ -10,28 +10,32 @@
 {% include '_partials/_header_search_bar.html' %}
 
 <div class='mypage'>
-        <div class='user-summary'>
-            <div class="container">
-                <div class='user-summary__user-info'>
-                    <p class="user-summary__user-info-image">
-                        <img src='{% if user.socialaccount_set.all.first.get_avatar_url %}{{ user.socialaccount_set.all.first.get_avatar_url }}{% else %}{% static "assets/user_noimg.png" %}{% endif %}'
-                        alt='user-profile-img'
-                        />
-                    </p>
-                    <div>
-                        <p class='user-summary__user-info-username'>{{user.get_username}}</p>
-                        <p class='user-summary__user-info-email'>{{user.email}}</p>
-                    </div>
+    <div class='user-summary'>
+        <div class="container">
+            <div class='user-summary__user-info'>
+                <p class="user-summary__user-info-image">
+                    <img src='{% if user.socialaccount_set.all.first.get_avatar_url %}{{ user.socialaccount_set.all.first.get_avatar_url }}{% else %}{% static "assets/user_noimg.png" %}{% endif %}'
+                    alt='user-profile-img'
+                    />
+                </p>
+                <div>
+                    <p class='user-summary__user-info-username'>{{user.get_username}}</p>
+                    <p class='user-summary__user-info-email'>{{user.email}}</p>
                 </div>
             </div>
         </div>
+    </div>
     <div class='container'>
         <div class='section-title'>주문내역</div>
         <div class='order-list'>
-            <div class="pagination-container">
-            {% for order in object_list %}
-                {% include '_partials/_order_item.html' %}
+            
+            {% for order in orders %} 
+                {% include '_partials/_order_item.html' with order=order %}
             {% endfor %}
+            <div class="pagination-container">
+                {% for order in object_list %}
+                    {% include '_partials/_order_item.html' %}
+                {% endfor %}
                 {% if object_list %}
                     {% include '_partials/_pagination.html' %}
                 {% else %}
@@ -39,11 +43,6 @@
                         주문내역이 없습니다.
                     </p>
                 {% endif %}
-            </div>
-            <div id="paginationContainerM">
-                {% for order in orders %} 
-                    {% include '_partials/_order_item.html' with order=order %}
-                {% endfor %}
             </div>
         </div>
     </div>

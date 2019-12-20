@@ -2,19 +2,11 @@ document.addEventListener('DOMContentLoaded',function(){
 
     var oldWidth = window.innerWidth;
     var oII = 0;
-    var test1 = document.getElementById('paginationContainerM').childNodes;
-    var test2 = test1.nodeName;
-    var test3 = [];
-    if(test2==='A'){
-        var test4=0;
-        while(test4<test1.length){
-            test3.push(test1[test4])
-            test4++;
-        }
-        return;
-
-    }
-    console.log(test3)
+    var test5 = document.getElementById('paginationContainerM').childNodes;
+    var test6 = test5.nodeName;
+    var test7 = [];
+    console.log(test5)
+    
     var WIH = window.innerHeight;
     var BOH = document.body.offsetHeight;
 
@@ -47,8 +39,8 @@ document.addEventListener('DOMContentLoaded',function(){
     // function toggleOrderItems(){
     // };
 
-    for(var i=8;i<myPagetml.length;i++){
-        myPagetml[i].style.display='none'
+    for(var i=8;i<test7.length;i++){
+        test7[i].style.display='none'
     }
 
     function topScroll(){
@@ -56,8 +48,8 @@ document.addEventListener('DOMContentLoaded',function(){
         var scrollTop = window.scrollY;
 
         if(scrollTop==(BOH-WIH)){
-            // document.getElementById
-            console.log(myPagetml)
+            
+            console.log('?')
 
         }
 
