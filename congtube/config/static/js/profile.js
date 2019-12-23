@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var orderMCont = document.getElementById('paginationContainerM').childNodes;
     var orderItem = [];
     var orderItemIndex =0;
+    var status = document.getElementsByClassName('order-list-item__left-order-status');
 
     if(oldWidth<993){
         toggleBlock();
@@ -79,6 +80,14 @@ document.addEventListener('DOMContentLoaded',function(){
     document.getElementById('top').addEventListener('click',scrollToTop);
     document.addEventListener('resize',myPageResize);
     
-    
+    for(var SI = 0; SI<status.length;SI++){
+        if(status[SI].innerHTML==='주문취소'){
+            status[SI].classList.add('orderCancled')
+        }else if(status[SI].innerHTML==='주문완료'){
+            status[SI].classList.add('orderComplete')
+        }else if(status[SI].innerHTML==='결제완료'){
+            status[SI].classList.add('paymentFinished')
+        }
+    }
 
 });
