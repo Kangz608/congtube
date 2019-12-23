@@ -1,85 +1,19 @@
 document.addEventListener('DOMContentLoaded',function(){
 
+    // 변수 선언
     var oldWidth = window.innerWidth;
-    var oII = 0;    
     var WIH = window.innerHeight;
-    var BOH = document.body.offsetHeight;
     var orderMCont = document.getElementById('paginationContainerM').childNodes;
     var orderItem = [];
+    var status = document.getElementsByClassName('order-list-item__left-order-status');
+
+    // index 변수들
+    var oII = 0;    
+    var scrollIndex = 0;
     var orderItemIndex =0;
     var status = document.getElementsByClassName('order-list-item__left-order-status');
 
-    if(oldWidth<993){
-        toggleBlock();
-    }else{
-        toggleNone();
-    };
-
-    function toggleBlock (){       
-    
-        while(orderItemIndex<orderMCont.length){
-            var orderItemAll = orderMCont[orderItemIndex].nodeName;
-            if(orderItemAll=='A'){
-                orderItem.push(orderMCont[orderItemIndex]);
-            };
-            orderItemIndex++;
-        };
-    
-        for(var i = 0 ; i<orderItem.length ;i++){
-            if(i>7){
-                orderItem[i].style.height='0';
-            };
-        };
-        
-        document.addEventListener('scroll',topScroll);
-        document.getElementById('top').style.display='block';
-    };
-
-    function toggleNone(){
-        document.removeEventListener('scroll',topScroll);
-        document.getElementById('top').style.display='none';
-    };
-
-    function myPageResize(){        
-        if(window.innerWidth!==oldWidth&&window.innerwidth<993){
-            toggleBlock();
-        }else{
-            toggleNone();
-        }
-        oldWidth = window.innerWidth;
-        return;
-    };
-
-
-    function topScroll(){
-        var scrollTop = window.scrollY;
-        
-        console.log(scrollTop,BOH,WIH)
-        if(scrollTop==(BOH-WIH)){
-            
-            alert('?')
-
-        };
-
-        if(window.scrollY===0){
-            document.getElementById('top').style.display='none';
-        }else{
-            document.getElementById('top').style.display='block';
-        };
-    };
-
-    function scrollToTop (){
-        window.scrollTo({
-            top:0,
-            left:0,
-            behavior:'smooth'
-        });
-    };
-
-    
-    document.getElementById('top').addEventListener('click',scrollToTop);
-    document.addEventListener('resize',myPageResize);
-    
+    // 주문 내역 상태에 따른 css 변경을 위한 addClass
     for(var SI = 0; SI<status.length;SI++){
         if(status[SI].innerHTML==='주문취소'){
             status[SI].classList.add('orderCancled')
@@ -88,6 +22,89 @@ document.addEventListener('DOMContentLoaded',function(){
         }else if(status[SI].innerHTML==='결제완료'){
             status[SI].classList.add('paymentFinished')
         }
-    }
+    };
 
+    // 반응형 event
+    if(oldWidth<993){
+        toggleBlock();
+    }else{
+        toggleNone();
+    };
+
+    // order-list 8개만 보이게 셋팅, scroll event 실행, top버튼 추가 함수
+    function toggleBlock (){ 
+
+        while(orderItemIndex<orderMCont.length){
+            var orderItemAll = orderMCont[orderItemIndex].nodeName;
+            if(orderItemAll=='A'){
+                orderItem.push(orderMCont[orderItemIndex]);
+            };
+            orderItemIndex++;
+        };
+
+        scrollIndex = 0;
+    
+        for(var i = 0 ; i<orderItem.length ;i++){
+            if(i>7){
+                orderItem[i].style.display='none';
+                orderItem[i].classList.remove('order-on');
+            };
+        };
+        
+        document.addEventListener('scroll',scrolling);
+        document.getElementById('top').style.display='block';
+    };
+
+
+    // scroll event 제거, top버튼 제거 함수
+    function toggleNone(){
+        document.removeEventListener('scroll',scrolling);
+        document.getElementById('top').style.display='none';
+    };
+
+
+    // scroll event 함수
+    function scrolling(){
+
+        var scrollTop = window.pageYOffset;
+        var BOH = document.body.clientHeight;
+
+        if(scrollTop+WIH===BOH){
+            scrollIndex++;
+            for(var sII = 0; sII<8;sII++){
+                orderItem[scrollIndex*8+sII].style.display='block';
+                orderItem[scrollIndex*8+sII].classList.add('order-on');
+            }
+        };
+
+        if(window.scrollY===0){
+            toggleBlock ();
+            document.getElementById('top').style.display='none';
+        }else{
+            document.getElementById('top').style.display='block';
+        };
+    };
+
+    // top버튼 click시 실행 함수
+    function scrollToTop (){
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        });        
+    };
+    
+    // resizing 함수
+    function myPageResize () {    
+        if(window.innerWidth!=oldWidth&&window.innerWidth<993){
+            toggleBlock();
+        }else{
+            toggleNone();
+        }
+        oldWidth = window.innerWidth;
+        return;
+    };
+    
+    document.getElementById('top').addEventListener('click',scrollToTop);
+    window.addEventListener('resize',myPageResize);
+    
 });

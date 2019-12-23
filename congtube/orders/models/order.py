@@ -8,8 +8,7 @@ class OrderManager(models.Manager):
 
     def is_display(self):
         # 결제실패가 아닌 주문건들에 대해서만 표시한다.
-        return self.get_queryset()
-        #.exclude(status=1)
+        return self.get_queryset().exclude(status=1)
 
 
 def _order_video_upload_to(order, filename):
