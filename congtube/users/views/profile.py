@@ -28,7 +28,7 @@ class ProfileListView(ListView):
         return context
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user)
+        return Order.objects.filter(Q(user=self.request.user) & Q(status__gt=1))
 
 
 # from django.views.generic.base import TemplateView
