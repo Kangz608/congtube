@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded',function(){
             };
         };
         
+        document.getElementById('paginationContainerM').style.display='block';
         document.addEventListener('scroll',scrolling);
         document.getElementById('top').style.display='block';
     };
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     // scroll event 제거, top버튼 제거 함수
     function toggleNone(){
+        document.getElementById('paginationContainerM').style.display='none';
         document.removeEventListener('scroll',scrolling);
         document.getElementById('top').style.display='none';
     };
