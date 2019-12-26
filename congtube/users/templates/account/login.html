@@ -17,7 +17,7 @@
             <div class="m-background-video">
                 <video 
                    src="{% static 'assets/login_bg_m.mp4' %}"
-                   autoplay
+                   autoplay="1"
                    muted="muted"
                    playsinline
                    loop
@@ -45,6 +45,15 @@
                             alt='카카오 로그인'
                         />
                         <span>카카오톡으로 로그인하기</span>
+                    </a>
+                </li>
+                <li>
+                    <a href='{% provider_login_url "naver" %}'>
+                        <img
+                            src='{% static "assets/icon_login_naver@2x.png" %}'
+                            alt='네이버 로그인'
+                        />
+                        <span>네이버로 로그인하기</span>
                     </a>
                 </li>
                 <li>

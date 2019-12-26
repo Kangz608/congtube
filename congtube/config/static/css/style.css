@@ -3029,9 +3029,12 @@ footer .copyright{
 	background-color: #ffdf00;
 }
 .sign-in .login-buttons li:nth-child(2){
-	background-color: #3a5ca9;
+	background-color: #03cf5d;
 }
 .sign-in .login-buttons li:nth-child(3){
+	background-color: #3a5ca9;
+}
+.sign-in .login-buttons li:nth-child(4){
 	background-color: #fff;
 	border: 0.5px solid #d8d8d8;
 }
@@ -3045,10 +3048,10 @@ footer .copyright{
 .sign-in .login-buttons li:nth-child(1) a{
 	color: #2b1718;
 }
-.sign-in .login-buttons li:nth-child(2) a{
+.sign-in .login-buttons li:nth-child(2) a,.sign-in .login-buttons li:nth-child(3) a{
 	color: #fff;
 }
-.sign-in .login-buttons li:nth-child(3) a{
+.sign-in .login-buttons li:nth-child(4) a{
 	color: #000;
 }
 
@@ -3129,12 +3132,16 @@ footer .copyright{
 		left: 50%;
 		top: 50%;
 		width: 191px;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%,-3%);
 	}
 
 	.sign-in .login-buttons{
 		max-width:400px;
 		height: initial;
+	}
+
+	.sign-in+footer{
+		display: none;
 	}
 }
 
