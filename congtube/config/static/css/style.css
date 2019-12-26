@@ -2959,25 +2959,33 @@ footer .copyright{
 	padding: auto;
 	background-color: #62be51;
 	text-align: center;
-
 	font-size: 20px;
 	font-weight: bold;
 	letter-spacing: 1.2px;
 	color: #ffffff;
 }
-.sign-in {
+
+.sign-in-background{
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: -1;
 	width: 100%;
-	padding: 50px 0;
+	height: 100%;
 	background-color: #fafafa;
 }
 
+
+
 .login_wrap{
+	position: absolute;
+	left: 50%;
+	top: 40%;
 	width: 392px;
-	height: 581px;
-	margin: 0 auto;
 	border: 1px solid #d8d8d8;
 	border-radius: 10px;
 	background-color: #fff;
+	transform: translate(-50%,-50%);
 }
 
 
@@ -3006,7 +3014,7 @@ footer .copyright{
 
 .sign-in .login-buttons {
 	margin: 0;
-	padding: 0;
+	padding: 50px 0;
 	width: calc(100% - 92px);
 	margin: 0 auto;
 	height: 54%;
@@ -3021,12 +3029,9 @@ footer .copyright{
 	background-color: #ffdf00;
 }
 .sign-in .login-buttons li:nth-child(2){
-	background-color: #03cf5d;
-}
-.sign-in .login-buttons li:nth-child(3){
 	background-color: #3a5ca9;
 }
-.sign-in .login-buttons li:nth-child(4){
+.sign-in .login-buttons li:nth-child(3){
 	background-color: #fff;
 	border: 0.5px solid #d8d8d8;
 }
@@ -3040,10 +3045,10 @@ footer .copyright{
 .sign-in .login-buttons li:nth-child(1) a{
 	color: #2b1718;
 }
-.sign-in .login-buttons li:nth-child(2) a,.sign-in .login-buttons li:nth-child(3) a{
+.sign-in .login-buttons li:nth-child(2) a{
 	color: #fff;
 }
-.sign-in .login-buttons li:nth-child(4) a{
+.sign-in .login-buttons li:nth-child(3) a{
 	color: #000;
 }
 

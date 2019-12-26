@@ -11,6 +11,7 @@
 {% block content %}
 <div class="sign-in-header"></div>
 {% include '_partials/_header_search_bar.html' %}
+    <div class="sign-in-background"></div>
     <div class='sign-in'>
         <div class="login_wrap">
             <div class="m-background-video">
@@ -47,15 +48,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href='{% provider_login_url "naver" %}'>
-                        <img
-                            src='{% static "assets/icon_login_naver@2x.png" %}'
-                            alt='네이버 로그인'
-                        />
-                        <span>네이버로 로그인하기</span>
-                    </a>
-                </li>
-                <li>
                     <!-- facebook 연동 후 수정 -->
                     <a href='{% provider_login_url "facebook" %}'>
                         <img
@@ -75,7 +67,7 @@
                     </a>
                 </li>
             </ul>
-        </div class="login_wrap" >
+        </div class="login_wrap" ></div>
     </div>
 {% endblock %}
 
