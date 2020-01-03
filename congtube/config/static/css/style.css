@@ -297,14 +297,12 @@ footer .copyright{
 .main .mask-background__image {
 	position: absolute;
 	left: 50%;
-	top: 0;
+	top: 49%;
 	z-index: 0;
 	width: 100%;
 	height: auto;
-	/* -o-object-fit: cover;
-	object-fit: cover; */
 	cursor: pointer;
-	transform: translateX(-50%);
+	transform: translate(-50%,-50%);
 }
 
 .main .mask-background__dim-div {
@@ -327,8 +325,6 @@ footer .copyright{
 
 /* 배너 기본값 변경 */
 .carousel .carousel-item > img{
-	width:auto;
-	height:100%;
 	z-index: -1;
 }
 
