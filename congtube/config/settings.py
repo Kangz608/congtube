@@ -99,8 +99,25 @@ class Base(Configuration):
         'allauth.account.auth_backends.AuthenticationBackend',
     )
 
+    ACCOUNT_FORMS = {'signup': 'users.forms.MyCustomSignupForm'}
+
+    AUTH_USER_MODEL = 'users.User'
     LOGIN_REDIRECT_URL = '/profile/'
     ACCOUNT_LOGOUT_ON_GET = True
+    ACCOUNT_AUTHENTICATION_METHOD = 'email'
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_UNIQUE_EMAIL = True
+    ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+    ACCOUNT_USERNAME_REQUIRED = False
+    ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = 'dlckdtjr2005@gmail.com'
+    EMAIL_HOST_PASSWORD = '!#Dd9450109'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
     SOCIALACCOUNT_PROVIDERS = {
         'google': {
@@ -154,7 +171,7 @@ class Base(Configuration):
     # Internationalization
     # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-    LANGUAGE_CODE = 'en-us'
+    LANGUAGE_CODE = 'ko-kr'
 
     TIME_ZONE = 'Asia/Seoul'
 
