@@ -66,7 +66,6 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['agree_terms', 'agree_marketing']
 
     def __str__(self):
         return self.email
@@ -76,6 +75,11 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+    def get_username(self):
+        email = str(self.email)
+        hide_email = email.split('@')
+        return hide_email[0]
 
     @property
     def is_staff(self):
